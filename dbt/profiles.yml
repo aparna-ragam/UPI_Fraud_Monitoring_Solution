@@ -1,0 +1,10 @@
+UPI_Fraud_Monitoring:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      role: ACCOUNTADMIN
+      warehouse: UPI_FRAUD_MONITORING_WH
+      database: UPI_FRAUD_MONITORING_DB
+      schema: TRANSFORM
+      threads: 8
