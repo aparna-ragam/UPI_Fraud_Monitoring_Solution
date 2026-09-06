@@ -3,8 +3,12 @@ UPI_Fraud_Monitoring:
   outputs:
     dev:
       type: snowflake
+      account: bevkhul-el76007.ap-south-1.aws
+      user: aragam
+      password: Kamakshi@270785
       role: ACCOUNTADMIN
-      warehouse: UPI_FRAUD_MONITORING_WH
       database: UPI_FRAUD_MONITORING_DB
+      warehouse: UPI_FRAUD_MONITORING_WH      
       schema: TRANSFORM
       threads: 8
+      client_session_keep_alive: False

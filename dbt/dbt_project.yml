@@ -16,4 +16,6 @@ snapshot-paths:
   - snapshots
 models:
   UPI_Fraud_Monitoring:
-    +materialized: view
+    stage:
+      raw_views:
+        +materialized: view
