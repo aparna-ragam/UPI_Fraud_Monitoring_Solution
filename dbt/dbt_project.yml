@@ -16,6 +16,8 @@ snapshot-paths:
   - snapshots
 models:
   UPI_Fraud_Monitoring:
-    stage:
+    bronze:
       raw_views:
         +materialized: view
+    silver:
+      +materialized: table

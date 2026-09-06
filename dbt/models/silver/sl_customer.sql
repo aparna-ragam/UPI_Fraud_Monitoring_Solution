@@ -1,0 +1,1 @@
+{{ scd_type_2('transform', 'v_customer', 'transform', 'sl_customer', 'customer_id', load_id_column='created_load_id', exclude_cols=['created_date_time']) }}

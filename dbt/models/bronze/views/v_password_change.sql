@@ -1,0 +1,1 @@
+{{ create_view_with_latest_records('transform', 'v_raw_password_change','transform','v_password_change','created_load_id') }}

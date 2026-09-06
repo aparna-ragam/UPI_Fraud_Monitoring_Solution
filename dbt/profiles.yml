@@ -3,7 +3,7 @@ UPI_Fraud_Monitoring:
   outputs:
     dev:
       type: snowflake
-      account: bevkhul-el76007.ap-south-1.aws
+      account: bevkhul-el76007
       user: aragam
       password: Kamakshi@270785
       role: ACCOUNTADMIN

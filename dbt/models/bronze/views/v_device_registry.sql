@@ -1,0 +1,1 @@
+{{ create_view_with_latest_records('transform', 'v_raw_device_registry','transform','v_device_registry','created_load_id') }}

@@ -1,0 +1,1 @@
+{{ create_view_with_latest_records('transform', 'v_raw_login_activity','transform','v_login_activity','created_load_id') }}

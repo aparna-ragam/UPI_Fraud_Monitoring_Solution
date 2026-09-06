@@ -1005,3 +1005,60 @@ Finished 'compile' with 1 error for target 'dev' [133ms]
 Processed: 1 model
 Summary: 1 total | 1 error
 19:34:03.926166 [info ]: Cached model count updated: 2 models (accurate)
+==================== 2026-09-06T19:46:25.188915Z | 00000000-0000-0000-0000-000000000000 ====================
+==================== 2026-09-06T19:46:25.189173Z | 848cf25b-d450-486f-8c8c-ef1ec9dacad5 ====================
+19:46:25.189199 [info ]: Starting dbt LSP server
+19:46:25.189228 [info ]: Connecting to LSP client on port 8000
+19:46:25.191203 [info ]: Successfully connected to LSP client
+19:46:25.191237 [info ]: Creating LSP service...
+19:46:25.192821 [info ]: Creating LSP server...
+19:46:25.192849 [info ]: Starting LSP server...
+19:46:25.279653 [info ]: Loading profiles.yml
+==================== 2026-09-06T19:46:25.330533Z | c55d72fc-501c-4f20-916b-5db15f8098d3 ====================
+19:46:25.330649 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' successfully [116us]
+==================== 2026-09-06T19:46:25.403506Z | 51098ae4-7a1e-4b46-ad41-693b78407003 ====================
+19:46:25.403649 [info ]: Started loading project
+19:46:25.404454 [info ]: Loading profiles.yml
+19:46:25.419077 [info ]: Loading packages.yml
+19:46:25.419404 [debug]:    Started loading packages
+19:46:25.449073 [debug]:     Loaded [  0.03s] packages
+19:46:25.450229 [info ]: Finished loading project [  0.05s]
+19:46:25.450737 [info ]: Started parsing
+19:46:25.940730 [debug]: Finished parsing models/stage/raw_views/test.sql [  0.00s]
+19:46:25.941730 [debug]: Failed to render SQL unknown function: Jinja macro or function `create_view_with_columns` is unknown
+(in models/stage/raw_views/v_raw_customer.sql:2:1)
+  --> models/stage/raw_views/v_raw_customer.sql:2:1
+19:46:25.941881 [debug]: Finished parsing models/stage/raw_views/v_raw_customer.sql [  0.00s]
+19:46:26.193825 [info ]: Finished parsing [  0.74s]
+19:46:26.194400 [info ]: Cached model count updated: 2 models (estimate)
+19:46:26.194418 [info ]: Cached model count updated: 2 models (accurate)
+19:46:26.194474 [info ]: Started scheduling
+19:46:26.194619 [info ]: Finished scheduling [  0.00s]
+19:46:26.194646 [debug]: Compilation - 1 nodes selected: {"model.UPI_Fraud_Monitoring.v_raw_customer"}
+19:46:26.194681 [info ]: Started scheduling
+19:46:26.194705 [info ]: Finished scheduling [  0.00s]
+19:46:26.248833 [info ]: Started building task graph
+19:46:26.248951 [info ]: Finished building task graph [  0.00s]
+19:46:26.253941 [info ]: Started rendering (1 nodes)
+19:46:26.254006 [info ]: Started model TRANSFORM.v_raw_customer
+19:46:26.254026 [debug]: Started rendering model TRANSFORM.v_raw_customer
+19:46:26.255381 [error]: [JinjaError (dbt1501)]: Failed to render SQL unknown function: Jinja macro or function `create_view_with_columns` is unknown
+(in models/stage/raw_views/v_raw_customer.sql:2:1)
+  --> models/stage/raw_views/v_raw_customer.sql:2:1
+19:46:26.255500 [debug]: Finished rendering [  0.00s] model TRANSFORM.v_raw_customer [error]
+19:46:26.255525 [info ]: Finished rendering [  0.00s] (1 nodes, 0 skipped, 1 errors)
+19:46:26.255601 [info ]: Started analyzing (1 nodes)
+19:46:26.255619 [debug]: Started analyzing model TRANSFORM.v_raw_customer
+19:46:26.255651 [debug]: Finished analyzing [  0.00s] model TRANSFORM.v_raw_customer [skipped]
+19:46:26.255661 [info ]: Finished analyzing [  0.00s] (1 nodes, 1 skipped, 0 errors)
+19:46:26.255669 [info ]:     Failed [  0.00s] model TRANSFORM.v_raw_customer (view)
+19:46:26.264244 [info ]: Started scheduling
+19:46:26.264323 [info ]: Finished scheduling [  0.00s]
+19:46:26.264556 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 error for target 'dev' [861ms]
+Processed: 1 model
+Summary: 1 total | 1 error
+19:46:26.264674 [info ]: Cached model count updated: 2 models (accurate)

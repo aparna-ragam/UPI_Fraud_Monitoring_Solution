@@ -1,0 +1,1 @@
+{{ create_view_with_latest_records('transform', 'v_raw_transaction','transform','v_','created_load_id') }}

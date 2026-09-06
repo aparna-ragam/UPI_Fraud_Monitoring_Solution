@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: staging
+    schema: STAGING   # <-- replace with the actual schema in Snowflake
+    tables:
+      - name: account_master
+      - name: beneficiary_master
+      - name: collect_request
+      - name: customer_master
+      - name: device_registry
+      - name: login_activity
+      - name: merchant_master
+      - name: password_change
+      - name: transaction
+      - name: watchlist
+      - name: UPI_TRANSACTION_FACT
