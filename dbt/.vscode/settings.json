@@ -1,0 +1,5 @@
+{
+  "terminal.integrated.env.windows": {
+    "DBT_PROFILES_DIR": "C:\\Users\\aparn\\.dbt"
+  }
+}
