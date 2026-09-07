@@ -19287,3 +19287,1200 @@ select
 [0m14:18:17.694113 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002292AB85B20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022924FD9450>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002292A77A530>]}
 [0m14:18:17.694541 [debug] [MainThread]: Flushing usage events
 [0m14:18:18.610943 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:21:10.983317 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019A24CA1E80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019A22578B90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019A2763F9D0>]}
+
+
+============================== 14:21:10.989346 | 9eb4af49-54e0-443b-9e0d-e41c8753e9df ==============================
+[0m14:21:10.989346 [info ] [MainThread]: Running with dbt=1.12.3
+[0m14:21:10.990691 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\aparn\\UPI_Fraud_Monitoring_Solution\\UPI_Fraud_Monitoring_Solution\\dbt', 'use_colors': 'True', 'hints_enabled': 'True', 'invocation_command': 'dbt run --select sl_customer.sql', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_path': 'C:\\Users\\aparn\\UPI_Fraud_Monitoring_Solution\\UPI_Fraud_Monitoring_Solution\\dbt\\logs'}
+[0m14:21:11.708642 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m14:21:11.709328 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m14:21:11.710228 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m14:21:12.096936 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '9eb4af49-54e0-443b-9e0d-e41c8753e9df', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019A28F55940>]}
+[0m14:21:12.179492 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '9eb4af49-54e0-443b-9e0d-e41c8753e9df', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019A293DECF0>]}
+[0m14:21:12.181771 [info ] [MainThread]: Registered adapter: snowflake=1.12.0
+[0m14:21:12.594096 [debug] [MainThread]: checksum: 66dac143702d28c2857d7e056e517e6aa6e86844a7a39972148ade7aca1258d6, vars: {}, profile: UPI_Fraud_Monitoring, target: dev, version: 1.12.3
+[0m14:21:12.826666 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m14:21:12.827172 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m14:21:12.827456 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m14:21:12.839707 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '9eb4af49-54e0-443b-9e0d-e41c8753e9df', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019A2A905050>]}
+[0m14:21:13.013654 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\manifest.json
+[0m14:21:13.018446 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\semantic_manifest.json
+[0m14:21:13.063810 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\osi_document.json
+[0m14:21:13.086782 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '9eb4af49-54e0-443b-9e0d-e41c8753e9df', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019A2AA564E0>]}
+[0m14:21:13.087507 [info ] [MainThread]: Found 29 models, 11 sources, 670 macros
+[0m14:21:13.088221 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '9eb4af49-54e0-443b-9e0d-e41c8753e9df', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019A2AA5A5F0>]}
+[0m14:21:13.092207 [info ] [MainThread]: 
+[0m14:21:13.093141 [info ] [MainThread]: Concurrency: 8 threads (target='dev')
+[0m14:21:13.094077 [info ] [MainThread]: 
+[0m14:21:13.095099 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m14:21:13.096842 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_UPI_FRAUD_MONITORING_DB'
+[0m14:21:13.117670 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB"
+[0m14:21:13.118155 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB: show terse schemas in database UPI_FRAUD_MONITORING_DB
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB"} */
+[0m14:21:13.118490 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:21:13.925824 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.807 seconds
+[0m14:21:13.936854 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_UPI_FRAUD_MONITORING_DB_TRANSFORM'
+[0m14:21:13.954738 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"
+[0m14:21:13.955391 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: show objects in UPI_FRAUD_MONITORING_DB.TRANSFORM
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"} */;
+[0m14:21:13.955718 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:21:14.578587 [debug] [ThreadPool]: SQL status: SUCCESS 29 in 0.623 seconds
+[0m14:21:14.587322 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"
+[0m14:21:14.587914 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: show user functions in UPI_FRAUD_MONITORING_DB.TRANSFORM
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"} */
+[0m14:21:14.685796 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.097 seconds
+[0m14:21:14.695882 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '9eb4af49-54e0-443b-9e0d-e41c8753e9df', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019A2AADCE20>]}
+[0m14:21:14.704154 [debug] [Thread-2 (]: Began running node model.UPI_Fraud_Monitoring.sl_customer
+[0m14:21:14.705058 [info ] [Thread-2 (]: 1 of 1 START sql incremental model TRANSFORM.sl_customer ....................... [RUN]
+[0m14:21:14.706978 [debug] [Thread-2 (]: Acquiring new snowflake connection 'model.UPI_Fraud_Monitoring.sl_customer'
+[0m14:21:14.707863 [debug] [Thread-2 (]: Began compiling node model.UPI_Fraud_Monitoring.sl_customer
+[0m14:21:14.717870 [debug] [Thread-2 (]: Writing injected SQL for node "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:21:14.719942 [debug] [Thread-2 (]: Began executing node model.UPI_Fraud_Monitoring.sl_customer
+[0m14:21:14.811988 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:21:14.812942 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: update UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer as tgt
+        set is_current = false,
+            updated_date_time = current_timestamp()
+        where exists (
+            select 1
+            from UPI_FRAUD_MONITORING_DB.TRANSFORM.v_customer src
+            where src.customer_id = tgt.customer_id
+              and src.hash_diff <> tgt.hash_diff
+              and tgt.is_current = true
+        )
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:21:14.813465 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m14:21:15.173634 [debug] [Thread-2 (]: Snowflake adapter: Snowflake query id: 01c6e873-0002-93cb-000e-a57600092c8a
+[0m14:21:15.174438 [debug] [Thread-2 (]: Snowflake adapter: Snowflake error: 002003 (42S02): SQL compilation error:
+Object 'UPI_FRAUD_MONITORING_DB.TRANSFORM.SL_CUSTOMER' does not exist or not authorized.
+[0m14:21:15.182417 [debug] [Thread-2 (]: Database Error in model sl_customer (models\silver\sl_customer.sql)
+  002003 (42S02): SQL compilation error:
+  Object 'UPI_FRAUD_MONITORING_DB.TRANSFORM.SL_CUSTOMER' does not exist or not authorized.
+[0m14:21:15.186618 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '9eb4af49-54e0-443b-9e0d-e41c8753e9df', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019A2AA63AD0>]}
+[0m14:21:15.187876 [error] [Thread-2 (]: 1 of 1 ERROR creating sql incremental model TRANSFORM.sl_customer .............. [[31mERROR[0m in 0.48s]
+[0m14:21:15.189341 [debug] [Thread-2 (]: Finished running node model.UPI_Fraud_Monitoring.sl_customer
+[0m14:21:15.190270 [debug] [Thread-12 ]: Marking all children of 'model.UPI_Fraud_Monitoring.sl_customer' to be skipped because of status 'error'.  Reason: Database Error in model sl_customer (models\silver\sl_customer.sql)
+  002003 (42S02): SQL compilation error:
+  Object 'UPI_FRAUD_MONITORING_DB.TRANSFORM.SL_CUSTOMER' does not exist or not authorized..
+[0m14:21:15.193781 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:21:15.194340 [debug] [MainThread]: Connection 'list_UPI_FRAUD_MONITORING_DB' was left open.
+[0m14:21:15.194664 [debug] [MainThread]: On list_UPI_FRAUD_MONITORING_DB: Close
+[0m14:21:15.294369 [debug] [MainThread]: Connection 'list_UPI_FRAUD_MONITORING_DB_TRANSFORM' was left open.
+[0m14:21:15.294991 [debug] [MainThread]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: Close
+[0m14:21:15.403494 [debug] [MainThread]: Connection 'model.UPI_Fraud_Monitoring.sl_customer' was left open.
+[0m14:21:15.404198 [debug] [MainThread]: On model.UPI_Fraud_Monitoring.sl_customer: Close
+[0m14:21:15.511428 [info ] [MainThread]: 
+[0m14:21:15.512645 [info ] [MainThread]: Finished running 1 incremental model in 0 hours 0 minutes and 2.42 seconds (2.42s).
+[0m14:21:15.513887 [debug] [MainThread]: Command end result
+[0m14:21:15.618792 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\manifest.json
+[0m14:21:15.625323 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\semantic_manifest.json
+[0m14:21:15.631023 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\osi_document.json
+[0m14:21:15.641527 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\run_results.json
+[0m14:21:15.642382 [info ] [MainThread]: 
+[0m14:21:15.643252 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m14:21:15.644079 [info ] [MainThread]: 
+[0m14:21:15.645030 [error] [MainThread]: [[31mERROR[0m]: in model sl_customer (models\silver\sl_customer.sql)
+[0m14:21:15.645744 [error] [MainThread]:   Database Error in model sl_customer (models\silver\sl_customer.sql)
+  002003 (42S02): SQL compilation error:
+  Object 'UPI_FRAUD_MONITORING_DB.TRANSFORM.SL_CUSTOMER' does not exist or not authorized.
+[0m14:21:15.646295 [info ] [MainThread]: 
+[0m14:21:15.646930 [info ] [MainThread]:   compiled code at target\compiled\UPI_Fraud_Monitoring\models\silver\sl_customer.sql
+[0m14:21:15.647487 [info ] [MainThread]: 
+[0m14:21:15.648063 [info ] [MainThread]: Done. PASS=0 WARN=0 ERROR=1 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
+[0m14:21:15.650932 [debug] [MainThread]: Command `dbt run` failed at 14:21:15.650636 after 4.91 seconds
+[0m14:21:15.651741 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019A2AC35700>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019A25099450>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019A2A828410>]}
+[0m14:21:15.652438 [debug] [MainThread]: Flushing usage events
+[0m14:21:16.670294 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:24:35.691986 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024395DF1E80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000243936DCB90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002439878F9D0>]}
+
+
+============================== 14:24:35.698274 | fb4c0bc0-de6d-4f5d-9144-c107475930c3 ==============================
+[0m14:24:35.698274 [info ] [MainThread]: Running with dbt=1.12.3
+[0m14:24:35.699127 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'maximum_seed_size_mib': '1', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\aparn\\UPI_Fraud_Monitoring_Solution\\UPI_Fraud_Monitoring_Solution\\dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt run --select sl_customer.sql', 'hints_enabled': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_path': 'C:\\Users\\aparn\\UPI_Fraud_Monitoring_Solution\\UPI_Fraud_Monitoring_Solution\\dbt\\logs'}
+[0m14:24:36.399861 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m14:24:36.400482 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m14:24:36.401229 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m14:24:36.738517 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'fb4c0bc0-de6d-4f5d-9144-c107475930c3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002439A145940>]}
+[0m14:24:36.820130 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'fb4c0bc0-de6d-4f5d-9144-c107475930c3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002439A5CECF0>]}
+[0m14:24:36.822191 [info ] [MainThread]: Registered adapter: snowflake=1.12.0
+[0m14:24:37.260624 [debug] [MainThread]: checksum: 66dac143702d28c2857d7e056e517e6aa6e86844a7a39972148ade7aca1258d6, vars: {}, profile: UPI_Fraud_Monitoring, target: dev, version: 1.12.3
+[0m14:24:37.460006 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m14:24:37.460534 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m14:24:37.460857 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m14:24:37.473755 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'fb4c0bc0-de6d-4f5d-9144-c107475930c3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002439BB05050>]}
+[0m14:24:37.650337 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\manifest.json
+[0m14:24:37.655963 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\semantic_manifest.json
+[0m14:24:37.701560 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\osi_document.json
+[0m14:24:37.724115 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'fb4c0bc0-de6d-4f5d-9144-c107475930c3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002439BC464E0>]}
+[0m14:24:37.724825 [info ] [MainThread]: Found 29 models, 11 sources, 670 macros
+[0m14:24:37.725570 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'fb4c0bc0-de6d-4f5d-9144-c107475930c3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002439BC4A5F0>]}
+[0m14:24:37.729072 [info ] [MainThread]: 
+[0m14:24:37.729768 [info ] [MainThread]: Concurrency: 8 threads (target='dev')
+[0m14:24:37.730510 [info ] [MainThread]: 
+[0m14:24:37.731897 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m14:24:37.733820 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_UPI_FRAUD_MONITORING_DB'
+[0m14:24:37.756150 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB"
+[0m14:24:37.756632 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB: show terse schemas in database UPI_FRAUD_MONITORING_DB
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB"} */
+[0m14:24:37.756940 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:24:38.592544 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.835 seconds
+[0m14:24:38.605230 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_UPI_FRAUD_MONITORING_DB_TRANSFORM'
+[0m14:24:38.622036 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"
+[0m14:24:38.622702 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: show objects in UPI_FRAUD_MONITORING_DB.TRANSFORM
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"} */;
+[0m14:24:38.623020 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:24:39.019066 [debug] [ThreadPool]: SQL status: SUCCESS 30 in 0.396 seconds
+[0m14:24:39.033155 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"
+[0m14:24:39.033902 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: show user functions in UPI_FRAUD_MONITORING_DB.TRANSFORM
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"} */
+[0m14:24:39.125520 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.091 seconds
+[0m14:24:39.133789 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'fb4c0bc0-de6d-4f5d-9144-c107475930c3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002439BCCCE20>]}
+[0m14:24:39.142309 [debug] [Thread-2 (]: Began running node model.UPI_Fraud_Monitoring.sl_customer
+[0m14:24:39.143189 [info ] [Thread-2 (]: 1 of 1 START sql incremental model TRANSFORM.sl_customer ....................... [RUN]
+[0m14:24:39.144422 [debug] [Thread-2 (]: Acquiring new snowflake connection 'model.UPI_Fraud_Monitoring.sl_customer'
+[0m14:24:39.145336 [debug] [Thread-2 (]: Began compiling node model.UPI_Fraud_Monitoring.sl_customer
+[0m14:24:39.156336 [debug] [Thread-2 (]: Writing injected SQL for node "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:24:39.158589 [debug] [Thread-2 (]: Began executing node model.UPI_Fraud_Monitoring.sl_customer
+[0m14:24:39.246261 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:24:39.247133 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: update UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer as tgt
+        set is_current = false,
+            updated_date_time = current_timestamp()
+        where exists (
+            select 1
+            from UPI_FRAUD_MONITORING_DB.TRANSFORM.v_customer src
+            where src.customer_id = tgt.customer_id
+              and src.hash_diff <> tgt.hash_diff
+              and tgt.is_current = true
+        )
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:24:39.247673 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m14:24:39.890608 [debug] [Thread-2 (]: SQL status: SUCCESS 0 in 0.643 seconds
+[0m14:24:39.906311 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:24:39.907489 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: create or replace  temporary view UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp
+  
+  
+  
+  
+  as (
+    
+
+
+with source as (
+select
+    customer_id,
+    customer_name,
+    customer_segment,
+    kyc_status,
+    risk_rating,
+    customer_status,
+    customer_since,
+    customer_type,
+    created_load_id,
+    md5(
+        coalesce(customer_name,'^') || '|' ||
+        coalesce(customer_segment,'^') || '|' ||
+        coalesce(kyc_status,'^') || '|' ||
+        coalesce(risk_rating,'^') || '|' ||
+        coalesce(customer_status,'^') || '|' ||
+        coalesce(customer_since,'^') || '|' ||
+        coalesce(customer_type,'^')
+    ) as hash_diff
+from  UPI_FRAUD_MONITORING_DB.TRANSFORM.v_customer
+)
+
+select
+    customer_id,
+    customer_name,
+    customer_segment,
+    kyc_status,
+    risk_rating,
+    customer_status,
+    customer_since,
+    customer_type,
+    hash_diff,
+    created_load_id,
+    current_timestamp() as created_date_time,
+    null as updated_date_time,
+    true as is_current
+    from source
+  )
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */;
+[0m14:24:40.220493 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.312 seconds
+[0m14:24:40.231606 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:24:40.232323 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: describe table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:24:40.314376 [debug] [Thread-2 (]: SQL status: SUCCESS 13 in 0.082 seconds
+[0m14:24:40.318833 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:24:40.319496 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: describe table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:24:40.399483 [debug] [Thread-2 (]: SQL status: SUCCESS 19 in 0.079 seconds
+[0m14:24:40.420531 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:24:40.421273 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: describe table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:24:40.522374 [debug] [Thread-2 (]: SQL status: SUCCESS 13 in 0.101 seconds
+[0m14:24:40.533864 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:24:40.534921 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: describe table "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."SL_CUSTOMER"
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:24:40.628555 [debug] [Thread-2 (]: SQL status: SUCCESS 19 in 0.093 seconds
+[0m14:24:40.644616 [debug] [Thread-2 (]: 
+    In "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."SL_CUSTOMER":
+        Schema changed: True
+        Source columns not in target: []
+        Target columns not in source: [SnowflakeColumn(column='DOB', dtype='DATE', char_size=None, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='GENDER', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='MOBILE_NUMBER', dtype='NUMBER', char_size=None, numeric_precision=38, numeric_scale=0, collation=None), SnowflakeColumn(column='EMAIL_ID', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='SOURCE_FILE_NAME', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='UPDATED_LOAD_ID', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None)]
+        New column types: [{'column_name': 'CREATED_DATE_TIME', 'new_type': 'TIMESTAMP_LTZ'}, {'column_name': 'UPDATED_DATE_TIME', 'new_type': 'character varying(16777216)'}]
+  
+[0m14:24:40.655064 [debug] [Thread-2 (]: 
+    In "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."SL_CUSTOMER":
+        Schema change approach: append_new_columns
+        Columns added: []
+        Columns removed: [SnowflakeColumn(column='DOB', dtype='DATE', char_size=None, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='GENDER', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='MOBILE_NUMBER', dtype='NUMBER', char_size=None, numeric_precision=38, numeric_scale=0, collation=None), SnowflakeColumn(column='EMAIL_ID', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='SOURCE_FILE_NAME', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='UPDATED_LOAD_ID', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None)]
+        Data types changed: [{'column_name': 'CREATED_DATE_TIME', 'new_type': 'TIMESTAMP_LTZ'}, {'column_name': 'UPDATED_DATE_TIME', 'new_type': 'character varying(16777216)'}]
+  
+[0m14:24:40.689326 [debug] [Thread-2 (]: Writing runtime sql for node "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:24:40.694441 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:24:40.695295 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: -- back compat for old kwarg name
+  
+  begin
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */;
+[0m14:24:40.786471 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.091 seconds
+[0m14:24:40.787847 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:24:40.788552 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: merge into UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer as DBT_INTERNAL_DEST
+        using UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp as DBT_INTERNAL_SOURCE
+        on (
+                    DBT_INTERNAL_SOURCE.customer_id = DBT_INTERNAL_DEST.customer_id
+                ) and (
+                    DBT_INTERNAL_SOURCE.hash_diff = DBT_INTERNAL_DEST.hash_diff
+                )
+
+    
+    when matched then update set
+        "CUSTOMER_ID" = DBT_INTERNAL_SOURCE."CUSTOMER_ID","CUSTOMER_NAME" = DBT_INTERNAL_SOURCE."CUSTOMER_NAME","CUSTOMER_SEGMENT" = DBT_INTERNAL_SOURCE."CUSTOMER_SEGMENT","KYC_STATUS" = DBT_INTERNAL_SOURCE."KYC_STATUS","RISK_RATING" = DBT_INTERNAL_SOURCE."RISK_RATING","CUSTOMER_STATUS" = DBT_INTERNAL_SOURCE."CUSTOMER_STATUS","CUSTOMER_SINCE" = DBT_INTERNAL_SOURCE."CUSTOMER_SINCE","CUSTOMER_TYPE" = DBT_INTERNAL_SOURCE."CUSTOMER_TYPE","HASH_DIFF" = DBT_INTERNAL_SOURCE."HASH_DIFF","CREATED_LOAD_ID" = DBT_INTERNAL_SOURCE."CREATED_LOAD_ID","CREATED_DATE_TIME" = DBT_INTERNAL_SOURCE."CREATED_DATE_TIME","UPDATED_DATE_TIME" = DBT_INTERNAL_SOURCE."UPDATED_DATE_TIME","IS_CURRENT" = DBT_INTERNAL_SOURCE."IS_CURRENT"
+    
+
+    when not matched then insert
+        ("CUSTOMER_ID", "CUSTOMER_NAME", "CUSTOMER_SEGMENT", "KYC_STATUS", "RISK_RATING", "CUSTOMER_STATUS", "CUSTOMER_SINCE", "CUSTOMER_TYPE", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+    values
+        ("CUSTOMER_ID", "CUSTOMER_NAME", "CUSTOMER_SEGMENT", "KYC_STATUS", "RISK_RATING", "CUSTOMER_STATUS", "CUSTOMER_SINCE", "CUSTOMER_TYPE", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+
+
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */;
+[0m14:24:41.466322 [debug] [Thread-2 (]: SQL status: SUCCESS 1000 in 0.677 seconds
+[0m14:24:41.467125 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:24:41.467502 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: COMMIT
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:24:41.725852 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.258 seconds
+[0m14:24:41.736659 [debug] [Thread-2 (]: Applying DROP to: UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp
+[0m14:24:41.743427 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:24:41.744571 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: drop view if exists UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp cascade
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:24:41.887282 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.142 seconds
+[0m14:24:41.920347 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'fb4c0bc0-de6d-4f5d-9144-c107475930c3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002439BD6EED0>]}
+[0m14:24:41.921445 [info ] [Thread-2 (]: 1 of 1 OK created sql incremental model TRANSFORM.sl_customer .................. [[32mSUCCESS 1000[0m in 2.77s]
+[0m14:24:41.922469 [debug] [Thread-2 (]: Finished running node model.UPI_Fraud_Monitoring.sl_customer
+[0m14:24:41.925037 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:24:41.925620 [debug] [MainThread]: Connection 'list_UPI_FRAUD_MONITORING_DB' was left open.
+[0m14:24:41.925944 [debug] [MainThread]: On list_UPI_FRAUD_MONITORING_DB: Close
+[0m14:24:42.038861 [debug] [MainThread]: Connection 'list_UPI_FRAUD_MONITORING_DB_TRANSFORM' was left open.
+[0m14:24:42.039562 [debug] [MainThread]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: Close
+[0m14:24:42.143119 [debug] [MainThread]: Connection 'model.UPI_Fraud_Monitoring.sl_customer' was left open.
+[0m14:24:42.143877 [debug] [MainThread]: On model.UPI_Fraud_Monitoring.sl_customer: Close
+[0m14:24:42.265985 [info ] [MainThread]: 
+[0m14:24:42.266924 [info ] [MainThread]: Finished running 1 incremental model in 0 hours 0 minutes and 4.53 seconds (4.53s).
+[0m14:24:42.268090 [debug] [MainThread]: Command end result
+[0m14:24:42.354149 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\manifest.json
+[0m14:24:42.360046 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\semantic_manifest.json
+[0m14:24:42.366205 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\osi_document.json
+[0m14:24:42.377534 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\run_results.json
+[0m14:24:42.378273 [info ] [MainThread]: 
+[0m14:24:42.379358 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m14:24:42.380040 [info ] [MainThread]: 
+[0m14:24:42.380655 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
+[0m14:24:42.382588 [debug] [MainThread]: Command `dbt run` succeeded at 14:24:42.382355 after 6.94 seconds
+[0m14:24:42.383180 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002439BE25B20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000243961E9450>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002439BA26530>]}
+[0m14:24:42.383638 [debug] [MainThread]: Flushing usage events
+[0m14:24:44.485042 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:26:01.228821 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016997311E80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016994BECB90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016999CAF9D0>]}
+
+
+============================== 14:26:01.235208 | ae9045ad-3a6d-4ac0-9756-261fa5fee97e ==============================
+[0m14:26:01.235208 [info ] [MainThread]: Running with dbt=1.12.3
+[0m14:26:01.236024 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'maximum_seed_size_mib': '1', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\aparn\\UPI_Fraud_Monitoring_Solution\\UPI_Fraud_Monitoring_Solution\\dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'hints_enabled': 'True', 'invocation_command': 'dbt run --select sl_customer.sql', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_path': 'C:\\Users\\aparn\\UPI_Fraud_Monitoring_Solution\\UPI_Fraud_Monitoring_Solution\\dbt\\logs'}
+[0m14:26:01.936871 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m14:26:01.937469 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m14:26:01.938239 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m14:26:02.281632 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'ae9045ad-3a6d-4ac0-9756-261fa5fee97e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001699B661940>]}
+[0m14:26:02.359951 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'ae9045ad-3a6d-4ac0-9756-261fa5fee97e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001699BAEECF0>]}
+[0m14:26:02.362162 [info ] [MainThread]: Registered adapter: snowflake=1.12.0
+[0m14:26:02.793213 [debug] [MainThread]: checksum: 66dac143702d28c2857d7e056e517e6aa6e86844a7a39972148ade7aca1258d6, vars: {}, profile: UPI_Fraud_Monitoring, target: dev, version: 1.12.3
+[0m14:26:02.993179 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m14:26:02.993672 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m14:26:02.993956 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m14:26:03.006227 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'ae9045ad-3a6d-4ac0-9756-261fa5fee97e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001699D015050>]}
+[0m14:26:03.182731 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\manifest.json
+[0m14:26:03.192025 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\semantic_manifest.json
+[0m14:26:03.240874 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\osi_document.json
+[0m14:26:03.262419 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'ae9045ad-3a6d-4ac0-9756-261fa5fee97e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001699D1664E0>]}
+[0m14:26:03.263129 [info ] [MainThread]: Found 29 models, 11 sources, 670 macros
+[0m14:26:03.263920 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ae9045ad-3a6d-4ac0-9756-261fa5fee97e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001699D16A5F0>]}
+[0m14:26:03.266871 [info ] [MainThread]: 
+[0m14:26:03.267582 [info ] [MainThread]: Concurrency: 8 threads (target='dev')
+[0m14:26:03.268153 [info ] [MainThread]: 
+[0m14:26:03.269051 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m14:26:03.271225 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_UPI_FRAUD_MONITORING_DB'
+[0m14:26:03.293679 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB"
+[0m14:26:03.294162 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB: show terse schemas in database UPI_FRAUD_MONITORING_DB
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB"} */
+[0m14:26:03.294469 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:26:04.123512 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.829 seconds
+[0m14:26:04.134648 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_UPI_FRAUD_MONITORING_DB_TRANSFORM'
+[0m14:26:04.151253 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"
+[0m14:26:04.151912 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: show objects in UPI_FRAUD_MONITORING_DB.TRANSFORM
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"} */;
+[0m14:26:04.152232 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:26:04.719273 [debug] [ThreadPool]: SQL status: SUCCESS 30 in 0.567 seconds
+[0m14:26:04.730527 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"
+[0m14:26:04.731135 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: show user functions in UPI_FRAUD_MONITORING_DB.TRANSFORM
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"} */
+[0m14:26:04.817238 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.086 seconds
+[0m14:26:04.826948 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ae9045ad-3a6d-4ac0-9756-261fa5fee97e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001699D1ECE20>]}
+[0m14:26:04.834690 [debug] [Thread-2 (]: Began running node model.UPI_Fraud_Monitoring.sl_customer
+[0m14:26:04.835534 [info ] [Thread-2 (]: 1 of 1 START sql incremental model TRANSFORM.sl_customer ....................... [RUN]
+[0m14:26:04.836952 [debug] [Thread-2 (]: Acquiring new snowflake connection 'model.UPI_Fraud_Monitoring.sl_customer'
+[0m14:26:04.837499 [debug] [Thread-2 (]: Began compiling node model.UPI_Fraud_Monitoring.sl_customer
+[0m14:26:04.848952 [debug] [Thread-2 (]: Writing injected SQL for node "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:26:04.851411 [debug] [Thread-2 (]: Began executing node model.UPI_Fraud_Monitoring.sl_customer
+[0m14:26:04.934340 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:26:04.936311 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: update UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer as tgt
+        set is_current = false,
+            updated_date_time = current_timestamp()
+        where exists (
+            select 1
+            from UPI_FRAUD_MONITORING_DB.TRANSFORM.v_customer src
+            where src.customer_id = tgt.customer_id
+              and src.hash_diff <> tgt.hash_diff
+              and tgt.is_current = true
+        )
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:26:04.937657 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m14:26:05.946732 [debug] [Thread-2 (]: SQL status: SUCCESS 1000 in 1.009 seconds
+[0m14:26:05.958314 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:26:05.959096 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: create or replace  temporary view UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp
+  
+  
+  
+  
+  as (
+    
+
+
+with source as (
+select
+    customer_id,
+    customer_name,
+    customer_segment,
+    kyc_status,
+    risk_rating,
+    customer_status,
+    customer_since,
+    customer_type,
+    created_load_id,
+    md5(
+        coalesce(customer_name,'^') || '|' ||
+        coalesce(customer_segment,'^') || '|' ||
+        coalesce(kyc_status,'^') || '|' ||
+        coalesce(risk_rating,'^') || '|' ||
+        coalesce(customer_status,'^') || '|' ||
+        coalesce(customer_since,'^') || '|' ||
+        coalesce(customer_type,'^')
+    ) as hash_diff
+from  UPI_FRAUD_MONITORING_DB.TRANSFORM.v_customer
+)
+
+select
+    customer_id,
+    customer_name,
+    customer_segment,
+    kyc_status,
+    risk_rating,
+    customer_status,
+    customer_since,
+    customer_type,
+    hash_diff,
+    created_load_id,
+    current_timestamp() as created_date_time,
+    null as updated_date_time,
+    true as is_current
+    from source
+  )
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */;
+[0m14:26:06.353871 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.394 seconds
+[0m14:26:06.366271 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:26:06.367099 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: describe table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:26:06.458804 [debug] [Thread-2 (]: SQL status: SUCCESS 13 in 0.091 seconds
+[0m14:26:06.462906 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:26:06.463516 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: describe table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:26:06.553601 [debug] [Thread-2 (]: SQL status: SUCCESS 19 in 0.090 seconds
+[0m14:26:06.574664 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:26:06.575389 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: describe table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:26:06.666961 [debug] [Thread-2 (]: SQL status: SUCCESS 13 in 0.091 seconds
+[0m14:26:06.678476 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:26:06.679199 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: describe table "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."SL_CUSTOMER"
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:26:06.746802 [debug] [Thread-2 (]: SQL status: SUCCESS 19 in 0.067 seconds
+[0m14:26:06.764457 [debug] [Thread-2 (]: 
+    In "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."SL_CUSTOMER":
+        Schema changed: True
+        Source columns not in target: []
+        Target columns not in source: [SnowflakeColumn(column='DOB', dtype='DATE', char_size=None, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='GENDER', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='MOBILE_NUMBER', dtype='NUMBER', char_size=None, numeric_precision=38, numeric_scale=0, collation=None), SnowflakeColumn(column='EMAIL_ID', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='SOURCE_FILE_NAME', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='UPDATED_LOAD_ID', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None)]
+        New column types: [{'column_name': 'CREATED_DATE_TIME', 'new_type': 'TIMESTAMP_LTZ'}, {'column_name': 'UPDATED_DATE_TIME', 'new_type': 'character varying(16777216)'}]
+  
+[0m14:26:06.774935 [debug] [Thread-2 (]: 
+    In "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."SL_CUSTOMER":
+        Schema change approach: append_new_columns
+        Columns added: []
+        Columns removed: [SnowflakeColumn(column='DOB', dtype='DATE', char_size=None, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='GENDER', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='MOBILE_NUMBER', dtype='NUMBER', char_size=None, numeric_precision=38, numeric_scale=0, collation=None), SnowflakeColumn(column='EMAIL_ID', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='SOURCE_FILE_NAME', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='UPDATED_LOAD_ID', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None)]
+        Data types changed: [{'column_name': 'CREATED_DATE_TIME', 'new_type': 'TIMESTAMP_LTZ'}, {'column_name': 'UPDATED_DATE_TIME', 'new_type': 'character varying(16777216)'}]
+  
+[0m14:26:06.810141 [debug] [Thread-2 (]: Writing runtime sql for node "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:26:06.814563 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:26:06.815209 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: -- back compat for old kwarg name
+  
+  begin
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */;
+[0m14:26:06.907960 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.092 seconds
+[0m14:26:06.908643 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:26:06.909073 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: merge into UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer as DBT_INTERNAL_DEST
+        using UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp as DBT_INTERNAL_SOURCE
+        on (
+                    DBT_INTERNAL_SOURCE.customer_id = DBT_INTERNAL_DEST.customer_id
+                ) and (
+                    DBT_INTERNAL_SOURCE.hash_diff = DBT_INTERNAL_DEST.hash_diff
+                )
+
+    
+    when matched then update set
+        "CUSTOMER_ID" = DBT_INTERNAL_SOURCE."CUSTOMER_ID","CUSTOMER_NAME" = DBT_INTERNAL_SOURCE."CUSTOMER_NAME","CUSTOMER_SEGMENT" = DBT_INTERNAL_SOURCE."CUSTOMER_SEGMENT","KYC_STATUS" = DBT_INTERNAL_SOURCE."KYC_STATUS","RISK_RATING" = DBT_INTERNAL_SOURCE."RISK_RATING","CUSTOMER_STATUS" = DBT_INTERNAL_SOURCE."CUSTOMER_STATUS","CUSTOMER_SINCE" = DBT_INTERNAL_SOURCE."CUSTOMER_SINCE","CUSTOMER_TYPE" = DBT_INTERNAL_SOURCE."CUSTOMER_TYPE","HASH_DIFF" = DBT_INTERNAL_SOURCE."HASH_DIFF","CREATED_LOAD_ID" = DBT_INTERNAL_SOURCE."CREATED_LOAD_ID","CREATED_DATE_TIME" = DBT_INTERNAL_SOURCE."CREATED_DATE_TIME","UPDATED_DATE_TIME" = DBT_INTERNAL_SOURCE."UPDATED_DATE_TIME","IS_CURRENT" = DBT_INTERNAL_SOURCE."IS_CURRENT"
+    
+
+    when not matched then insert
+        ("CUSTOMER_ID", "CUSTOMER_NAME", "CUSTOMER_SEGMENT", "KYC_STATUS", "RISK_RATING", "CUSTOMER_STATUS", "CUSTOMER_SINCE", "CUSTOMER_TYPE", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+    values
+        ("CUSTOMER_ID", "CUSTOMER_NAME", "CUSTOMER_SEGMENT", "KYC_STATUS", "RISK_RATING", "CUSTOMER_STATUS", "CUSTOMER_SINCE", "CUSTOMER_TYPE", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+
+
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */;
+[0m14:26:07.691289 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.782 seconds
+[0m14:26:07.692110 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:26:07.692489 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: COMMIT
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:26:08.159913 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.467 seconds
+[0m14:26:08.169452 [debug] [Thread-2 (]: Applying DROP to: UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp
+[0m14:26:08.178059 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:26:08.178751 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: drop view if exists UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp cascade
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:26:08.313646 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.134 seconds
+[0m14:26:08.357136 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ae9045ad-3a6d-4ac0-9756-261fa5fee97e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001699D28EED0>]}
+[0m14:26:08.358705 [info ] [Thread-2 (]: 1 of 1 OK created sql incremental model TRANSFORM.sl_customer .................. [[32mSUCCESS 1[0m in 3.52s]
+[0m14:26:08.359945 [debug] [Thread-2 (]: Finished running node model.UPI_Fraud_Monitoring.sl_customer
+[0m14:26:08.362807 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:26:08.363401 [debug] [MainThread]: Connection 'list_UPI_FRAUD_MONITORING_DB' was left open.
+[0m14:26:08.363827 [debug] [MainThread]: On list_UPI_FRAUD_MONITORING_DB: Close
+[0m14:26:08.463214 [debug] [MainThread]: Connection 'list_UPI_FRAUD_MONITORING_DB_TRANSFORM' was left open.
+[0m14:26:08.463928 [debug] [MainThread]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: Close
+[0m14:26:08.559039 [debug] [MainThread]: Connection 'model.UPI_Fraud_Monitoring.sl_customer' was left open.
+[0m14:26:08.559671 [debug] [MainThread]: On model.UPI_Fraud_Monitoring.sl_customer: Close
+[0m14:26:08.660667 [info ] [MainThread]: 
+[0m14:26:08.661620 [info ] [MainThread]: Finished running 1 incremental model in 0 hours 0 minutes and 5.39 seconds (5.39s).
+[0m14:26:08.663220 [debug] [MainThread]: Command end result
+[0m14:26:08.764473 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\manifest.json
+[0m14:26:08.770303 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\semantic_manifest.json
+[0m14:26:08.777151 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\osi_document.json
+[0m14:26:08.787549 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\run_results.json
+[0m14:26:08.788653 [info ] [MainThread]: 
+[0m14:26:08.789756 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m14:26:08.791008 [info ] [MainThread]: 
+[0m14:26:08.792224 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
+[0m14:26:08.794668 [debug] [MainThread]: Command `dbt run` succeeded at 14:26:08.794286 after 7.77 seconds
+[0m14:26:08.795743 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001699D345B20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016997709450>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001699CF3A530>]}
+[0m14:26:08.797022 [debug] [MainThread]: Flushing usage events
+[0m14:26:09.880849 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:28:13.375818 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E414441E80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E411D1CB90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E416DDF9D0>]}
+
+
+============================== 14:28:13.381723 | ebc334c9-f747-4fd8-9e2e-575146452bf2 ==============================
+[0m14:28:13.381723 [info ] [MainThread]: Running with dbt=1.12.3
+[0m14:28:13.382753 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\aparn\\UPI_Fraud_Monitoring_Solution\\UPI_Fraud_Monitoring_Solution\\dbt', 'indirect_selection': 'eager', 'hints_enabled': 'True', 'invocation_command': 'dbt run --select sl_customer.sql', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_path': 'C:\\Users\\aparn\\UPI_Fraud_Monitoring_Solution\\UPI_Fraud_Monitoring_Solution\\dbt\\logs'}
+[0m14:28:14.092003 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m14:28:14.092618 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m14:28:14.093385 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m14:28:14.444419 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'ebc334c9-f747-4fd8-9e2e-575146452bf2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E418725940>]}
+[0m14:28:14.525411 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'ebc334c9-f747-4fd8-9e2e-575146452bf2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E418BAECF0>]}
+[0m14:28:14.527481 [info ] [MainThread]: Registered adapter: snowflake=1.12.0
+[0m14:28:14.944501 [debug] [MainThread]: checksum: 66dac143702d28c2857d7e056e517e6aa6e86844a7a39972148ade7aca1258d6, vars: {}, profile: UPI_Fraud_Monitoring, target: dev, version: 1.12.3
+[0m14:28:15.149226 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m14:28:15.149760 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m14:28:15.150050 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m14:28:15.162457 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'ebc334c9-f747-4fd8-9e2e-575146452bf2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E41A0E5050>]}
+[0m14:28:15.337175 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\manifest.json
+[0m14:28:15.343705 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\semantic_manifest.json
+[0m14:28:15.389546 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\osi_document.json
+[0m14:28:15.412064 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'ebc334c9-f747-4fd8-9e2e-575146452bf2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E41A2264E0>]}
+[0m14:28:15.412783 [info ] [MainThread]: Found 29 models, 11 sources, 670 macros
+[0m14:28:15.413530 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ebc334c9-f747-4fd8-9e2e-575146452bf2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E41A22A5F0>]}
+[0m14:28:15.416908 [info ] [MainThread]: 
+[0m14:28:15.417630 [info ] [MainThread]: Concurrency: 8 threads (target='dev')
+[0m14:28:15.418533 [info ] [MainThread]: 
+[0m14:28:15.419744 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m14:28:15.421606 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_UPI_FRAUD_MONITORING_DB'
+[0m14:28:15.445272 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB"
+[0m14:28:15.445775 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB: show terse schemas in database UPI_FRAUD_MONITORING_DB
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB"} */
+[0m14:28:15.446087 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:28:16.336355 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.890 seconds
+[0m14:28:16.347532 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_UPI_FRAUD_MONITORING_DB_TRANSFORM'
+[0m14:28:16.365278 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"
+[0m14:28:16.366086 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: show objects in UPI_FRAUD_MONITORING_DB.TRANSFORM
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"} */;
+[0m14:28:16.366536 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:28:17.064872 [debug] [ThreadPool]: SQL status: SUCCESS 30 in 0.698 seconds
+[0m14:28:17.074346 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"
+[0m14:28:17.075005 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: show user functions in UPI_FRAUD_MONITORING_DB.TRANSFORM
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"} */
+[0m14:28:17.181099 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.106 seconds
+[0m14:28:17.190081 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ebc334c9-f747-4fd8-9e2e-575146452bf2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E41A2ACE20>]}
+[0m14:28:17.200732 [debug] [Thread-2 (]: Began running node model.UPI_Fraud_Monitoring.sl_customer
+[0m14:28:17.202026 [info ] [Thread-2 (]: 1 of 1 START sql incremental model TRANSFORM.sl_customer ....................... [RUN]
+[0m14:28:17.203866 [debug] [Thread-2 (]: Acquiring new snowflake connection 'model.UPI_Fraud_Monitoring.sl_customer'
+[0m14:28:17.204833 [debug] [Thread-2 (]: Began compiling node model.UPI_Fraud_Monitoring.sl_customer
+[0m14:28:17.218143 [debug] [Thread-2 (]: Writing injected SQL for node "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:28:17.222059 [debug] [Thread-2 (]: Began executing node model.UPI_Fraud_Monitoring.sl_customer
+[0m14:28:17.304205 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:28:17.304956 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: update UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer as tgt
+        set is_current = false,
+            updated_date_time = current_timestamp()
+        where exists (
+            select 1
+            from UPI_FRAUD_MONITORING_DB.TRANSFORM.v_customer src
+            where src.customer_id = tgt.customer_id
+              and src.hash_diff <> tgt.hash_diff
+              and tgt.is_current = true
+        )
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:28:17.305358 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m14:28:18.559321 [debug] [Thread-2 (]: SQL status: SUCCESS 1000 in 1.254 seconds
+[0m14:28:18.570887 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:28:18.571820 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: create or replace  temporary view UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp
+  
+  
+  
+  
+  as (
+    
+
+
+with source as (
+select
+    customer_id,
+    customer_name,
+    customer_segment,
+    kyc_status,
+    risk_rating,
+    customer_status,
+    customer_since,
+    customer_type,
+    created_load_id,
+    md5(
+        coalesce(customer_name,'^') || '|' ||
+        coalesce(customer_segment,'^') || '|' ||
+        coalesce(kyc_status,'^') || '|' ||
+        coalesce(risk_rating,'^') || '|' ||
+        coalesce(customer_status,'^') || '|' ||
+        coalesce(customer_since,'^') || '|' ||
+        coalesce(customer_type,'^')
+    ) as hash_diff
+from  UPI_FRAUD_MONITORING_DB.TRANSFORM.v_customer
+)
+
+select
+    customer_id,
+    customer_name,
+    customer_segment,
+    kyc_status,
+    risk_rating,
+    customer_status,
+    customer_since,
+    customer_type,
+    hash_diff,
+    created_load_id,
+    current_timestamp() as created_date_time,
+    null as updated_date_time,
+    true as is_current
+    from source
+  )
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */;
+[0m14:28:18.867315 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.295 seconds
+[0m14:28:18.877457 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:28:18.878152 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: describe table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:28:18.967530 [debug] [Thread-2 (]: SQL status: SUCCESS 13 in 0.089 seconds
+[0m14:28:18.971732 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:28:18.972339 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: describe table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:28:19.051246 [debug] [Thread-2 (]: SQL status: SUCCESS 19 in 0.078 seconds
+[0m14:28:19.071868 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:28:19.072524 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: describe table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:28:19.144464 [debug] [Thread-2 (]: SQL status: SUCCESS 13 in 0.071 seconds
+[0m14:28:19.155292 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:28:19.156099 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: describe table "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."SL_CUSTOMER"
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:28:19.225926 [debug] [Thread-2 (]: SQL status: SUCCESS 19 in 0.069 seconds
+[0m14:28:19.242738 [debug] [Thread-2 (]: 
+    In "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."SL_CUSTOMER":
+        Schema changed: True
+        Source columns not in target: []
+        Target columns not in source: [SnowflakeColumn(column='DOB', dtype='DATE', char_size=None, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='GENDER', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='MOBILE_NUMBER', dtype='NUMBER', char_size=None, numeric_precision=38, numeric_scale=0, collation=None), SnowflakeColumn(column='EMAIL_ID', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='SOURCE_FILE_NAME', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='UPDATED_LOAD_ID', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None)]
+        New column types: [{'column_name': 'CREATED_DATE_TIME', 'new_type': 'TIMESTAMP_LTZ'}, {'column_name': 'UPDATED_DATE_TIME', 'new_type': 'character varying(16777216)'}]
+  
+[0m14:28:19.253249 [debug] [Thread-2 (]: 
+    In "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."SL_CUSTOMER":
+        Schema change approach: append_new_columns
+        Columns added: []
+        Columns removed: [SnowflakeColumn(column='DOB', dtype='DATE', char_size=None, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='GENDER', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='MOBILE_NUMBER', dtype='NUMBER', char_size=None, numeric_precision=38, numeric_scale=0, collation=None), SnowflakeColumn(column='EMAIL_ID', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='SOURCE_FILE_NAME', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='UPDATED_LOAD_ID', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None)]
+        Data types changed: [{'column_name': 'CREATED_DATE_TIME', 'new_type': 'TIMESTAMP_LTZ'}, {'column_name': 'UPDATED_DATE_TIME', 'new_type': 'character varying(16777216)'}]
+  
+[0m14:28:19.288806 [debug] [Thread-2 (]: Writing runtime sql for node "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:28:19.292746 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:28:19.293380 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: -- back compat for old kwarg name
+  
+  begin
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */;
+[0m14:28:19.392236 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.098 seconds
+[0m14:28:19.392985 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:28:19.393429 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: merge into UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer as DBT_INTERNAL_DEST
+        using UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp as DBT_INTERNAL_SOURCE
+        on (
+                    DBT_INTERNAL_SOURCE.customer_id = DBT_INTERNAL_DEST.customer_id
+                ) and (
+                    DBT_INTERNAL_SOURCE.hash_diff = DBT_INTERNAL_DEST.hash_diff
+                )
+
+    
+    when matched then update set
+        "CUSTOMER_ID" = DBT_INTERNAL_SOURCE."CUSTOMER_ID","CUSTOMER_NAME" = DBT_INTERNAL_SOURCE."CUSTOMER_NAME","CUSTOMER_SEGMENT" = DBT_INTERNAL_SOURCE."CUSTOMER_SEGMENT","KYC_STATUS" = DBT_INTERNAL_SOURCE."KYC_STATUS","RISK_RATING" = DBT_INTERNAL_SOURCE."RISK_RATING","CUSTOMER_STATUS" = DBT_INTERNAL_SOURCE."CUSTOMER_STATUS","CUSTOMER_SINCE" = DBT_INTERNAL_SOURCE."CUSTOMER_SINCE","CUSTOMER_TYPE" = DBT_INTERNAL_SOURCE."CUSTOMER_TYPE","HASH_DIFF" = DBT_INTERNAL_SOURCE."HASH_DIFF","CREATED_LOAD_ID" = DBT_INTERNAL_SOURCE."CREATED_LOAD_ID","CREATED_DATE_TIME" = DBT_INTERNAL_SOURCE."CREATED_DATE_TIME","UPDATED_DATE_TIME" = DBT_INTERNAL_SOURCE."UPDATED_DATE_TIME","IS_CURRENT" = DBT_INTERNAL_SOURCE."IS_CURRENT"
+    
+
+    when not matched then insert
+        ("CUSTOMER_ID", "CUSTOMER_NAME", "CUSTOMER_SEGMENT", "KYC_STATUS", "RISK_RATING", "CUSTOMER_STATUS", "CUSTOMER_SINCE", "CUSTOMER_TYPE", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+    values
+        ("CUSTOMER_ID", "CUSTOMER_NAME", "CUSTOMER_SEGMENT", "KYC_STATUS", "RISK_RATING", "CUSTOMER_STATUS", "CUSTOMER_SINCE", "CUSTOMER_TYPE", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+
+
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */;
+[0m14:28:20.201696 [debug] [Thread-2 (]: SQL status: SUCCESS 1000 in 0.808 seconds
+[0m14:28:20.202512 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:28:20.202887 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: COMMIT
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:28:20.453912 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.251 seconds
+[0m14:28:20.463637 [debug] [Thread-2 (]: Applying DROP to: UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp
+[0m14:28:20.471873 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_customer"
+[0m14:28:20.472564 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_customer: drop view if exists UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer__dbt_tmp cascade
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_customer"} */
+[0m14:28:20.600178 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.127 seconds
+[0m14:28:20.630705 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ebc334c9-f747-4fd8-9e2e-575146452bf2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E41A34EED0>]}
+[0m14:28:20.632095 [info ] [Thread-2 (]: 1 of 1 OK created sql incremental model TRANSFORM.sl_customer .................. [[32mSUCCESS 1000[0m in 3.42s]
+[0m14:28:20.633381 [debug] [Thread-2 (]: Finished running node model.UPI_Fraud_Monitoring.sl_customer
+[0m14:28:20.635969 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:28:20.636597 [debug] [MainThread]: Connection 'list_UPI_FRAUD_MONITORING_DB' was left open.
+[0m14:28:20.637127 [debug] [MainThread]: On list_UPI_FRAUD_MONITORING_DB: Close
+[0m14:28:20.740973 [debug] [MainThread]: Connection 'list_UPI_FRAUD_MONITORING_DB_TRANSFORM' was left open.
+[0m14:28:20.741656 [debug] [MainThread]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: Close
+[0m14:28:20.840280 [debug] [MainThread]: Connection 'model.UPI_Fraud_Monitoring.sl_customer' was left open.
+[0m14:28:20.841196 [debug] [MainThread]: On model.UPI_Fraud_Monitoring.sl_customer: Close
+[0m14:28:20.942875 [info ] [MainThread]: 
+[0m14:28:20.943789 [info ] [MainThread]: Finished running 1 incremental model in 0 hours 0 minutes and 5.52 seconds (5.52s).
+[0m14:28:20.945065 [debug] [MainThread]: Command end result
+[0m14:28:21.025172 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\manifest.json
+[0m14:28:21.032456 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\semantic_manifest.json
+[0m14:28:21.038762 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\osi_document.json
+[0m14:28:21.049642 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\run_results.json
+[0m14:28:21.050397 [info ] [MainThread]: 
+[0m14:28:21.051250 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m14:28:21.051917 [info ] [MainThread]: 
+[0m14:28:21.052618 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
+[0m14:28:21.054501 [debug] [MainThread]: Command `dbt run` succeeded at 14:28:21.054243 after 7.92 seconds
+[0m14:28:21.055106 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E41A405B20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E414839450>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E419FFA530>]}
+[0m14:28:21.055538 [debug] [MainThread]: Flushing usage events
+[0m14:28:22.048270 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:42:49.193305 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002332DA11E80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002332B2ECB90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000233303AF9D0>]}
+
+
+============================== 14:42:49.199382 | 0c34679c-7db9-4e19-9d21-27a1cf74410a ==============================
+[0m14:42:49.199382 [info ] [MainThread]: Running with dbt=1.12.3
+[0m14:42:49.200245 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\aparn\\UPI_Fraud_Monitoring_Solution\\UPI_Fraud_Monitoring_Solution\\dbt', 'indirect_selection': 'eager', 'hints_enabled': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'invocation_command': 'dbt run --select sl_account.sql', 'log_path': 'C:\\Users\\aparn\\UPI_Fraud_Monitoring_Solution\\UPI_Fraud_Monitoring_Solution\\dbt\\logs'}
+[0m14:42:49.935438 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m14:42:49.936040 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m14:42:49.936804 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m14:42:50.274181 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '0c34679c-7db9-4e19-9d21-27a1cf74410a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023331CD1940>]}
+[0m14:42:50.357737 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '0c34679c-7db9-4e19-9d21-27a1cf74410a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002333215ECF0>]}
+[0m14:42:50.359900 [info ] [MainThread]: Registered adapter: snowflake=1.12.0
+[0m14:42:50.806650 [debug] [MainThread]: checksum: 66dac143702d28c2857d7e056e517e6aa6e86844a7a39972148ade7aca1258d6, vars: {}, profile: UPI_Fraud_Monitoring, target: dev, version: 1.12.3
+[0m14:42:51.098380 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m14:42:51.099164 [debug] [MainThread]: Partial parsing: updated file: UPI_Fraud_Monitoring://models\silver\sl_account.sql
+[0m14:42:51.461490 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '0c34679c-7db9-4e19-9d21-27a1cf74410a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023333691850>]}
+[0m14:42:51.608000 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\manifest.json
+[0m14:42:51.614478 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\semantic_manifest.json
+[0m14:42:51.660870 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\osi_document.json
+[0m14:42:51.684212 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '0c34679c-7db9-4e19-9d21-27a1cf74410a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023333999C70>]}
+[0m14:42:51.684942 [info ] [MainThread]: Found 29 models, 11 sources, 670 macros
+[0m14:42:51.685753 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0c34679c-7db9-4e19-9d21-27a1cf74410a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000233339A2C10>]}
+[0m14:42:51.689349 [info ] [MainThread]: 
+[0m14:42:51.690041 [info ] [MainThread]: Concurrency: 8 threads (target='dev')
+[0m14:42:51.690850 [info ] [MainThread]: 
+[0m14:42:51.692730 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m14:42:51.694785 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_UPI_FRAUD_MONITORING_DB'
+[0m14:42:51.716622 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB"
+[0m14:42:51.717214 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB: show terse schemas in database UPI_FRAUD_MONITORING_DB
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB"} */
+[0m14:42:51.717530 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:42:52.613042 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.895 seconds
+[0m14:42:52.624196 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_UPI_FRAUD_MONITORING_DB_TRANSFORM'
+[0m14:42:52.640674 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"
+[0m14:42:52.641258 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: show objects in UPI_FRAUD_MONITORING_DB.TRANSFORM
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"} */;
+[0m14:42:52.641565 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:42:53.066466 [debug] [ThreadPool]: SQL status: SUCCESS 30 in 0.425 seconds
+[0m14:42:53.077798 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"
+[0m14:42:53.078490 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: show user functions in UPI_FRAUD_MONITORING_DB.TRANSFORM
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"} */
+[0m14:42:53.720319 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.641 seconds
+[0m14:42:53.729634 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0c34679c-7db9-4e19-9d21-27a1cf74410a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023333A7DD90>]}
+[0m14:42:53.737658 [debug] [Thread-2 (]: Began running node model.UPI_Fraud_Monitoring.sl_account
+[0m14:42:53.738507 [info ] [Thread-2 (]: 1 of 1 START sql incremental model TRANSFORM.sl_account ........................ [RUN]
+[0m14:42:53.739546 [debug] [Thread-2 (]: Acquiring new snowflake connection 'model.UPI_Fraud_Monitoring.sl_account'
+[0m14:42:53.740159 [debug] [Thread-2 (]: Began compiling node model.UPI_Fraud_Monitoring.sl_account
+[0m14:42:53.749559 [debug] [Thread-2 (]: Writing injected SQL for node "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:42:53.752476 [debug] [Thread-2 (]: Began executing node model.UPI_Fraud_Monitoring.sl_account
+[0m14:42:53.839776 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:42:53.841098 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: update UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account as tgt
+        set is_current = false,
+            updated_date_time = current_timestamp()
+        where exists (
+            select 1
+            from UPI_FRAUD_MONITORING_DB.TRANSFORM.v_account src
+            where src.account_id = tgt.account_id
+              and src.hash_diff <> tgt.hash_diff
+              and tgt.is_current = true
+        )
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */
+[0m14:42:53.842076 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m14:42:54.966213 [debug] [Thread-2 (]: SQL status: SUCCESS 0 in 1.124 seconds
+[0m14:42:54.977204 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:42:54.978064 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: create or replace  temporary view UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account__dbt_tmp
+  
+  
+  
+  
+  as (
+    
+
+
+with source as (
+select
+    account_id,
+    customer_id,
+    account_type,
+    account_status,
+    current_balance,
+    available_balance,
+    open_date,
+    datediff(day,open_date,current_date) as account_age_days,
+    case when account_age_days < 30 then 'HIGH'
+         when current_balance > 1000000 then 'MEDIUM' 
+	 else 'LOW' 
+     end as account_risk_rating,
+    created_load_id,
+md5(
+        coalesce(account_id,'^') || '|' ||
+        coalesce(customer_id,'^') || '|' ||
+        coalesce(cast(account_type as varchar),'^') || '|' ||
+        coalesce(account_status,'^') || '|' ||
+        coalesce(cast(current_balance as varchar),'^') || '|' ||
+        coalesce(cast(available_balance as varchar),'^') || '|' ||
+	coalesce(cast(open_date as varchar),'^') || '|' ||
+        coalesce(cast(account_age_days as varchar),'^') || '|' ||
+        coalesce(cast(account_risk_rating as varchar),'^')
+    ) as hash_diff
+from  UPI_FRAUD_MONITORING_DB.TRANSFORM.v_account
+)
+
+select
+    account_id,
+    customer_id,
+    account_type,
+    account_status,
+    current_balance,
+    available_balance,
+    open_date,
+    account_age_days,
+    account_risk_rating,
+    hash_diff,
+    created_load_id,
+    current_timestamp() as created_date_time,
+    null as updated_date_time,
+    true as is_current
+    from source
+  )
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */;
+[0m14:42:55.245392 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.265 seconds
+[0m14:42:55.256546 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:42:55.257257 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: describe table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account__dbt_tmp
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */
+[0m14:42:55.352991 [debug] [Thread-2 (]: SQL status: SUCCESS 14 in 0.095 seconds
+[0m14:42:55.357047 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:42:55.357667 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: describe table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */
+[0m14:42:55.489922 [debug] [Thread-2 (]: SQL status: SUCCESS 17 in 0.132 seconds
+[0m14:42:55.514233 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:42:55.515159 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: describe table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account__dbt_tmp
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */
+[0m14:42:55.609390 [debug] [Thread-2 (]: SQL status: SUCCESS 14 in 0.094 seconds
+[0m14:42:55.614147 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:42:55.614816 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: describe table "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."SL_ACCOUNT"
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */
+[0m14:42:55.721952 [debug] [Thread-2 (]: SQL status: SUCCESS 17 in 0.107 seconds
+[0m14:42:55.749368 [debug] [Thread-2 (]: 
+    In "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."SL_ACCOUNT":
+        Schema changed: True
+        Source columns not in target: [SnowflakeColumn(column='ACCOUNT_AGE_DAYS', dtype='NUMBER', char_size=None, numeric_precision=9, numeric_scale=0, collation=None), SnowflakeColumn(column='ACCOUNT_RISK_RATING', dtype='VARCHAR', char_size=6, numeric_precision=None, numeric_scale=None, collation=None)]
+        Target columns not in source: [SnowflakeColumn(column='ACCOUNT_NUMBER', dtype='NUMBER', char_size=None, numeric_precision=38, numeric_scale=0, collation=None), SnowflakeColumn(column='BRANCH_CODE', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='IFSC_CODE', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='SOURCE_FILE_NAME', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='UPDATED_LOAD_ID', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None)]
+        New column types: [{'column_name': 'CREATED_DATE_TIME', 'new_type': 'TIMESTAMP_LTZ'}, {'column_name': 'UPDATED_DATE_TIME', 'new_type': 'character varying(16777216)'}]
+  
+[0m14:42:55.774472 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:42:55.775318 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: alter  table "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."SL_ACCOUNT" add column
+          
+            "ACCOUNT_AGE_DAYS" 
+  
+  
+    NUMBER(9,0)
+  
+,
+          
+            "ACCOUNT_RISK_RATING" 
+  
+  
+    character varying(6)
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */
+[0m14:42:55.944465 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.168 seconds
+[0m14:42:55.946945 [debug] [Thread-2 (]: 
+    In "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."SL_ACCOUNT":
+        Schema change approach: append_new_columns
+        Columns added: [SnowflakeColumn(column='ACCOUNT_AGE_DAYS', dtype='NUMBER', char_size=None, numeric_precision=9, numeric_scale=0, collation=None), SnowflakeColumn(column='ACCOUNT_RISK_RATING', dtype='VARCHAR', char_size=6, numeric_precision=None, numeric_scale=None, collation=None)]
+        Columns removed: [SnowflakeColumn(column='ACCOUNT_NUMBER', dtype='NUMBER', char_size=None, numeric_precision=38, numeric_scale=0, collation=None), SnowflakeColumn(column='BRANCH_CODE', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='IFSC_CODE', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='SOURCE_FILE_NAME', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='UPDATED_LOAD_ID', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None)]
+        Data types changed: [{'column_name': 'CREATED_DATE_TIME', 'new_type': 'TIMESTAMP_LTZ'}, {'column_name': 'UPDATED_DATE_TIME', 'new_type': 'character varying(16777216)'}]
+  
+[0m14:42:55.981986 [debug] [Thread-2 (]: Writing runtime sql for node "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:42:55.986988 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:42:55.987843 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: -- back compat for old kwarg name
+  
+  begin
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */;
+[0m14:42:56.085873 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.097 seconds
+[0m14:42:56.086621 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:42:56.087064 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: merge into UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account as DBT_INTERNAL_DEST
+        using UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account__dbt_tmp as DBT_INTERNAL_SOURCE
+        on (
+                    DBT_INTERNAL_SOURCE.account_id = DBT_INTERNAL_DEST.account_id
+                ) and (
+                    DBT_INTERNAL_SOURCE.hash_diff = DBT_INTERNAL_DEST.hash_diff
+                )
+
+    
+    when matched then update set
+        "ACCOUNT_ID" = DBT_INTERNAL_SOURCE."ACCOUNT_ID","CUSTOMER_ID" = DBT_INTERNAL_SOURCE."CUSTOMER_ID","ACCOUNT_TYPE" = DBT_INTERNAL_SOURCE."ACCOUNT_TYPE","ACCOUNT_STATUS" = DBT_INTERNAL_SOURCE."ACCOUNT_STATUS","CURRENT_BALANCE" = DBT_INTERNAL_SOURCE."CURRENT_BALANCE","AVAILABLE_BALANCE" = DBT_INTERNAL_SOURCE."AVAILABLE_BALANCE","OPEN_DATE" = DBT_INTERNAL_SOURCE."OPEN_DATE","ACCOUNT_AGE_DAYS" = DBT_INTERNAL_SOURCE."ACCOUNT_AGE_DAYS","ACCOUNT_RISK_RATING" = DBT_INTERNAL_SOURCE."ACCOUNT_RISK_RATING","HASH_DIFF" = DBT_INTERNAL_SOURCE."HASH_DIFF","CREATED_LOAD_ID" = DBT_INTERNAL_SOURCE."CREATED_LOAD_ID","CREATED_DATE_TIME" = DBT_INTERNAL_SOURCE."CREATED_DATE_TIME","UPDATED_DATE_TIME" = DBT_INTERNAL_SOURCE."UPDATED_DATE_TIME","IS_CURRENT" = DBT_INTERNAL_SOURCE."IS_CURRENT"
+    
+
+    when not matched then insert
+        ("ACCOUNT_ID", "CUSTOMER_ID", "ACCOUNT_TYPE", "ACCOUNT_STATUS", "CURRENT_BALANCE", "AVAILABLE_BALANCE", "OPEN_DATE", "ACCOUNT_AGE_DAYS", "ACCOUNT_RISK_RATING", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+    values
+        ("ACCOUNT_ID", "CUSTOMER_ID", "ACCOUNT_TYPE", "ACCOUNT_STATUS", "CURRENT_BALANCE", "AVAILABLE_BALANCE", "OPEN_DATE", "ACCOUNT_AGE_DAYS", "ACCOUNT_RISK_RATING", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+
+
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */;
+[0m14:42:57.002639 [debug] [Thread-2 (]: SQL status: SUCCESS 1000 in 0.915 seconds
+[0m14:42:57.003745 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:42:57.004303 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: COMMIT
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */
+[0m14:42:57.500865 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.496 seconds
+[0m14:42:57.510994 [debug] [Thread-2 (]: Applying DROP to: UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account__dbt_tmp
+[0m14:42:57.519735 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:42:57.520431 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: drop view if exists UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account__dbt_tmp cascade
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */
+[0m14:42:57.648538 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.128 seconds
+[0m14:42:57.678974 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '0c34679c-7db9-4e19-9d21-27a1cf74410a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023333B62F90>]}
+[0m14:42:57.680397 [info ] [Thread-2 (]: 1 of 1 OK created sql incremental model TRANSFORM.sl_account ................... [[32mSUCCESS 1000[0m in 3.94s]
+[0m14:42:57.681537 [debug] [Thread-2 (]: Finished running node model.UPI_Fraud_Monitoring.sl_account
+[0m14:42:57.684185 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:42:57.684761 [debug] [MainThread]: Connection 'list_UPI_FRAUD_MONITORING_DB' was left open.
+[0m14:42:57.685091 [debug] [MainThread]: On list_UPI_FRAUD_MONITORING_DB: Close
+[0m14:42:57.791456 [debug] [MainThread]: Connection 'list_UPI_FRAUD_MONITORING_DB_TRANSFORM' was left open.
+[0m14:42:57.792127 [debug] [MainThread]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: Close
+[0m14:42:58.082226 [debug] [MainThread]: Connection 'model.UPI_Fraud_Monitoring.sl_account' was left open.
+[0m14:42:58.083235 [debug] [MainThread]: On model.UPI_Fraud_Monitoring.sl_account: Close
+[0m14:42:58.201450 [info ] [MainThread]: 
+[0m14:42:58.202889 [info ] [MainThread]: Finished running 1 incremental model in 0 hours 0 minutes and 6.51 seconds (6.51s).
+[0m14:42:58.205212 [debug] [MainThread]: Command end result
+[0m14:42:58.311887 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\manifest.json
+[0m14:42:58.319757 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\semantic_manifest.json
+[0m14:42:58.332781 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\osi_document.json
+[0m14:42:58.346004 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\run_results.json
+[0m14:42:58.347144 [info ] [MainThread]: 
+[0m14:42:58.348356 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m14:42:58.349303 [info ] [MainThread]: 
+[0m14:42:58.350076 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
+[0m14:42:58.351925 [debug] [MainThread]: Command `dbt run` succeeded at 14:42:58.351682 after 9.41 seconds
+[0m14:42:58.352512 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023333CCD2E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023330366530>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023330365770>]}
+[0m14:42:58.352988 [debug] [MainThread]: Flushing usage events
+[0m14:42:59.490964 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:49:30.980320 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019905F51E80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001990383CB90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000199088EF9D0>]}
+
+
+============================== 14:49:30.986243 | 8b7fd2f1-3ced-42b5-bb94-949e52d38c1f ==============================
+[0m14:49:30.986243 [info ] [MainThread]: Running with dbt=1.12.3
+[0m14:49:30.987155 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'maximum_seed_size_mib': '1', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\aparn\\UPI_Fraud_Monitoring_Solution\\UPI_Fraud_Monitoring_Solution\\dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'hints_enabled': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'invocation_command': 'dbt run --select sl_account.sql', 'log_path': 'C:\\Users\\aparn\\UPI_Fraud_Monitoring_Solution\\UPI_Fraud_Monitoring_Solution\\dbt\\logs'}
+[0m14:49:31.693858 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m14:49:31.694483 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m14:49:31.695244 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m14:49:32.044042 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '8b7fd2f1-3ced-42b5-bb94-949e52d38c1f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001990A301940>]}
+[0m14:49:32.129962 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '8b7fd2f1-3ced-42b5-bb94-949e52d38c1f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001990A78ECF0>]}
+[0m14:49:32.132345 [info ] [MainThread]: Registered adapter: snowflake=1.12.0
+[0m14:49:32.572523 [debug] [MainThread]: checksum: 66dac143702d28c2857d7e056e517e6aa6e86844a7a39972148ade7aca1258d6, vars: {}, profile: UPI_Fraud_Monitoring, target: dev, version: 1.12.3
+[0m14:49:32.780523 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m14:49:32.781003 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m14:49:32.781303 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m14:49:32.794241 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '8b7fd2f1-3ced-42b5-bb94-949e52d38c1f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001990BCC5050>]}
+[0m14:49:32.967366 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\manifest.json
+[0m14:49:32.973895 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\semantic_manifest.json
+[0m14:49:33.020134 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\osi_document.json
+[0m14:49:33.043062 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '8b7fd2f1-3ced-42b5-bb94-949e52d38c1f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001990BB764E0>]}
+[0m14:49:33.043750 [info ] [MainThread]: Found 29 models, 11 sources, 670 macros
+[0m14:49:33.044550 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '8b7fd2f1-3ced-42b5-bb94-949e52d38c1f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001990BB6B070>]}
+[0m14:49:33.047493 [info ] [MainThread]: 
+[0m14:49:33.048372 [info ] [MainThread]: Concurrency: 8 threads (target='dev')
+[0m14:49:33.048964 [info ] [MainThread]: 
+[0m14:49:33.050385 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m14:49:33.052505 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_UPI_FRAUD_MONITORING_DB'
+[0m14:49:33.077985 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB"
+[0m14:49:33.078477 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB: show terse schemas in database UPI_FRAUD_MONITORING_DB
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB"} */
+[0m14:49:33.078780 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:49:34.044053 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.965 seconds
+[0m14:49:34.054839 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_UPI_FRAUD_MONITORING_DB_TRANSFORM'
+[0m14:49:34.071029 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"
+[0m14:49:34.071799 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: show objects in UPI_FRAUD_MONITORING_DB.TRANSFORM
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"} */;
+[0m14:49:34.072161 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:49:34.785102 [debug] [ThreadPool]: SQL status: SUCCESS 30 in 0.713 seconds
+[0m14:49:34.796066 [debug] [ThreadPool]: Using snowflake connection "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"
+[0m14:49:34.796770 [debug] [ThreadPool]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: show user functions in UPI_FRAUD_MONITORING_DB.TRANSFORM
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "connection_name": "list_UPI_FRAUD_MONITORING_DB_TRANSFORM"} */
+[0m14:49:34.901295 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.104 seconds
+[0m14:49:34.910639 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '8b7fd2f1-3ced-42b5-bb94-949e52d38c1f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001990BE88E20>]}
+[0m14:49:34.918351 [debug] [Thread-2 (]: Began running node model.UPI_Fraud_Monitoring.sl_account
+[0m14:49:34.919235 [info ] [Thread-2 (]: 1 of 1 START sql incremental model TRANSFORM.sl_account ........................ [RUN]
+[0m14:49:34.920300 [debug] [Thread-2 (]: Acquiring new snowflake connection 'model.UPI_Fraud_Monitoring.sl_account'
+[0m14:49:34.920869 [debug] [Thread-2 (]: Began compiling node model.UPI_Fraud_Monitoring.sl_account
+[0m14:49:34.930494 [debug] [Thread-2 (]: Writing injected SQL for node "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:49:34.933332 [debug] [Thread-2 (]: Began executing node model.UPI_Fraud_Monitoring.sl_account
+[0m14:49:35.018072 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:49:35.018813 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: update UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account as tgt
+        set is_current = false,
+            updated_date_time = current_timestamp()
+        where exists (
+            select 1
+            from UPI_FRAUD_MONITORING_DB.TRANSFORM.v_account src
+            where src.account_id = tgt.account_id
+              and src.hash_diff <> tgt.hash_diff
+              and tgt.is_current = true
+        )
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */
+[0m14:49:35.019203 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m14:49:36.179291 [debug] [Thread-2 (]: SQL status: SUCCESS 1000 in 1.160 seconds
+[0m14:49:36.191862 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:49:36.193035 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: create or replace  temporary view UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account__dbt_tmp
+  
+  
+  
+  
+  as (
+    
+
+
+with source as (
+select
+    account_id,
+    customer_id,
+    account_type,
+    account_status,
+    current_balance,
+    available_balance,
+    open_date,
+    datediff(day,open_date,current_date) as account_age_days,
+    case when account_age_days < 30 then 'HIGH'
+         when current_balance > 1000000 then 'MEDIUM' 
+	 else 'LOW' 
+     end as account_risk_rating,
+    created_load_id,
+md5(
+        coalesce(account_id,'^') || '|' ||
+        coalesce(customer_id,'^') || '|' ||
+        coalesce(cast(account_type as varchar),'^') || '|' ||
+        coalesce(account_status,'^') || '|' ||
+        coalesce(cast(current_balance as varchar),'^') || '|' ||
+        coalesce(cast(available_balance as varchar),'^') || '|' ||
+	coalesce(cast(open_date as varchar),'^') || '|' ||
+        coalesce(cast(account_age_days as varchar),'^') || '|' ||
+        coalesce(cast(account_risk_rating as varchar),'^')
+    ) as hash_diff
+from  UPI_FRAUD_MONITORING_DB.TRANSFORM.v_account
+)
+
+select
+    account_id,
+    customer_id,
+    account_type,
+    account_status,
+    current_balance,
+    available_balance,
+    open_date,
+    account_age_days,
+    account_risk_rating,
+    hash_diff,
+    created_load_id,
+    current_timestamp() as created_date_time,
+    null as updated_date_time,
+    true as is_current
+    from source
+  )
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */;
+[0m14:49:36.487169 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.293 seconds
+[0m14:49:36.497064 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:49:36.497706 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: describe table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account__dbt_tmp
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */
+[0m14:49:36.586979 [debug] [Thread-2 (]: SQL status: SUCCESS 14 in 0.089 seconds
+[0m14:49:36.591671 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:49:36.592298 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: describe table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */
+[0m14:49:36.665370 [debug] [Thread-2 (]: SQL status: SUCCESS 19 in 0.073 seconds
+[0m14:49:36.686065 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:49:36.686772 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: describe table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account__dbt_tmp
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */
+[0m14:49:36.788089 [debug] [Thread-2 (]: SQL status: SUCCESS 14 in 0.101 seconds
+[0m14:49:36.798905 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:49:36.799695 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: describe table "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."SL_ACCOUNT"
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */
+[0m14:49:36.876151 [debug] [Thread-2 (]: SQL status: SUCCESS 19 in 0.076 seconds
+[0m14:49:36.894530 [debug] [Thread-2 (]: 
+    In "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."SL_ACCOUNT":
+        Schema changed: True
+        Source columns not in target: []
+        Target columns not in source: [SnowflakeColumn(column='ACCOUNT_NUMBER', dtype='NUMBER', char_size=None, numeric_precision=38, numeric_scale=0, collation=None), SnowflakeColumn(column='BRANCH_CODE', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='IFSC_CODE', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='SOURCE_FILE_NAME', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='UPDATED_LOAD_ID', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None)]
+        New column types: [{'column_name': 'CREATED_DATE_TIME', 'new_type': 'TIMESTAMP_LTZ'}, {'column_name': 'UPDATED_DATE_TIME', 'new_type': 'character varying(16777216)'}]
+  
+[0m14:49:36.905348 [debug] [Thread-2 (]: 
+    In "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."SL_ACCOUNT":
+        Schema change approach: append_new_columns
+        Columns added: []
+        Columns removed: [SnowflakeColumn(column='ACCOUNT_NUMBER', dtype='NUMBER', char_size=None, numeric_precision=38, numeric_scale=0, collation=None), SnowflakeColumn(column='BRANCH_CODE', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='IFSC_CODE', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='SOURCE_FILE_NAME', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None), SnowflakeColumn(column='UPDATED_LOAD_ID', dtype='VARCHAR', char_size=16777216, numeric_precision=None, numeric_scale=None, collation=None)]
+        Data types changed: [{'column_name': 'CREATED_DATE_TIME', 'new_type': 'TIMESTAMP_LTZ'}, {'column_name': 'UPDATED_DATE_TIME', 'new_type': 'character varying(16777216)'}]
+  
+[0m14:49:36.940903 [debug] [Thread-2 (]: Writing runtime sql for node "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:49:36.945722 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:49:36.946571 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: -- back compat for old kwarg name
+  
+  begin
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */;
+[0m14:49:37.039183 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.092 seconds
+[0m14:49:37.040034 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:49:37.040469 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: merge into UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account as DBT_INTERNAL_DEST
+        using UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account__dbt_tmp as DBT_INTERNAL_SOURCE
+        on (
+                    DBT_INTERNAL_SOURCE.account_id = DBT_INTERNAL_DEST.account_id
+                ) and (
+                    DBT_INTERNAL_SOURCE.hash_diff = DBT_INTERNAL_DEST.hash_diff
+                )
+
+    
+    when matched then update set
+        "ACCOUNT_ID" = DBT_INTERNAL_SOURCE."ACCOUNT_ID","CUSTOMER_ID" = DBT_INTERNAL_SOURCE."CUSTOMER_ID","ACCOUNT_TYPE" = DBT_INTERNAL_SOURCE."ACCOUNT_TYPE","ACCOUNT_STATUS" = DBT_INTERNAL_SOURCE."ACCOUNT_STATUS","CURRENT_BALANCE" = DBT_INTERNAL_SOURCE."CURRENT_BALANCE","AVAILABLE_BALANCE" = DBT_INTERNAL_SOURCE."AVAILABLE_BALANCE","OPEN_DATE" = DBT_INTERNAL_SOURCE."OPEN_DATE","ACCOUNT_AGE_DAYS" = DBT_INTERNAL_SOURCE."ACCOUNT_AGE_DAYS","ACCOUNT_RISK_RATING" = DBT_INTERNAL_SOURCE."ACCOUNT_RISK_RATING","HASH_DIFF" = DBT_INTERNAL_SOURCE."HASH_DIFF","CREATED_LOAD_ID" = DBT_INTERNAL_SOURCE."CREATED_LOAD_ID","CREATED_DATE_TIME" = DBT_INTERNAL_SOURCE."CREATED_DATE_TIME","UPDATED_DATE_TIME" = DBT_INTERNAL_SOURCE."UPDATED_DATE_TIME","IS_CURRENT" = DBT_INTERNAL_SOURCE."IS_CURRENT"
+    
+
+    when not matched then insert
+        ("ACCOUNT_ID", "CUSTOMER_ID", "ACCOUNT_TYPE", "ACCOUNT_STATUS", "CURRENT_BALANCE", "AVAILABLE_BALANCE", "OPEN_DATE", "ACCOUNT_AGE_DAYS", "ACCOUNT_RISK_RATING", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+    values
+        ("ACCOUNT_ID", "CUSTOMER_ID", "ACCOUNT_TYPE", "ACCOUNT_STATUS", "CURRENT_BALANCE", "AVAILABLE_BALANCE", "OPEN_DATE", "ACCOUNT_AGE_DAYS", "ACCOUNT_RISK_RATING", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+
+
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */;
+[0m14:49:37.797264 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.756 seconds
+[0m14:49:37.798076 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:49:37.798444 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: COMMIT
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */
+[0m14:49:38.063477 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.264 seconds
+[0m14:49:38.074117 [debug] [Thread-2 (]: Applying DROP to: UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account__dbt_tmp
+[0m14:49:38.081743 [debug] [Thread-2 (]: Using snowflake connection "model.UPI_Fraud_Monitoring.sl_account"
+[0m14:49:38.082400 [debug] [Thread-2 (]: On model.UPI_Fraud_Monitoring.sl_account: drop view if exists UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account__dbt_tmp cascade
+/* {"app": "dbt", "dbt_version": "1.12.3", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev", "node_id": "model.UPI_Fraud_Monitoring.sl_account"} */
+[0m14:49:38.851803 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.769 seconds
+[0m14:49:38.890188 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '8b7fd2f1-3ced-42b5-bb94-949e52d38c1f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001990BF2AED0>]}
+[0m14:49:38.891460 [info ] [Thread-2 (]: 1 of 1 OK created sql incremental model TRANSFORM.sl_account ................... [[32mSUCCESS 1[0m in 3.97s]
+[0m14:49:38.892516 [debug] [Thread-2 (]: Finished running node model.UPI_Fraud_Monitoring.sl_account
+[0m14:49:38.895544 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:49:38.896156 [debug] [MainThread]: Connection 'list_UPI_FRAUD_MONITORING_DB' was left open.
+[0m14:49:38.896515 [debug] [MainThread]: On list_UPI_FRAUD_MONITORING_DB: Close
+[0m14:49:38.996526 [debug] [MainThread]: Connection 'list_UPI_FRAUD_MONITORING_DB_TRANSFORM' was left open.
+[0m14:49:38.997213 [debug] [MainThread]: On list_UPI_FRAUD_MONITORING_DB_TRANSFORM: Close
+[0m14:49:39.092418 [debug] [MainThread]: Connection 'model.UPI_Fraud_Monitoring.sl_account' was left open.
+[0m14:49:39.093060 [debug] [MainThread]: On model.UPI_Fraud_Monitoring.sl_account: Close
+[0m14:49:39.194137 [info ] [MainThread]: 
+[0m14:49:39.196256 [info ] [MainThread]: Finished running 1 incremental model in 0 hours 0 minutes and 6.14 seconds (6.14s).
+[0m14:49:39.197474 [debug] [MainThread]: Command end result
+[0m14:49:39.295989 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\manifest.json
+[0m14:49:39.301746 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\semantic_manifest.json
+[0m14:49:39.309162 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\osi_document.json
+[0m14:49:39.318925 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\aparn\UPI_Fraud_Monitoring_Solution\UPI_Fraud_Monitoring_Solution\dbt\target\run_results.json
+[0m14:49:39.319536 [info ] [MainThread]: 
+[0m14:49:39.320503 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m14:49:39.321490 [info ] [MainThread]: 
+[0m14:49:39.322243 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
+[0m14:49:39.324314 [debug] [MainThread]: Command `dbt run` succeeded at 14:49:39.324062 after 8.60 seconds
+[0m14:49:39.324886 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001990BFE1B20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019906349450>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001990BDE4910>]}
+[0m14:49:39.325334 [debug] [MainThread]: Flushing usage events
+[0m14:49:40.401193 [debug] [MainThread]: An error was encountered while trying to flush usage events
