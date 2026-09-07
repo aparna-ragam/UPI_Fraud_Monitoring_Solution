@@ -1,67 +1,37 @@
-
+-- back compat for old kwarg name
   
+  begin;
+    
+        
+            
+                
+                
+            
+                
+                
+            
+        
     
 
-create or replace transient table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_merchant
-    
-    
-    
-    
     
 
-    as (SELECT   MERCHANT_ID,
-    MERCHANT_NAME,
-    MERCHANT_CATEGORY,
-    CASE
-        WHEN MERCHANT_CATEGORY='GROCERY'
-             THEN '5411'
-        WHEN MERCHANT_CATEGORY='FUEL'
-             THEN '5541'
-        WHEN MERCHANT_CATEGORY='RESTAURANT'
-             THEN '5812'
-    END AS MCC_CODE,
-    RISK_RATING
-FROM BR_MERCHANT;
-
-CASE
-    WHEN MCC_CODE IN
-    (
-        '6051',
-        '7995'
-    )
-    THEN 'HIGH_RISK_MERCHANT'
-END
-
------------------------------------
-Transaction Pattern Monitoring -
-
-Customer usually spends at:
-
-5411 Grocery
-5541 Fuel
-
-Suddenly spends:
-
-6051 Crypto
-
-Merchant risk scoring
-------------------------------
-CASE
-    WHEN MCC_CODE='6051' THEN 'HIGH'
-    WHEN MCC_CODE='7995' THEN 'HIGH'
-    WHEN MCC_CODE='5411' THEN 'LOW'
-END
-----------------------------------------------
-CASE
-    WHEN MERCHANT_STATUS IN
-    (
-      'BLOCKED',
-      'SUSPENDED'
-    )
-    THEN 'HIGH_RISK_MERCHANT'
-END
-    )
+    merge into UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_merchant as DBT_INTERNAL_DEST
+        using UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_merchant__dbt_tmp as DBT_INTERNAL_SOURCE
+        on (
+                    DBT_INTERNAL_SOURCE.merchant_id = DBT_INTERNAL_DEST.merchant_id
+                ) and (
+                    DBT_INTERNAL_SOURCE.hash_diff = DBT_INTERNAL_DEST.hash_diff
+                )
+
+    
+    when matched then update set
+        "MERCHANT_ID" = DBT_INTERNAL_SOURCE."MERCHANT_ID","MERCHANT_NAME" = DBT_INTERNAL_SOURCE."MERCHANT_NAME","MERCHANT_CATEGORY" = DBT_INTERNAL_SOURCE."MERCHANT_CATEGORY","MERCHANT_CODE" = DBT_INTERNAL_SOURCE."MERCHANT_CODE","MERCHANT_STATUS" = DBT_INTERNAL_SOURCE."MERCHANT_STATUS","RISK_RATING" = DBT_INTERNAL_SOURCE."RISK_RATING","HASH_DIFF" = DBT_INTERNAL_SOURCE."HASH_DIFF","CREATED_LOAD_ID" = DBT_INTERNAL_SOURCE."CREATED_LOAD_ID","CREATED_DATE_TIME" = DBT_INTERNAL_SOURCE."CREATED_DATE_TIME","UPDATED_DATE_TIME" = DBT_INTERNAL_SOURCE."UPDATED_DATE_TIME","IS_CURRENT" = DBT_INTERNAL_SOURCE."IS_CURRENT"
+    
+
+    when not matched then insert
+        ("MERCHANT_ID", "MERCHANT_NAME", "MERCHANT_CATEGORY", "MERCHANT_CODE", "MERCHANT_STATUS", "RISK_RATING", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+    values
+        ("MERCHANT_ID", "MERCHANT_NAME", "MERCHANT_CATEGORY", "MERCHANT_CODE", "MERCHANT_STATUS", "RISK_RATING", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+
 ;
-
-
-  
+    commit;

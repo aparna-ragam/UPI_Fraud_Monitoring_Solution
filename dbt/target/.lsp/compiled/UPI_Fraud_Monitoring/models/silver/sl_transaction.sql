@@ -1,8 +1,60 @@
-"CASE
-    WHEN TXN_AMOUNT >= 100000 THEN 'HIGH_VALUE_TXN'
-    WHEN DEVICE_ID IN (SELECT DEVICE_ID  FROM SL_DEVICE  WHERE TRUSTED_FLAG = 'N' )  THEN 'UNTRUSTED_DEVICE'
-    WHEN BENEFICIARY_ID IN (SELECT BENEFICIARY_ID FROM SL_BENEFICIARY  WHERE RISK_RATING = 'HIGH' ) THEN 'HIGH_RISK_BENEFICIARY'
-    WHEN MERCHANT_ID IN (SELECT MERCHANT_ID FROM SL_MERCHANT WHERE RISK_RATING = 'HIGH' )  THEN 'HIGH_RISK_MERCHANT'
-    WHEN CUSTOMER_ID IN (SELECT CUSTOMER_ID FROM SL_CUSTOMER WHERE RISK_RATING = 'HIGH' )   THEN 'HIGH_RISK_CUSTOMER'
-    WHEN TXN_STATUS = 'FAILED'  THEN 'FAILED_TRANSACTION'    ELSE 'NORMAL' 
-END AS TXN_RISK_INDICATOR"
+
+
+
+with source as (
+select
+    transaction_id,
+    customer_id,
+    account_id,
+    beneficiary_id,
+    merchant_id,
+    device_id,
+    txn_datetime,
+    txn_amount,
+    txn_type,
+    txn_status,
+    channel,
+    case when txn_amount>=100000 then 'HIGH_VALUE_TXN'
+         when device_id in (select distinct device_id from UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_device_registry where trusted_flag='N') then 'UNTRUSTED_DEVICE'
+         when beneficiary_id in (select distinct beneficiary_id from UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_beneficiary where risk_rating='HIGH') then 'HIGH_RISK_BENEFICIARY'
+         when merchant_id in (select distinct merchant_id from UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_merchant where risk_rating='HIGH') then 'HIGH_RISK_MERCHANT'
+         when customer_id in (select distinct customer_id from UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_customer where risk_rating='HIGH') then 'HIGH_RISK_CUSTOMER'
+	     when txn_status='FAILED' then 'FAILED TRANSACTION'
+    else 'NORMAL'  end as txn_risk_reason,
+    created_load_id,
+md5(
+    coalesce(transaction_id,'^') || '|' ||
+    coalesce(customer_id,'^') || '|' ||
+	coalesce(account_id,'^') || '|' ||
+	coalesce(beneficiary_id,'^') || '|' ||
+	coalesce(merchant_id,'^') || '|' ||
+	coalesce(device_id,'^') || '|' ||
+	coalesce(txn_datetime,'^') || '|' ||
+	coalesce(txn_amount,'^') || '|' ||
+	coalesce(txn_type,'^') || '|' ||
+	coalesce(txn_status,'^') || '|' ||
+	coalesce(channel,'^') || '|' ||
+	coalesce(txn_risk_reason,'^')
+    ) as hash_diff
+from  UPI_FRAUD_MONITORING_DB.TRANSFORM.v_transaction
+)
+
+select
+    transaction_id,
+    customer_id,
+    account_id,
+    beneficiary_id,
+    merchant_id,
+    device_id,
+    txn_datetime,
+    txn_amount,
+    txn_type,
+    txn_status,
+    channel,
+    txn_risk_reason,
+    hash_diff,
+    created_load_id,
+    current_timestamp() as created_date_time,
+    null as updated_date_time,
+    true as is_current
+    from source

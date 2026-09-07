@@ -1,66 +1,37 @@
-
+-- back compat for old kwarg name
   
+  begin;
+    
+        
+            
+                
+                
+            
+                
+                
+            
+        
     
 
-create or replace transient table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_password_change
-    
-    
-    
-    
     
 
-    as (CHANGE_HOUR(Useful for detecting unusual password change activity)
---------------------------------------------------------------------------------------------------
-EXTRACT(HOUR FROM CHANGE_TIME)
-
-
---------------------------------------------------------------------------------------------------
-CHANGE_DAY_OF_WEEK
---------------------------------------------------------------------------------------------------
-DAYNAME(CHANGE_TIME)
-
---------------------------------------------------------------------------------------------------
-DEVICE_RISK_SCORE
---------------------------------------------------------------------------------------------------
-SELECT
-    P.*,
-    D.DEVICE_RISK_SCORE
-FROM BR_PASSWORD_CHANGE P
-LEFT JOIN SL_DEVICE D
-ON P.DEVICE_ID = D.DEVICE_ID;
-
---------------------------------------------------
-PASSWORD_CHANGE_RISK(Derived risk based on fraud indicators.)
------------------------------------------------
-CASE
-    WHEN DEVICE_RISK_SCORE >= 80
-         THEN 'HIGH'
-
-    WHEN EXTRACT(HOUR FROM CHANGE_TIME)
-         BETWEEN 0 AND 4
-         THEN 'MEDIUM'
-
-    ELSE 'LOW'
-END
-
-
-
-CASE
-    WHEN DEVICE_RISK_SCORE >= 80
-    THEN 'Y'
-    ELSE 'N'
-END AS HIGH_RISK_DEVICE_FLAG
-
-
-
-CASE
-    WHEN EXTRACT(HOUR FROM CHANGE_TIME)
-         BETWEEN 0 AND 4
-    THEN 'Y'
-    ELSE 'N'
-END AS ODD_HOUR_CHANGE_FLAG
-    )
+    merge into UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_password_change as DBT_INTERNAL_DEST
+        using UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_password_change__dbt_tmp as DBT_INTERNAL_SOURCE
+        on (
+                    DBT_INTERNAL_SOURCE.password_change_id = DBT_INTERNAL_DEST.password_change_id
+                ) and (
+                    DBT_INTERNAL_SOURCE.hash_diff = DBT_INTERNAL_DEST.hash_diff
+                )
+
+    
+    when matched then update set
+        "PASSWORD_CHANGE_ID" = DBT_INTERNAL_SOURCE."PASSWORD_CHANGE_ID","CUSTOMER_ID" = DBT_INTERNAL_SOURCE."CUSTOMER_ID","CHANGE_TIME" = DBT_INTERNAL_SOURCE."CHANGE_TIME","CHANGE_CHANNEL" = DBT_INTERNAL_SOURCE."CHANGE_CHANNEL","DEVICE_ID" = DBT_INTERNAL_SOURCE."DEVICE_ID","CHANGE_HOUR" = DBT_INTERNAL_SOURCE."CHANGE_HOUR","CHANGE_DAY_OF_WEEK" = DBT_INTERNAL_SOURCE."CHANGE_DAY_OF_WEEK","DEVICE_RISK_SCORE" = DBT_INTERNAL_SOURCE."DEVICE_RISK_SCORE","PASSWORD_CHANGE_RISK" = DBT_INTERNAL_SOURCE."PASSWORD_CHANGE_RISK","HASH_DIFF" = DBT_INTERNAL_SOURCE."HASH_DIFF","CREATED_LOAD_ID" = DBT_INTERNAL_SOURCE."CREATED_LOAD_ID","CREATED_DATE_TIME" = DBT_INTERNAL_SOURCE."CREATED_DATE_TIME","UPDATED_DATE_TIME" = DBT_INTERNAL_SOURCE."UPDATED_DATE_TIME","IS_CURRENT" = DBT_INTERNAL_SOURCE."IS_CURRENT"
+    
+
+    when not matched then insert
+        ("PASSWORD_CHANGE_ID", "CUSTOMER_ID", "CHANGE_TIME", "CHANGE_CHANNEL", "DEVICE_ID", "CHANGE_HOUR", "CHANGE_DAY_OF_WEEK", "DEVICE_RISK_SCORE", "PASSWORD_CHANGE_RISK", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+    values
+        ("PASSWORD_CHANGE_ID", "CUSTOMER_ID", "CHANGE_TIME", "CHANGE_CHANNEL", "DEVICE_ID", "CHANGE_HOUR", "CHANGE_DAY_OF_WEEK", "DEVICE_RISK_SCORE", "PASSWORD_CHANGE_RISK", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+
 ;
-
-
-  
+    commit;
