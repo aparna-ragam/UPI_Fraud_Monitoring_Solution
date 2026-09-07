@@ -1,0 +1,14 @@
+
+    
+    
+    
+    create table UPI_FRAUD_MONITORING_DB.TRANSFORM.dim_fraud_rule ("FRAUD_CODE" text,"FRAUD_NAME" text,"RISK_LEVEL" text,"RULE_CATEGORY" text,"RULE_DESCRIPTION" text)
+  ;
+    -- dbt seed --
+    
+            insert overwrite into UPI_FRAUD_MONITORING_DB.TRANSFORM.dim_fraud_rule ("FRAUD_CODE", "FRAUD_NAME", "RISK_LEVEL", "RULE_CATEGORY", "RULE_DESCRIPTION") values
+            (%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s)
+        
+
+;
+  

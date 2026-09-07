@@ -21,3 +21,7 @@ models:
         +materialized: view
     silver:
       +materialized: table
+seeds:
+  UPI_Fraud_Monitoring:   
+    dim_fraud_rule:
+      +quote_columns: true
