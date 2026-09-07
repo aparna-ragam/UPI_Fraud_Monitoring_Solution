@@ -35,7 +35,6 @@ select
     channel,
     case when txn_amount>=100000 then 'HIGH_VALUE_TXN'
          when device_id in (select distinct device_id from {{ref('sl_device_registry')}} where trusted_flag='N') then 'UNTRUSTED_DEVICE'
-         when beneficiary_id in (select distinct beneficiary_id from {{ref('sl_beneficiary')}} where risk_rating='HIGH') then 'HIGH_RISK_BENEFICIARY'
          when merchant_id in (select distinct merchant_id from {{ref('sl_merchant')}} where risk_rating='HIGH') then 'HIGH_RISK_MERCHANT'
          when customer_id in (select distinct customer_id from {{ref('sl_customer')}} where risk_rating='HIGH') then 'HIGH_RISK_CUSTOMER'
 	     when txn_status='FAILED' then 'FAILED TRANSACTION'

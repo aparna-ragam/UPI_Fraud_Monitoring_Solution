@@ -1,73 +1,37 @@
-
+-- back compat for old kwarg name
   
+  begin;
+    
+        
+            
+                
+                
+            
+                
+                
+            
+        
     
 
-create or replace transient table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_beneficiary
-    
-    
-    
-    
     
 
-    as (Derive BENEFICIARY RISK_RATING
-Rule 1: Watchlist Match
--------------------------------
-CASE WHEN EXISTS  (SELECT 1 FROM SL_WATCHLIST W  WHERE W.ENTITY_TYPE = 'BENEFICIARY' AND W.ENTITY_ID = B.BENEFICIARY_ID) 
-THEN 'HIGH'
-END
-
-Rule 2: New Beneficiary (Recently added beneficiary)
-------------------------------------------------------------------------
-DATEDIFF(DAY, BENEFICIARY_CREATED_DATE, CURRENT_DATE)
-
-Rule 3: High Transaction Volume(Beneficiary receives unusually high transactions)
-------------------------------------------------------------------------------------------------------------------
-SELECT  BENEFICIARY_ID,SUM(TXN_AMOUNT)  FROM SL_TRANSACTION
-GROUP BY BENEFICIARY_ID;
-
-> SUM(TXN_AMOUNT) > 10 Lakhs/day  THEN HIGH RISK
-
-Rule 4: Multiple Customers Sending to Same Beneficiary(Common mule-account indicator)
----------------------------------------------------------------------------------------------------------------------------
-SELECT  BENEFICIARY_ID, COUNT(DISTINCT CUSTOMER_ID) FROM SL_TRANSACTION
-GROUP BY BENEFICIARY_ID;
-> 10 customers THEN RISK_RATING = HIGH
-
-
-
----------------------------------------
-Assign  Points :
-Watchlist Match                 50
-High Incoming Value             20
-Multiple Customers              20
-Previously Flagged              30
-New Beneficiary                 10
-
-WATCHLIST_SCORE
-+
-VOLUME_SCORE
-+
-CUSTOMER_COUNT_SCORE
-+
-FRAUD_HISTORY_SCORE
-+
-NEW_BENEFICIARY_SCORE
-=
-BENEFICIARY_RISK_SCORE
-
-Final Rating
------------------
-CASE
-    WHEN BENEFICIARY_RISK_SCORE >= 70
-         THEN 'HIGH'
-
-    WHEN BENEFICIARY_RISK_SCORE >= 40
-         THEN 'MEDIUM'
-
-    ELSE 'LOW'
-END
-    )
+    merge into UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_beneficiary as DBT_INTERNAL_DEST
+        using UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_beneficiary__dbt_tmp as DBT_INTERNAL_SOURCE
+        on (
+                    DBT_INTERNAL_SOURCE.beneficiary_id = DBT_INTERNAL_DEST.beneficiary_id
+                ) and (
+                    DBT_INTERNAL_SOURCE.hash_diff = DBT_INTERNAL_DEST.hash_diff
+                )
+
+    
+    when matched then update set
+        "BENEFICIARY_ID" = DBT_INTERNAL_SOURCE."BENEFICIARY_ID","CUSTOMER_ID" = DBT_INTERNAL_SOURCE."CUSTOMER_ID","BENEFICIARY_NAME" = DBT_INTERNAL_SOURCE."BENEFICIARY_NAME","BENEFICIARY_VPA" = DBT_INTERNAL_SOURCE."BENEFICIARY_VPA","BENEFICIARY_CREATED_DATE" = DBT_INTERNAL_SOURCE."BENEFICIARY_CREATED_DATE","BANK_NAME" = DBT_INTERNAL_SOURCE."BANK_NAME","RISK_RATING" = DBT_INTERNAL_SOURCE."RISK_RATING","HASH_DIFF" = DBT_INTERNAL_SOURCE."HASH_DIFF","CREATED_LOAD_ID" = DBT_INTERNAL_SOURCE."CREATED_LOAD_ID","CREATED_DATE_TIME" = DBT_INTERNAL_SOURCE."CREATED_DATE_TIME","UPDATED_DATE_TIME" = DBT_INTERNAL_SOURCE."UPDATED_DATE_TIME","IS_CURRENT" = DBT_INTERNAL_SOURCE."IS_CURRENT"
+    
+
+    when not matched then insert
+        ("BENEFICIARY_ID", "CUSTOMER_ID", "BENEFICIARY_NAME", "BENEFICIARY_VPA", "BENEFICIARY_CREATED_DATE", "BANK_NAME", "RISK_RATING", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+    values
+        ("BENEFICIARY_ID", "CUSTOMER_ID", "BENEFICIARY_NAME", "BENEFICIARY_VPA", "BENEFICIARY_CREATED_DATE", "BANK_NAME", "RISK_RATING", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+
 ;
-
-
-  
+    commit;

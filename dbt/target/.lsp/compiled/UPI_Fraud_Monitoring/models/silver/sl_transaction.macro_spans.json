@@ -56,25 +56,25 @@
       "macro_span": {
         "start": {
           "line": 38,
-          "col": 70,
-          "index": 1084
+          "col": 64,
+          "index": 1078
         },
         "stop": {
           "line": 38,
-          "col": 95,
-          "index": 1109
+          "col": 86,
+          "index": 1100
         }
       },
       "expanded_span": {
         "start": {
           "line": 19,
-          "col": 70,
-          "index": 511
+          "col": 64,
+          "index": 505
         },
         "stop": {
           "line": 19,
-          "col": 118,
-          "index": 559
+          "col": 109,
+          "index": 550
         }
       }
     },
@@ -83,76 +83,50 @@
         "start": {
           "line": 39,
           "col": 64,
-          "index": 1229
+          "index": 1217
         },
         "stop": {
           "line": 39,
           "col": 86,
-          "index": 1251
+          "index": 1239
         }
       },
       "expanded_span": {
         "start": {
           "line": 20,
           "col": 64,
-          "index": 679
+          "index": 667
         },
         "stop": {
           "line": 20,
           "col": 109,
-          "index": 724
+          "index": 712
         }
       }
     },
     {
       "macro_span": {
         "start": {
-          "line": 40,
-          "col": 64,
-          "index": 1368
-        },
-        "stop": {
-          "line": 40,
-          "col": 86,
-          "index": 1390
-        }
-      },
-      "expanded_span": {
-        "start": {
-          "line": 21,
-          "col": 64,
-          "index": 841
-        },
-        "stop": {
-          "line": 21,
-          "col": 109,
-          "index": 886
-        }
-      }
-    },
-    {
-      "macro_span": {
-        "start": {
-          "line": 58,
+          "line": 57,
           "col": 7,
-          "index": 2051
+          "index": 1900
         },
         "stop": {
-          "line": 58,
+          "line": 57,
           "col": 33,
-          "index": 2077
+          "index": 1926
         }
       },
       "expanded_span": {
         "start": {
-          "line": 39,
+          "line": 38,
           "col": 7,
-          "index": 1547
+          "index": 1373
         },
         "stop": {
-          "line": 39,
+          "line": 38,
           "col": 54,
-          "index": 1594
+          "index": 1420
         }
       }
     }

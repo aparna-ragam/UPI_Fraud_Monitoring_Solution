@@ -1,57 +1,45 @@
-Derive BENEFICIARY RISK_RATING
-Rule 1: Watchlist Match
--------------------------------
-CASE WHEN EXISTS  (SELECT 1 FROM SL_WATCHLIST W  WHERE W.ENTITY_TYPE = 'BENEFICIARY' AND W.ENTITY_ID = B.BENEFICIARY_ID) 
-THEN 'HIGH'
-END
-
-Rule 2: New Beneficiary (Recently added beneficiary)
-------------------------------------------------------------------------
-DATEDIFF(DAY, BENEFICIARY_CREATED_DATE, CURRENT_DATE)
-
-Rule 3: High Transaction Volume(Beneficiary receives unusually high transactions)
-------------------------------------------------------------------------------------------------------------------
-SELECT  BENEFICIARY_ID,SUM(TXN_AMOUNT)  FROM SL_TRANSACTION
-GROUP BY BENEFICIARY_ID;
-
-> SUM(TXN_AMOUNT) > 10 Lakhs/day  THEN HIGH RISK
-
-Rule 4: Multiple Customers Sending to Same Beneficiary(Common mule-account indicator)
----------------------------------------------------------------------------------------------------------------------------
-SELECT  BENEFICIARY_ID, COUNT(DISTINCT CUSTOMER_ID) FROM SL_TRANSACTION
-GROUP BY BENEFICIARY_ID;
-> 10 customers THEN RISK_RATING = HIGH
 
 
 
----------------------------------------
-Assign  Points :
-Watchlist Match                 50
-High Incoming Value             20
-Multiple Customers              20
-Previously Flagged              30
-New Beneficiary                 10
+with source as (
+select
+    b.beneficiary_id,
+    customer_id,
+    beneficiary_name,
+    beneficiary_vpa,
+    beneficiary_created_date,
+    bank_name,
+    case when exists(select 1 from UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_watchlist w where w.entity_type='BENEFICIARY' and w.entity_id=b.beneficiary_id and w.is_current='TRUE' ) then 'HIGH'
+         when t.txn_amount> 1000000 then 'HIGH'
+	 when t.cnt> 10 then 'HIGH'
+	 when datediff(Day,beneficiary_created_date,current_Date)< 30 then 'MEDIUM'
+    else 'LOW' end as risk_rating,
+    b.created_load_id,
+    md5(
+        coalesce(b.beneficiary_id,'^') || '|' ||
+        coalesce(customer_id,'^') || '|' ||
+        coalesce(beneficiary_name,'^') || '|' ||
+        coalesce(beneficiary_vpa,'^') || '|' ||
+        coalesce(cast(beneficiary_created_date as varchar),'^') || '|' ||
+        coalesce(bank_name,'^') || '|' ||
+        coalesce(risk_rating,'^')
+    ) as hash_diff
+from  UPI_FRAUD_MONITORING_DB.TRANSFORM.v_beneficiary b
+left join (select beneficiary_id,sum(txn_amount) as txn_amount,count(distinct customer_id) cnt from UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_transaction where is_current='TRUE' group by beneficiary_id) t
+on b.beneficiary_id=t.beneficiary_id
+)
 
-WATCHLIST_SCORE
-+
-VOLUME_SCORE
-+
-CUSTOMER_COUNT_SCORE
-+
-FRAUD_HISTORY_SCORE
-+
-NEW_BENEFICIARY_SCORE
-=
-BENEFICIARY_RISK_SCORE
-
-Final Rating
------------------
-CASE
-    WHEN BENEFICIARY_RISK_SCORE >= 70
-         THEN 'HIGH'
-
-    WHEN BENEFICIARY_RISK_SCORE >= 40
-         THEN 'MEDIUM'
-
-    ELSE 'LOW'
-END
+select
+    beneficiary_id,
+    customer_id,
+    beneficiary_name,
+    beneficiary_vpa,
+    beneficiary_created_date,
+    bank_name,
+    risk_rating,
+    hash_diff,
+    created_load_id,
+    current_timestamp() as created_date_time,
+    null as updated_date_time,
+    true as is_current
+    from source
