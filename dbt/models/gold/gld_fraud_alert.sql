@@ -1,0 +1,41 @@
+
+Step 5: Load GLD_FRAUD_ALERT
+-----------------------------------------------
+INSERT INTO GLD_FRAUD_ALERT
+(
+    ALERT_ID,
+    RULE_ID,
+    CUSTOMER_ID,
+    TRANSACTION_ID,
+    RISK_SCORE,
+    SEVERITY,
+    ALERT_STATUS,
+    CREATED_TS
+)
+
+SELECT
+    'ALT_' || UUID_STRING(),
+    RULE_ID,
+    CUSTOMER_ID,
+    TRANSACTION_ID,
+    RISK_SCORE,
+    CASE
+        WHEN RISK_SCORE >= 95 THEN 'CRITICAL'
+        WHEN RISK_SCORE >= 85 THEN 'HIGH'
+        WHEN RISK_SCORE >= 70 THEN 'MEDIUM'
+        ELSE 'LOW'
+    END,
+    'OPEN',
+    CURRENT_TIMESTAMP()
+FROM RULE_RESULTS;
+
+
+----Recommended ----------------------
+SELECT
+    TRANSACTION_ID,
+    CUSTOMER_ID,
+    MAX(RISK_SCORE) AS FINAL_RISK_SCORE
+FROM GLD_RULE_RESULTS
+GROUP BY
+    TRANSACTION_ID,
+    CUSTOMER_ID
