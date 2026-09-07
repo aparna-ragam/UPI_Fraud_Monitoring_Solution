@@ -8,7 +8,7 @@
     trim(ENTITY_NAME) as ENTITY_NAME,
     trim(RISK_LEVEL) as RISK_LEVEL,
     trim(SOURCE_FILE_NAME) as SOURCE_FILE_NAME,
-    cast(CREATED_LOAD_ID as number(38,10)) as CREATED_LOAD_ID,
+    cast(CREATED_LOAD_ID as number(38,0)) as CREATED_LOAD_ID,
     CREATED_DATE_TIME,
                 md5(coalesce(trim(WATCHLIST_ID), '^') || '|' || coalesce(trim(ENTITY_TYPE), '^') || '|' || coalesce(trim(ENTITY_ID), '^') || '|' || coalesce(trim(ENTITY_NAME), '^') || '|' || coalesce(trim(RISK_LEVEL), '^') || '|' || coalesce(trim(SOURCE_FILE_NAME), '^') || '|' || coalesce(cast(CREATED_LOAD_ID as string), '^') || '|' || coalesce(CREATED_DATE_TIME::string, '^')) as hash_diff
             from transform.v_raw_watchlist

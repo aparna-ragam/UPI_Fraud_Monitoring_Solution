@@ -1,0 +1,28 @@
+
+  
+    
+
+create or replace transient table UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_watchlist
+    
+    
+    
+    
+    
+
+    as (Watchlist Match
+-------------------
+CASE WHEN EXISTS (SELECT 1 FROM SL_WATCHLIST W  WHERE W.ENTITY_ID IN  (T.CUSTOMER_ID,T.BENEFICIARY_ID,T.MERCHANT_ID))
+
+END
+
+High-Risk Entity
+--------------------
+CASE
+WHEN RISK_LEVEL = 'HIGH'
+THEN 'HIGH_RISK_ENTITY'
+END
+    )
+;
+
+
+  

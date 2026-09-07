@@ -16,9 +16,12 @@
         {% if 'char' in dtype or 'text' in dtype or 'string' in dtype %}
             {% do cleansed_columns.append("trim(" ~ col.name ~ ") as " ~ col.name) %}
             {% do concat_expr.append("coalesce(trim(" ~ col.name ~ "), '^')") %}
-        {% elif 'number' in dtype or 'int' in dtype or 'decimal' in dtype or 'float' in dtype %}
-            {% do cleansed_columns.append("cast(" ~ col.name ~ " as number(38,10)) as " ~ col.name) %}
+        {% elif 'number' in dtype or 'int' in dtype %}
+            {% do cleansed_columns.append("cast(" ~ col.name ~ " as number(38,0)) as " ~ col.name) %}
             {% do concat_expr.append("coalesce(cast(" ~ col.name ~ " as string), '^')") %}
+        {% elif 'decimal' in dtype or 'float' in dtype %}
+            {% do cleansed_columns.append("cast(" ~ col.name ~ " as number(38,10)) as " ~ col.name) %}
+            {% do concat_expr.append("coalesce(cast(" ~ col.name ~ " as string), '^')") %}    
         {% else %}
             {% do cleansed_columns.append(col.name) %}
             {% do concat_expr.append("coalesce(" ~ col.name ~ "::string, '^')") %}
