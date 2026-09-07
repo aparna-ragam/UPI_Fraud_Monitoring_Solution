@@ -21,6 +21,9 @@ models:
         +materialized: view
     silver:
       +materialized: table
+    gold:
+      +materialized: incremental
+      +schema: analytics      
 seeds:
   UPI_Fraud_Monitoring:   
     dim_fraud_rule:

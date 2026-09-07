@@ -15,6 +15,7 @@ select
 	 else 'LOW'
     end as request_risk_rating,
     created_load_id,
+    created_date_time,
 md5(
         coalesce(collect_request_id,'^') || '|' ||
         coalesce(customer_id,'^') || '|' ||
@@ -38,7 +39,13 @@ select
     request_risk_rating,
     hash_diff,
     created_load_id,
-    current_timestamp() as created_date_time,
+    created_date_time,
     null as updated_date_time,
     true as is_current
     from source
+
+
+    
+    where created_date_time > (select coalesce(max(created_date_time), '1900-01-01'::timestamp)
+    from UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_collect_request)
+    

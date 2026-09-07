@@ -28,7 +28,7 @@ with result_set as (SELECT
         coalesce('OPEN','^')
     ) as hash_diff,
     load_ts
-FROM UPI_FRAUD_MONITORING_DB.TRANSFORM_analytics.gld_rule_results)
+FROM UPI_FRAUD_MONITORING_DB.analytics.gld_rule_results)
 select alert_id,
        fraud_code,
        customer_id,
@@ -41,4 +41,8 @@ select alert_id,
 from result_set
 
 
- 
+
+    
+    where load_ts > (select coalesce(max(load_ts), '1900-01-01'::timestamp)
+    from UPI_FRAUD_MONITORING_DB.analytics.gld_fraud_alert)
+    

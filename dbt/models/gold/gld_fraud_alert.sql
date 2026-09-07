@@ -1,21 +1,13 @@
+{{ config(
+    materialized='incremental',
+    unique_key='hash_diff',
+    incremental_strategy='merge',
+    on_schema_change='append_new_columns'
+) }}
 
-Step 5: Load GLD_FRAUD_ALERT
------------------------------------------------
-INSERT INTO GLD_FRAUD_ALERT
-(
+with result_set as (SELECT
     ALERT_ID,
-    RULE_ID,
-    CUSTOMER_ID,
-    TRANSACTION_ID,
-    RISK_SCORE,
-    SEVERITY,
-    ALERT_STATUS,
-    CREATED_TS
-)
-
-SELECT
-    'ALT_' || UUID_STRING(),
-    RULE_ID,
+    fraud_code,
     CUSTOMER_ID,
     TRANSACTION_ID,
     RISK_SCORE,
@@ -24,18 +16,39 @@ SELECT
         WHEN RISK_SCORE >= 85 THEN 'HIGH'
         WHEN RISK_SCORE >= 70 THEN 'MEDIUM'
         ELSE 'LOW'
-    END,
-    'OPEN',
-    CURRENT_TIMESTAMP()
-FROM RULE_RESULTS;
+    END as ALERT_SEVERITY,
+    'OPEN' as ALERT_STATUS,
+    md5(
+        coalesce(ALERT_ID,'^') || '|' ||
+        coalesce(fraud_code,'^') || '|' ||
+        coalesce(CUSTOMER_ID,'^') || '|' ||
+        coalesce(TRANSACTION_ID,'^') || '|' ||
+        coalesce(RISK_SCORE,'^') || '|' ||
+        coalesce(CASE
+            WHEN RISK_SCORE >= 95 THEN 'CRITICAL'
+            WHEN RISK_SCORE >= 85 THEN 'HIGH'
+            WHEN RISK_SCORE >= 70 THEN 'MEDIUM'
+            ELSE 'LOW'
+        END,'^') || '|' ||
+        coalesce('OPEN','^')
+    ) as hash_diff,
+    load_ts
+FROM {{ref('gld_rule_results')}})
+select alert_id,
+       fraud_code,
+       customer_id,
+       transaction_id,
+       risk_score,
+       alert_severity,
+       alert_status,
+       hash_diff,
+       load_ts
+from result_set
 
 
-----Recommended ----------------------
-SELECT
-    TRANSACTION_ID,
-    CUSTOMER_ID,
-    MAX(RISK_SCORE) AS FINAL_RISK_SCORE
-FROM GLD_RULE_RESULTS
-GROUP BY
-    TRANSACTION_ID,
-    CUSTOMER_ID
+{% if is_incremental() %}
+    
+    where load_ts > (select coalesce(max(load_ts), '1900-01-01'::timestamp)
+    from {{ this }})
+    
+{% endif %} 
