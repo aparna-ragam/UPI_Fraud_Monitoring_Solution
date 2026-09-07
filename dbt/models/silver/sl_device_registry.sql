@@ -1,4 +1,23 @@
-
+{{ config(
+    materialized='incremental',
+    incremental_strategy='merge',
+    unique_key=['device_id','hash_diff'],
+    on_schema_change='append_new_columns',
+    pre_hook=[
+        "
+        update {{ this }} as tgt
+        set is_current = false,
+            updated_date_time = current_timestamp()
+        where exists (
+            select 1
+            from {{ ref('v_device_registry') }} src
+            where src.device_id = tgt.device_id
+              and src.hash_diff <> tgt.hash_diff
+              and tgt.is_current = true
+        )
+        "
+    ]
+) }}
 
 
 with source as (
@@ -23,7 +42,7 @@ md5(
         coalesce(cast(device_age_days as varchar),'^') || '|' ||
         coalesce(cast(device_risk_score as varchar),'^')
     ) as hash_diff
-from  UPI_FRAUD_MONITORING_DB.TRANSFORM.v_device_registry
+from  {{ ref('v_device_registry') }}
 )
 
 select
