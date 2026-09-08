@@ -89207,3 +89207,642 @@ Finished 'compile' with 4 warnings for target 'dev' [1.2s]
 Processed: 36 models | 1 seed
 Summary: 37 total | 37 success
 07:06:13.405013 [info ]: Cached model count updated: 36 models (accurate)
+==================== 2026-09-08T08:29:01.274391Z | 19454a13-6963-463c-96f5-293608995976 ====================
+08:29:01.274664 [info ]: Started loading project
+08:29:01.277812 [info ]: Loading profiles.yml
+==================== 2026-09-08T08:29:01.308171Z | 7dee5aff-b75e-4cda-b859-c7809a9dd82b ====================
+08:29:01.308290 [info ]: Started loading project
+08:29:01.309193 [info ]: Loading profiles.yml
+08:29:01.309499 [info ]: Finished loading project [  0.03s]
+08:29:01.318277 [info ]:    Started resolving packages from packages.yml
+08:29:01.412634 [info ]:   Finished [  0.09s] resolving packages from packages.yml (2 items)
+08:29:01.413368 [debug]:    Started loading packages
+08:29:01.467356 [debug]:     Loaded [  0.05s] packages
+08:29:01.469463 [info ]: Finished loading project [  0.16s]
+08:29:01.470760 [info ]: Started parsing
+08:29:01.589494 [debug]: Finished parsing models/sources.yml [  0.00s]
+08:29:01.594048 [debug]: Finished parsing models/bronze/raw_views/v_raw_account.sql [  0.00s]
+08:29:01.595637 [debug]: Finished parsing models/bronze/raw_views/v_raw_beneficiary.sql [  0.00s]
+08:29:01.597623 [debug]: Finished parsing models/bronze/raw_views/v_raw_collect_request.sql [  0.00s]
+08:29:01.599185 [debug]: Finished parsing models/bronze/raw_views/v_raw_customer.sql [  0.00s]
+08:29:01.600428 [debug]: Finished parsing models/bronze/raw_views/v_raw_device_registry.sql [  0.00s]
+08:29:01.601558 [debug]: Finished parsing models/bronze/raw_views/v_raw_login_activity.sql [  0.00s]
+08:29:01.602655 [debug]: Finished parsing models/bronze/raw_views/v_raw_merchant.sql [  0.00s]
+08:29:01.604524 [debug]: Finished parsing models/bronze/raw_views/v_raw_password_change.sql [  0.00s]
+08:29:01.605969 [debug]: Finished parsing models/bronze/raw_views/v_raw_transaction.sql [  0.00s]
+08:29:01.607200 [debug]: Finished parsing models/bronze/raw_views/v_raw_watchlist.sql [  0.00s]
+08:29:01.608529 [debug]: Finished parsing models/bronze/views/v_account.sql [  0.00s]
+08:29:01.610110 [debug]: Finished parsing models/bronze/views/v_beneficiary.sql [  0.00s]
+08:29:01.611921 [debug]: Finished parsing models/bronze/views/v_collect_request.sql [  0.00s]
+08:29:01.613681 [debug]: Finished parsing models/bronze/views/v_customer.sql [  0.00s]
+08:29:01.615613 [debug]: Finished parsing models/bronze/views/v_device_registry.sql [  0.00s]
+08:29:01.616976 [debug]: Finished parsing models/bronze/views/v_login_activity.sql [  0.00s]
+08:29:01.618464 [debug]: Finished parsing models/bronze/views/v_merchant.sql [  0.00s]
+08:29:01.619859 [debug]: Finished parsing models/bronze/views/v_password_change.sql [  0.00s]
+08:29:01.621105 [debug]: Finished parsing models/bronze/views/v_transaction.sql [  0.00s]
+08:29:01.622334 [debug]: Finished parsing models/bronze/views/v_watchlist.sql [  0.00s]
+08:29:01.623470 [debug]: Finished parsing models/gold/gld_customer_risk.sql [  0.00s]
+08:29:01.625054 [debug]: Finished parsing models/gold/gld_fraud_alert.sql [  0.00s]
+08:29:01.626691 [debug]: Finished parsing models/gold/gld_fraud_dashboard.sql [  0.00s]
+08:29:01.628061 [debug]: Finished parsing models/gold/gld_investigation_queue.sql [  0.00s]
+08:29:01.630030 [debug]: Finished parsing models/gold/gld_rule_results.sql [  0.00s]
+08:29:01.631403 [debug]: Finished parsing models/gold/gld_txn_summary.sql [  0.00s]
+08:29:01.633455 [debug]: Finished parsing models/silver/sl_account.sql [  0.00s]
+08:29:01.635727 [debug]: Finished parsing models/silver/sl_beneficiary.sql [  0.00s]
+08:29:01.637346 [debug]: Finished parsing models/silver/sl_collect_request.sql [  0.00s]
+08:29:01.638915 [debug]: Finished parsing models/silver/sl_customer.sql [  0.00s]
+08:29:01.641559 [debug]: Finished parsing models/silver/sl_device_registry.sql [  0.00s]
+08:29:01.643673 [debug]: Finished parsing models/silver/sl_login_activity.sql [  0.00s]
+08:29:01.646002 [debug]: Finished parsing models/silver/sl_merchant.sql [  0.00s]
+08:29:01.648225 [debug]: Finished parsing models/silver/sl_password_change.sql [  0.00s]
+08:29:01.649929 [debug]: Finished parsing models/silver/sl_transaction.sql [  0.00s]
+08:29:01.652143 [debug]: Finished parsing models/silver/sl_watchlist.sql [  0.00s]
+08:29:01.976000 [info ]: Finished parsing [  0.51s]
+08:29:01.978142 [info ]: Cached model count updated: 36 models (estimate)
+08:29:01.978182 [info ]: Cached model count updated: 36 models (accurate)
+08:29:01.978317 [info ]: Started scheduling
+08:29:01.978804 [info ]: Finished scheduling [  0.00s]
+08:29:01.978857 [debug]: Compilation - 0 nodes selected: {}
+08:29:01.978913 [warn ]: [NoNodesForSelectionCriteria (dbt1092)]: The selection criterion '' does not match any enabled nodes
+08:29:01.978941 [warn ]: [NoNodesSelected (dbt1601)]: Nothing to do. Try checking your model configs and model specification args
+08:29:01.978961 [info ]: Started scheduling
+08:29:01.979334 [info ]: Finished scheduling [  0.00s]
+08:29:01.979773 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "UPI_FRAUD_MONITORING_DB", schema: "STAGING", table: "BENEFICIARY_MASTER" }) and interval: None
+08:29:01.979807 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "UPI_FRAUD_MONITORING_DB", schema: "STAGING", table: "LOGIN_ACTIVITY" }) and interval: None
+08:29:01.979818 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "UPI_FRAUD_MONITORING_DB", schema: "STAGING", table: "DEVICE_REGISTRY" }) and interval: None
+08:29:01.979823 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "UPI_FRAUD_MONITORING_DB", schema: "STAGING", table: "MERCHANT_MASTER" }) and interval: None
+08:29:01.979830 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "UPI_FRAUD_MONITORING_DB", schema: "STAGING", table: "ACCOUNT_MASTER" }) and interval: None
+08:29:01.979837 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "UPI_FRAUD_MONITORING_DB", schema: "STAGING", table: "CUSTOMER_MASTER" }) and interval: None
+08:29:01.979843 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "UPI_FRAUD_MONITORING_DB", schema: "STAGING", table: "WATCHLIST" }) and interval: None
+08:29:01.979849 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "UPI_FRAUD_MONITORING_DB", schema: "STAGING", table: "UPI_TRANSACTION_FACT" }) and interval: None
+08:29:01.979854 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "UPI_FRAUD_MONITORING_DB", schema: "STAGING", table: "PASSWORD_CHANGE" }) and interval: None
+08:29:01.979860 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "UPI_FRAUD_MONITORING_DB", schema: "STAGING", table: "COLLECT_REQUEST" }) and interval: None
+08:29:02.044936 [info ]: Started building task graph
+08:29:02.044986 [info ]: Finished building task graph [  0.00s]
+08:29:02.055131 [info ]: Started scheduling
+08:29:02.055258 [info ]: Finished scheduling [  0.00s]
+08:29:02.055439 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 2 warnings for target 'dev' [747ms]
+08:29:02.055505 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' successfully for target 'dev' [781ms]
+08:29:02.059167 [info ]: Cached model count updated: 36 models (accurate)
+==================== 2026-09-08T08:29:03.616904Z | c249e9e0-c3b6-4f19-81d0-e451964b2740 ====================
+08:29:03.617138 [info ]: Started loading project
+08:29:03.618327 [info ]: Loading profiles.yml
+08:29:03.665113 [info ]: Cached model count updated: 36 models (estimate)
+08:29:03.665162 [info ]: Cached model count updated: 36 models (accurate)
+08:29:03.665280 [info ]: Started scheduling
+08:29:03.665722 [info ]: Finished scheduling [  0.00s]
+08:29:03.665756 [debug]: Compilation - 37 nodes selected: {"model.UPI_Fraud_Monitoring.gld_customer_risk", "model.UPI_Fraud_Monitoring.gld_fraud_alert", "model.UPI_Fraud_Monitoring.gld_fraud_dashboard", "model.UPI_Fraud_Monitoring.gld_investigation_queue", "model.UPI_Fraud_Monitoring.gld_rule_results", "model.UPI_Fraud_Monitoring.gld_txn_summary", "model.UPI_Fraud_Monitoring.sl_account", "model.UPI_Fraud_Monitoring.sl_beneficiary", "model.UPI_Fraud_Monitoring.sl_collect_request", "model.UPI_Fraud_Monitoring.sl_customer", "model.UPI_Fraud_Monitoring.sl_device_registry", "model.UPI_Fraud_Monitoring.sl_login_activity", "model.UPI_Fraud_Monitoring.sl_merchant", "model.UPI_Fraud_Monitoring.sl_password_change", "model.UPI_Fraud_Monitoring.sl_transaction", "model.UPI_Fraud_Monitoring.sl_watchlist", "model.UPI_Fraud_Monitoring.v_account", "model.UPI_Fraud_Monitoring.v_beneficiary", "model.UPI_Fraud_Monitoring.v_collect_request", "model.UPI_Fraud_Monitoring.v_customer", "model.UPI_Fraud_Monitoring.v_device_registry", "model.UPI_Fraud_Monitoring.v_login_activity", "model.UPI_Fraud_Monitoring.v_merchant", "model.UPI_Fraud_Monitoring.v_password_change", "model.UPI_Fraud_Monitoring.v_raw_account", "model.UPI_Fraud_Monitoring.v_raw_beneficiary", "model.UPI_Fraud_Monitoring.v_raw_collect_request", "model.UPI_Fraud_Monitoring.v_raw_customer", "model.UPI_Fraud_Monitoring.v_raw_device_registry", "model.UPI_Fraud_Monitoring.v_raw_login_activity", "model.UPI_Fraud_Monitoring.v_raw_merchant", "model.UPI_Fraud_Monitoring.v_raw_password_change", "model.UPI_Fraud_Monitoring.v_raw_transaction", "model.UPI_Fraud_Monitoring.v_raw_watchlist", "model.UPI_Fraud_Monitoring.v_transaction", "model.UPI_Fraud_Monitoring.v_watchlist", "seed.UPI_Fraud_Monitoring.dim_fraud_rule"}
+08:29:03.668636 [debug]:    Started downloading relations (1 items)
+08:29:03.668813 [info ]: Finished loading project [  0.05s]
+08:29:04.201464 [debug]: create_debug_span(...).entered() took 46.3µs
+08:29:04.585627 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 384.0432ms
+08:29:04.585679 [debug]: reader.schema() took 1.3µs
+08:29:04.588051 [debug]: batch-consume loop (for res in reader) took 2.337ms
+08:29:04.589424 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 387.8989ms
+08:29:04.589560 [debug]: concat_batches + normalize_result_column_names took 88.3µs
+08:29:04.589576 [debug]: record_current_span_status_from_attrs took 8.4µs
+08:29:04.589589 [debug]: Query executed on node unknown:
+SHOW OBJECTS IN SCHEMA "UPI_FRAUD_MONITORING_DB"."TRANSFORM" LIMIT 10000
+08:29:04.589600 [debug]: drop(query_span_guard) (span exit/export) took 18.6µs
+08:29:04.738977 [debug]:   Finished [  1.07s] downloading relations (1 items)
+08:29:04.739187 [info ]: Started downloading schemas
+08:29:04.739468 [debug]: create_debug_span(...).entered() took 18.7µs
+08:29:04.739985 [debug]: create_debug_span(...).entered() took 19.8µs
+08:29:05.052947 [debug]: Query executed on node unknown:
+describe table 
+08:29:05.445310 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 705.1722ms
+08:29:05.445400 [debug]: reader.schema() took 2.6µs
+08:29:05.448538 [debug]: batch-consume loop (for res in reader) took 3.09ms
+08:29:05.450683 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 710.6381ms
+08:29:05.450907 [debug]: concat_batches + normalize_result_column_names took 148.2µs
+08:29:05.450939 [debug]: record_current_span_status_from_attrs took 8.7µs
+08:29:05.450963 [debug]: Query executed on node unknown:
+describe table UPI_FRAUD_MONITORING_DB.STAGING.account_master
+08:29:05.450980 [debug]: drop(query_span_guard) (span exit/export) took 24.2µs
+08:29:05.464795 [debug]: create_debug_span(...).entered() took 54.6µs
+08:29:05.474414 [debug]: create_debug_span(...).entered() took 17.8µs
+08:29:05.474394 [debug]: create_debug_span(...).entered() took 38.8µs
+08:29:05.474435 [debug]: create_debug_span(...).entered() took 27.3µs
+08:29:05.474588 [debug]: create_debug_span(...).entered() took 16.6µs
+08:29:05.475005 [debug]: create_debug_span(...).entered() took 35.6µs
+08:29:05.475745 [debug]: create_debug_span(...).entered() took 58.8µs
+08:29:05.626437 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 161.3868ms
+08:29:05.626509 [debug]: reader.schema() took 2.2µs
+08:29:05.629609 [debug]: batch-consume loop (for res in reader) took 3.0502ms
+08:29:05.632485 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 167.5869ms
+08:29:05.632638 [debug]: concat_batches + normalize_result_column_names took 95.3µs
+08:29:05.632654 [debug]: record_current_span_status_from_attrs took 8.1µs
+08:29:05.632669 [debug]: Query executed on node unknown:
+describe table UPI_FRAUD_MONITORING_DB.STAGING.beneficiary_master
+08:29:05.632686 [debug]: drop(query_span_guard) (span exit/export) took 23.2µs
+08:29:05.633285 [debug]: create_debug_span(...).entered() took 23.2µs
+08:29:05.802764 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 327.8856ms
+08:29:05.802764 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 328.1559ms
+08:29:05.802818 [debug]: reader.schema() took 1.3µs
+08:29:05.802840 [debug]: reader.schema() took 300ns
+08:29:05.804979 [debug]: batch-consume loop (for res in reader) took 2.1132ms
+08:29:05.806537 [debug]: batch-consume loop (for res in reader) took 3.6497ms
+08:29:05.808466 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 333.9809ms
+08:29:05.808628 [debug]: concat_batches + normalize_result_column_names took 102.1µs
+08:29:05.808647 [debug]: record_current_span_status_from_attrs took 11.2µs
+08:29:05.808664 [debug]: Query executed on node unknown:
+describe table UPI_FRAUD_MONITORING_DB.STAGING.collect_request
+08:29:05.808680 [debug]: drop(query_span_guard) (span exit/export) took 25µs
+08:29:05.809865 [debug]: create_debug_span(...).entered() took 62µs
+08:29:05.810465 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 335.993ms
+08:29:05.810615 [debug]: concat_batches + normalize_result_column_names took 110.3µs
+08:29:05.810633 [debug]: record_current_span_status_from_attrs took 9.7µs
+08:29:05.810648 [debug]: Query executed on node unknown:
+describe table UPI_FRAUD_MONITORING_DB.STAGING.device_registry
+08:29:05.810668 [debug]: drop(query_span_guard) (span exit/export) took 27.2µs
+08:29:05.812469 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 336.4895ms
+08:29:05.812531 [debug]: reader.schema() took 1µs
+08:29:05.814958 [debug]: batch-consume loop (for res in reader) took 2.3839ms
+08:29:05.817379 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 341.5452ms
+08:29:05.817521 [debug]: concat_batches + normalize_result_column_names took 93.5µs
+08:29:05.817541 [debug]: record_current_span_status_from_attrs took 7.5µs
+08:29:05.817556 [debug]: Query executed on node unknown:
+describe table UPI_FRAUD_MONITORING_DB.STAGING.password_change
+08:29:05.817572 [debug]: drop(query_span_guard) (span exit/export) took 22.5µs
+08:29:05.829654 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 354.9719ms
+08:29:05.829718 [debug]: reader.schema() took 1.4µs
+08:29:05.832144 [debug]: batch-consume loop (for res in reader) took 2.3808ms
+08:29:05.833821 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 359.1801ms
+08:29:05.833983 [debug]: concat_batches + normalize_result_column_names took 109.1µs
+08:29:05.834006 [debug]: record_current_span_status_from_attrs took 10.2µs
+08:29:05.834022 [debug]: Query executed on node unknown:
+describe table UPI_FRAUD_MONITORING_DB.STAGING.login_activity
+08:29:05.834045 [debug]: drop(query_span_guard) (span exit/export) took 31.1µs
+08:29:05.861723 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 387.1146ms
+08:29:05.861787 [debug]: reader.schema() took 1.7µs
+08:29:05.864237 [debug]: batch-consume loop (for res in reader) took 2.4043ms
+08:29:05.866255 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 391.7731ms
+08:29:05.866443 [debug]: concat_batches + normalize_result_column_names took 133.7µs
+08:29:05.866463 [debug]: record_current_span_status_from_attrs took 11.9µs
+08:29:05.866475 [debug]: Query executed on node unknown:
+describe table UPI_FRAUD_MONITORING_DB.STAGING.customer_master
+08:29:05.866486 [debug]: drop(query_span_guard) (span exit/export) took 17.1µs
+08:29:05.941927 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 131.7249ms
+08:29:05.941974 [debug]: reader.schema() took 1µs
+08:29:05.944396 [debug]: batch-consume loop (for res in reader) took 2.3569ms
+08:29:05.946992 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 137.0372ms
+08:29:05.947173 [debug]: concat_batches + normalize_result_column_names took 130.4µs
+08:29:05.947195 [debug]: record_current_span_status_from_attrs took 9µs
+08:29:05.947211 [debug]: Query executed on node unknown:
+describe table UPI_FRAUD_MONITORING_DB.STAGING.watchlist
+08:29:05.947243 [debug]: drop(query_span_guard) (span exit/export) took 38.9µs
+08:29:06.223708 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 748.5865ms
+08:29:06.223759 [debug]: reader.schema() took 1.2µs
+08:29:06.223770 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 590.4106ms
+08:29:06.223781 [debug]: reader.schema() took 200ns
+08:29:06.226771 [debug]: batch-consume loop (for res in reader) took 2.9464ms
+08:29:06.226771 [debug]: batch-consume loop (for res in reader) took 2.9681ms
+08:29:06.231305 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 597.9274ms
+08:29:06.231478 [debug]: concat_batches + normalize_result_column_names took 117.9µs
+08:29:06.231496 [debug]: record_current_span_status_from_attrs took 8.1µs
+08:29:06.231510 [debug]: Query executed on node unknown:
+describe table UPI_FRAUD_MONITORING_DB.STAGING.UPI_TRANSACTION_FACT
+08:29:06.231526 [debug]: drop(query_span_guard) (span exit/export) took 22.5µs
+08:29:06.235209 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 760.1409ms
+08:29:06.235374 [debug]: concat_batches + normalize_result_column_names took 111.3µs
+08:29:06.235391 [debug]: record_current_span_status_from_attrs took 9.4µs
+08:29:06.235406 [debug]: Query executed on node unknown:
+describe table UPI_FRAUD_MONITORING_DB.STAGING.merchant_master
+08:29:06.235426 [debug]: drop(query_span_guard) (span exit/export) took 27.6µs
+08:29:06.239271 [info ]: Finished downloading schemas [  1.50s]
+08:29:06.316837 [info ]: Started building task graph
+08:29:06.317209 [info ]: Finished building task graph [  0.00s]
+08:29:06.330196 [info ]: Started rendering (37 nodes)
+08:29:06.330285 [info ]: Started model TRANSFORM.v_raw_watchlist
+08:29:06.330308 [debug]: Started rendering model TRANSFORM.v_raw_watchlist
+08:29:06.330385 [info ]: Started model TRANSFORM.v_raw_transaction
+08:29:06.330409 [debug]: Started rendering model TRANSFORM.v_raw_transaction
+08:29:06.330436 [info ]: Started model TRANSFORM.v_raw_password_change
+08:29:06.330451 [debug]: Started rendering model TRANSFORM.v_raw_password_change
+08:29:06.330480 [info ]: Started model TRANSFORM.v_raw_merchant
+08:29:06.330498 [debug]: Started rendering model TRANSFORM.v_raw_merchant
+08:29:06.330530 [info ]: Started model TRANSFORM.v_raw_login_activity
+08:29:06.330541 [debug]: Started rendering model TRANSFORM.v_raw_login_activity
+08:29:06.330572 [info ]: Started model TRANSFORM.v_raw_device_registry
+08:29:06.330586 [debug]: Started rendering model TRANSFORM.v_raw_device_registry
+08:29:06.330613 [info ]: Started model TRANSFORM.v_raw_customer
+08:29:06.330624 [debug]: Started rendering model TRANSFORM.v_raw_customer
+08:29:06.330652 [info ]: Started model TRANSFORM.v_raw_collect_request
+08:29:06.330666 [debug]: Started rendering model TRANSFORM.v_raw_collect_request
+08:29:06.330718 [info ]: Started model TRANSFORM.v_raw_beneficiary
+08:29:06.330738 [debug]: Started rendering model TRANSFORM.v_raw_beneficiary
+08:29:06.330759 [info ]: Started model TRANSFORM.v_raw_account
+08:29:06.330772 [debug]: Started rendering model TRANSFORM.v_raw_account
+08:29:06.330796 [info ]: Started model TRANSFORM.sl_password_change
+08:29:06.330810 [debug]: Started rendering model TRANSFORM.sl_password_change
+08:29:06.330829 [info ]: Started model TRANSFORM.v_password_change
+08:29:06.331113 [debug]: Started rendering model TRANSFORM.v_password_change
+08:29:06.331156 [info ]: Started model TRANSFORM.sl_login_activity
+08:29:06.331172 [debug]: Started rendering model TRANSFORM.sl_login_activity
+08:29:06.331195 [info ]: Started model TRANSFORM.v_login_activity
+08:29:06.331207 [debug]: Started rendering model TRANSFORM.v_login_activity
+08:29:06.331234 [info ]: Started model TRANSFORM.sl_collect_request
+08:29:06.331253 [debug]: Started rendering model TRANSFORM.sl_collect_request
+08:29:06.331295 [info ]: Started model TRANSFORM.v_collect_request
+08:29:06.331308 [debug]: Started rendering model TRANSFORM.v_collect_request
+08:29:06.331328 [info ]: Started model TRANSFORM.sl_account
+08:29:06.331339 [debug]: Started rendering model TRANSFORM.sl_account
+08:29:06.331357 [info ]: Started model TRANSFORM.v_account
+08:29:06.331360 [debug]: Started connection limit wait
+08:29:06.331370 [debug]: Started rendering model TRANSFORM.v_account
+08:29:06.331390 [debug]: Started connection limit wait
+08:29:06.331391 [info ]: Started model analytics.gld_txn_summary
+08:29:06.331401 [debug]: Started connection limit wait
+08:29:06.331406 [debug]: Started rendering model analytics.gld_txn_summary
+08:29:06.331411 [debug]: Started connection limit wait
+08:29:06.331423 [debug]: Started connection limit wait
+08:29:06.331428 [info ]: Started model analytics.gld_investigation_queue
+08:29:06.331435 [debug]: Started connection limit wait
+08:29:06.331442 [debug]: Started connection limit wait
+08:29:06.331440 [debug]: Started rendering model analytics.gld_investigation_queue
+08:29:06.331450 [debug]: Started connection limit wait
+08:29:06.331458 [debug]: Started connection limit wait
+08:29:06.331468 [debug]: Started connection limit wait
+08:29:06.331463 [info ]: Started model analytics.gld_fraud_dashboard
+08:29:06.331479 [debug]: Started rendering model analytics.gld_fraud_dashboard
+08:29:06.331501 [info ]: Started model analytics.gld_fraud_alert
+08:29:06.331514 [debug]: Started rendering model analytics.gld_fraud_alert
+08:29:06.331599 [info ]: Started model analytics.gld_rule_results
+08:29:06.331612 [debug]: Started rendering model analytics.gld_rule_results
+08:29:06.331633 [info ]: Started seed TRANSFORM.dim_fraud_rule
+08:29:06.331645 [debug]: Started rendering seed TRANSFORM.dim_fraud_rule
+08:29:06.331670 [info ]: Started model TRANSFORM.sl_beneficiary
+08:29:06.331684 [debug]: Started rendering model TRANSFORM.sl_beneficiary
+08:29:06.331724 [info ]: Started model TRANSFORM.v_beneficiary
+08:29:06.331736 [debug]: Started rendering model TRANSFORM.v_beneficiary
+08:29:06.331757 [info ]: Started model TRANSFORM.sl_watchlist
+08:29:06.331772 [debug]: Started rendering model TRANSFORM.sl_watchlist
+08:29:06.331793 [info ]: Started model TRANSFORM.v_watchlist
+08:29:06.331806 [debug]: Started rendering model TRANSFORM.v_watchlist
+08:29:06.331831 [info ]: Started model TRANSFORM.sl_transaction
+08:29:06.331846 [debug]: Started rendering model TRANSFORM.sl_transaction
+08:29:06.331876 [info ]: Started model TRANSFORM.v_transaction
+08:29:06.331888 [debug]: Started rendering model TRANSFORM.v_transaction
+08:29:06.331908 [info ]: Started model TRANSFORM.sl_merchant
+08:29:06.331921 [debug]: Started rendering model TRANSFORM.sl_merchant
+08:29:06.331940 [info ]: Started model TRANSFORM.v_merchant
+08:29:06.331951 [debug]: Started rendering model TRANSFORM.v_merchant
+08:29:06.331972 [info ]: Started model TRANSFORM.sl_device_registry
+08:29:06.331984 [debug]: Started rendering model TRANSFORM.sl_device_registry
+08:29:06.332004 [info ]: Started model TRANSFORM.v_device_registry
+08:29:06.332019 [debug]: Started rendering model TRANSFORM.v_device_registry
+08:29:06.332040 [info ]: Started model TRANSFORM.sl_customer
+08:29:06.332050 [debug]: Started rendering model TRANSFORM.sl_customer
+08:29:06.332074 [info ]: Started model TRANSFORM.v_customer
+08:29:06.332087 [debug]: Started rendering model TRANSFORM.v_customer
+08:29:06.332107 [info ]: Started model analytics.gld_customer_risk
+08:29:06.332118 [debug]: Started rendering model analytics.gld_customer_risk
+08:29:06.334829 [debug]: Finished rendering [  0.00s] seed TRANSFORM.dim_fraud_rule [success]
+08:29:06.334895 [info ]:  Succeeded [  0.00s] seed  TRANSFORM.dim_fraud_rule (table)
+08:29:06.334957 [debug]: Started connection limit wait
+08:29:06.334992 [debug]: Started connection limit wait
+08:29:06.335008 [debug]: Started connection limit wait
+08:29:06.335022 [debug]: Started connection limit wait
+08:29:06.335035 [debug]: Started connection limit wait
+08:29:06.335049 [debug]: Started connection limit wait
+08:29:06.335063 [debug]: Started connection limit wait
+08:29:06.335073 [debug]: Started connection limit wait
+08:29:06.335084 [debug]: Started connection limit wait
+08:29:06.335096 [debug]: Started connection limit wait
+08:29:06.335106 [debug]: Started connection limit wait
+08:29:06.335117 [debug]: Started connection limit wait
+08:29:06.362899 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.gld_txn_summary at target\.lsp\compiled\UPI_Fraud_Monitoring\models\gold\gld_txn_summary.sql
+08:29:06.363511 [debug]: Finished rendering [  0.03s] model analytics.gld_txn_summary [success]
+08:29:06.363645 [info ]: Started analyzing (36 nodes)
+08:29:06.363671 [debug]: Started analyzing model analytics.gld_txn_summary
+08:29:06.364907 [warn ]: [SyntaxInvalid (dbt0101)]: mismatched input 'Step' expecting one of <EOF>, 'ALTER', 'ANALYZE', 'BEGIN', 'CALL', 'COMMENT', 'COMMIT' ...
+  --> models/gold/gld_txn_summary.sql:1:1 (target\.lsp\compiled\UPI_Fraud_Monitoring\models\gold\gld_txn_summary.sql:1:1)
+08:29:06.365564 [debug]: Finished analyzing [  0.00s] model analytics.gld_txn_summary [success]
+08:29:06.365654 [info ]:  Succeeded [  0.03s] model analytics.gld_txn_summary (incremental)
+08:29:06.401521 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.gld_rule_results at target\.lsp\compiled\UPI_Fraud_Monitoring\models\gold\gld_rule_results.sql
+08:29:06.402750 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.gld_customer_risk at target\.lsp\compiled\UPI_Fraud_Monitoring\models\gold\gld_customer_risk.sql
+08:29:06.403346 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.gld_investigation_queue at target\.lsp\compiled\UPI_Fraud_Monitoring\models\gold\gld_investigation_queue.sql
+08:29:06.404104 [debug]: Finished rendering [  0.07s] model analytics.gld_rule_results [success]
+08:29:06.404140 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.gld_fraud_dashboard at target\.lsp\compiled\UPI_Fraud_Monitoring\models\gold\gld_fraud_dashboard.sql
+08:29:06.404216 [debug]: Started analyzing model analytics.gld_rule_results
+08:29:06.404558 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.gld_fraud_alert at target\.lsp\compiled\UPI_Fraud_Monitoring\models\gold\gld_fraud_alert.sql
+08:29:06.404743 [debug]: Finished rendering [  0.07s] model analytics.gld_investigation_queue [success]
+08:29:06.404814 [debug]: Started analyzing model analytics.gld_investigation_queue
+08:29:06.404979 [debug]: Finished rendering [  0.07s] model analytics.gld_fraud_dashboard [success]
+08:29:06.405034 [debug]: Started analyzing model analytics.gld_fraud_dashboard
+08:29:06.405121 [debug]: Finished rendering [  0.07s] model analytics.gld_customer_risk [success]
+08:29:06.405147 [debug]: Started analyzing model analytics.gld_customer_risk
+08:29:06.405181 [debug]: Finished rendering [  0.07s] model analytics.gld_fraud_alert [success]
+08:29:06.405200 [debug]: Started analyzing model analytics.gld_fraud_alert
+08:29:06.406432 [warn ]: [SyntaxInvalid (dbt0101)]: mismatched input 'Step' expecting one of <EOF>, 'ALTER', 'ANALYZE', 'BEGIN', 'CALL', 'COMMENT', 'COMMIT' ...
+  --> models/gold/gld_customer_risk.sql:1:1 (target\.lsp\compiled\UPI_Fraud_Monitoring\models\gold\gld_customer_risk.sql:1:1)
+08:29:06.406436 [warn ]: [SyntaxInvalid (dbt0101)]: mismatched input 'Step' expecting <EOF>
+  --> models/gold/gld_investigation_queue.sql:18:1 (target\.lsp\compiled\UPI_Fraud_Monitoring\models\gold\gld_investigation_queue.sql:18:1)
+08:29:06.406629 [warn ]: [SyntaxInvalid (dbt0101)]: mismatched input 'Step' expecting one of <EOF>, 'ALTER', 'ANALYZE', 'BEGIN', 'CALL', 'COMMENT', 'COMMIT' ...
+  --> models/gold/gld_fraud_dashboard.sql:1:1 (target\.lsp\compiled\UPI_Fraud_Monitoring\models\gold\gld_fraud_dashboard.sql:1:1)
+08:29:06.407315 [debug]: Finished analyzing [  0.00s] model analytics.gld_investigation_queue [success]
+08:29:06.407398 [info ]:  Succeeded [  0.07s] model analytics.gld_investigation_queue (incremental)
+08:29:06.407633 [debug]: Finished analyzing [  0.00s] model analytics.gld_customer_risk [success]
+08:29:06.407663 [info ]:  Succeeded [  0.07s] model analytics.gld_customer_risk (incremental)
+08:29:06.408464 [debug]: Finished analyzing [  0.00s] model analytics.gld_fraud_dashboard [success]
+08:29:06.408529 [info ]:  Succeeded [  0.08s] model analytics.gld_fraud_dashboard (incremental)
+08:29:06.411219 [debug]: Finished analyzing [  0.01s] model analytics.gld_fraud_alert [success]
+08:29:06.411332 [info ]:  Succeeded [  0.08s] model analytics.gld_fraud_alert (incremental)
+08:29:06.426713 [debug]: Finished analyzing [  0.02s] model analytics.gld_rule_results [success]
+08:29:06.426805 [info ]:  Succeeded [  0.09s] model analytics.gld_rule_results (incremental)
+08:29:06.453415 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_raw_merchant at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\raw_views\v_raw_merchant.sql
+08:29:06.454003 [debug]: Finished rendering [  0.12s] model TRANSFORM.v_raw_merchant [success]
+08:29:06.454113 [debug]: Started analyzing model TRANSFORM.v_raw_merchant
+08:29:06.454164 [debug]: Finished connection limit wait [  0.12s]
+08:29:06.454724 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_raw_watchlist at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\raw_views\v_raw_watchlist.sql
+08:29:06.455763 [debug]: Finished rendering [  0.13s] model TRANSFORM.v_raw_watchlist [success]
+08:29:06.455880 [debug]: Started analyzing model TRANSFORM.v_raw_watchlist
+08:29:06.455942 [debug]: Finished connection limit wait [  0.12s]
+08:29:06.457181 [debug]: Finished analyzing [  0.00s] model TRANSFORM.v_raw_merchant [success]
+08:29:06.457281 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_raw_beneficiary at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\raw_views\v_raw_beneficiary.sql
+08:29:06.457274 [info ]:  Succeeded [  0.13s] model TRANSFORM.v_raw_merchant (view)
+08:29:06.457833 [debug]: Finished rendering [  0.13s] model TRANSFORM.v_raw_beneficiary [success]
+08:29:06.457929 [debug]: Started analyzing model TRANSFORM.v_raw_beneficiary
+08:29:06.457982 [debug]: Finished connection limit wait [  0.13s]
+08:29:06.459692 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_raw_customer at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\raw_views\v_raw_customer.sql
+08:29:06.459831 [debug]: Finished analyzing [  0.00s] model TRANSFORM.v_raw_beneficiary [success]
+08:29:06.459881 [info ]:  Succeeded [  0.13s] model TRANSFORM.v_raw_beneficiary (view)
+08:29:06.460186 [debug]: Finished analyzing [  0.00s] model TRANSFORM.v_raw_watchlist [success]
+08:29:06.460232 [info ]:  Succeeded [  0.13s] model TRANSFORM.v_raw_watchlist (view)
+08:29:06.460347 [debug]: Finished rendering [  0.13s] model TRANSFORM.v_raw_customer [success]
+08:29:06.460387 [debug]: Started analyzing model TRANSFORM.v_raw_customer
+08:29:06.460438 [debug]: Finished connection limit wait [  0.13s]
+08:29:06.461311 [debug]: Finished analyzing [  0.00s] model TRANSFORM.v_raw_customer [success]
+08:29:06.461379 [info ]:  Succeeded [  0.13s] model TRANSFORM.v_raw_customer (view)
+08:29:06.462490 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_raw_device_registry at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\raw_views\v_raw_device_registry.sql
+08:29:06.464343 [debug]: Finished rendering [  0.13s] model TRANSFORM.v_raw_device_registry [success]
+08:29:06.464708 [debug]: Started analyzing model TRANSFORM.v_raw_device_registry
+08:29:06.464824 [debug]: Finished connection limit wait [  0.13s]
+08:29:06.466179 [debug]: Finished analyzing [  0.00s] model TRANSFORM.v_raw_device_registry [success]
+08:29:06.466258 [info ]:  Succeeded [  0.13s] model TRANSFORM.v_raw_device_registry (view)
+08:29:06.473928 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_raw_login_activity at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\raw_views\v_raw_login_activity.sql
+08:29:06.479756 [debug]: create_debug_span(...).entered() took 111µs
+08:29:06.482740 [debug]: Finished rendering [  0.15s] model TRANSFORM.v_raw_login_activity [success]
+08:29:06.483013 [debug]: Started analyzing model TRANSFORM.v_raw_login_activity
+08:29:06.483075 [debug]: Finished connection limit wait [  0.15s]
+08:29:06.484651 [debug]: Finished analyzing [  0.00s] model TRANSFORM.v_raw_login_activity [success]
+08:29:06.484769 [info ]:  Succeeded [  0.15s] model TRANSFORM.v_raw_login_activity (view)
+08:29:06.489527 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.sl_password_change at target\.lsp\compiled\UPI_Fraud_Monitoring\models\silver\sl_password_change.sql
+08:29:06.489574 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_raw_password_change at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\raw_views\v_raw_password_change.sql
+08:29:06.492145 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_raw_transaction at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\raw_views\v_raw_transaction.sql
+08:29:06.492553 [debug]: Finished rendering [  0.16s] model TRANSFORM.v_raw_password_change [success]
+08:29:06.493402 [debug]: Started analyzing model TRANSFORM.v_raw_password_change
+08:29:06.494368 [debug]: create_debug_span(...).entered() took 42.4µs
+08:29:06.494092 [debug]: Finished rendering [  0.04s] model TRANSFORM.sl_password_change [success]
+08:29:06.496138 [debug]: Started analyzing model TRANSFORM.sl_password_change
+08:29:06.496248 [debug]: Finished connection limit wait [  0.16s]
+08:29:06.496330 [debug]: Finished connection limit wait [  0.16s]
+08:29:06.501655 [debug]: Finished rendering [  0.17s] model TRANSFORM.v_raw_transaction [success]
+08:29:06.501749 [debug]: Finished connection limit wait [  0.17s]
+08:29:06.501772 [debug]: Started analyzing model TRANSFORM.v_raw_transaction
+08:29:06.501838 [debug]: Finished analyzing [  0.01s] model TRANSFORM.v_raw_password_change [success]
+08:29:06.501864 [info ]:  Succeeded [  0.17s] model TRANSFORM.v_raw_password_change (view)
+08:29:06.502633 [debug]: Finished analyzing [  0.00s] model TRANSFORM.v_raw_transaction [success]
+08:29:06.502690 [info ]:  Succeeded [  0.17s] model TRANSFORM.v_raw_transaction (view)
+08:29:06.504155 [debug]: Finished analyzing [  0.01s] model TRANSFORM.sl_password_change [success]
+08:29:06.504257 [info ]:  Succeeded [  0.04s] model TRANSFORM.sl_password_change (incremental)
+08:29:06.511653 [debug]: create_debug_span(...).entered() took 47.5µs
+08:29:06.517838 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.sl_collect_request at target\.lsp\compiled\UPI_Fraud_Monitoring\models\silver\sl_collect_request.sql
+08:29:06.519391 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_raw_account at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\raw_views\v_raw_account.sql
+08:29:06.523487 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.sl_account at target\.lsp\compiled\UPI_Fraud_Monitoring\models\silver\sl_account.sql
+08:29:06.531276 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.sl_login_activity at target\.lsp\compiled\UPI_Fraud_Monitoring\models\silver\sl_login_activity.sql
+08:29:06.532018 [debug]: Finished rendering [  0.04s] model TRANSFORM.sl_collect_request [success]
+08:29:06.532120 [debug]: Started analyzing model TRANSFORM.sl_collect_request
+08:29:06.532300 [debug]: Finished connection limit wait [  0.20s]
+08:29:06.532387 [debug]: Finished rendering [  0.08s] model TRANSFORM.v_raw_account [success]
+08:29:06.532421 [debug]: Started analyzing model TRANSFORM.v_raw_account
+08:29:06.533048 [debug]: Finished rendering [  0.03s] model TRANSFORM.sl_account [success]
+08:29:06.533145 [debug]: Started analyzing model TRANSFORM.sl_account
+08:29:06.533273 [debug]: Finished connection limit wait [  0.20s]
+08:29:06.533342 [debug]: Finished rendering [  0.07s] model TRANSFORM.sl_login_activity [success]
+08:29:06.533368 [debug]: Started analyzing model TRANSFORM.sl_login_activity
+08:29:06.535755 [debug]: Finished analyzing [  0.00s] model TRANSFORM.sl_collect_request [success]
+08:29:06.535828 [info ]:  Succeeded [  0.04s] model TRANSFORM.sl_collect_request (incremental)
+08:29:06.536135 [debug]: Finished connection limit wait [  0.20s]
+08:29:06.537086 [debug]: Finished analyzing [  0.00s] model TRANSFORM.v_raw_account [success]
+08:29:06.537086 [debug]: Finished connection limit wait [  0.20s]
+08:29:06.537157 [info ]:  Succeeded [  0.08s] model TRANSFORM.v_raw_account (view)
+08:29:06.537214 [debug]: Finished analyzing [  0.00s] model TRANSFORM.sl_account [success]
+08:29:06.537236 [info ]:  Succeeded [  0.04s] model TRANSFORM.sl_account (incremental)
+08:29:06.538781 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_raw_collect_request at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\raw_views\v_raw_collect_request.sql
+08:29:06.539394 [debug]: Finished analyzing [  0.01s] model TRANSFORM.sl_login_activity [success]
+08:29:06.539461 [info ]:  Succeeded [  0.07s] model TRANSFORM.sl_login_activity (incremental)
+08:29:06.539555 [debug]: Finished rendering [  0.09s] model TRANSFORM.v_raw_collect_request [success]
+08:29:06.539565 [debug]: Finished connection limit wait [  0.20s]
+08:29:06.539593 [debug]: Started analyzing model TRANSFORM.v_raw_collect_request
+08:29:06.540226 [debug]: Finished analyzing [  0.00s] model TRANSFORM.v_raw_collect_request [success]
+08:29:06.540272 [info ]:  Succeeded [  0.09s] model TRANSFORM.v_raw_collect_request (view)
+08:29:06.543557 [debug]: create_debug_span(...).entered() took 45.9µs
+08:29:06.546493 [debug]: create_debug_span(...).entered() took 47.7µs
+08:29:06.552754 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.sl_beneficiary at target\.lsp\compiled\UPI_Fraud_Monitoring\models\silver\sl_beneficiary.sql
+08:29:06.554100 [debug]: create_debug_span(...).entered() took 49µs
+08:29:06.554732 [debug]: Finished rendering [  0.02s] model TRANSFORM.sl_beneficiary [success]
+08:29:06.554851 [debug]: Started analyzing model TRANSFORM.sl_beneficiary
+08:29:06.554921 [debug]: Finished connection limit wait [  0.22s]
+08:29:06.557008 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.sl_watchlist at target\.lsp\compiled\UPI_Fraud_Monitoring\models\silver\sl_watchlist.sql
+08:29:06.559079 [debug]: Finished rendering [  0.03s] model TRANSFORM.sl_watchlist [success]
+08:29:06.559435 [debug]: Started analyzing model TRANSFORM.sl_watchlist
+08:29:06.559533 [debug]: Finished connection limit wait [  0.22s]
+08:29:06.562173 [debug]: Finished analyzing [  0.00s] model TRANSFORM.sl_watchlist [success]
+08:29:06.562258 [info ]:  Succeeded [  0.03s] model TRANSFORM.sl_watchlist (incremental)
+08:29:06.564346 [debug]: Finished analyzing [  0.01s] model TRANSFORM.sl_beneficiary [success]
+08:29:06.564451 [info ]:  Succeeded [  0.03s] model TRANSFORM.sl_beneficiary (incremental)
+08:29:06.567142 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.sl_transaction at target\.lsp\compiled\UPI_Fraud_Monitoring\models\silver\sl_transaction.sql
+08:29:06.569013 [debug]: create_debug_span(...).entered() took 48.3µs
+08:29:06.571007 [debug]: Finished rendering [  0.02s] model TRANSFORM.sl_transaction [success]
+08:29:06.571132 [debug]: Started analyzing model TRANSFORM.sl_transaction
+08:29:06.571184 [debug]: Finished connection limit wait [  0.24s]
+08:29:06.575400 [debug]: Finished analyzing [  0.00s] model TRANSFORM.sl_transaction [success]
+08:29:06.575477 [info ]:  Succeeded [  0.02s] model TRANSFORM.sl_transaction (incremental)
+08:29:06.577313 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.sl_merchant at target\.lsp\compiled\UPI_Fraud_Monitoring\models\silver\sl_merchant.sql
+08:29:06.580872 [debug]: Finished rendering [  0.01s] model TRANSFORM.sl_merchant [success]
+08:29:06.580993 [debug]: Started analyzing model TRANSFORM.sl_merchant
+08:29:06.581027 [debug]: Finished connection limit wait [  0.25s]
+08:29:06.584326 [debug]: Finished analyzing [  0.00s] model TRANSFORM.sl_merchant [success]
+08:29:06.584451 [info ]:  Succeeded [  0.01s] model TRANSFORM.sl_merchant (incremental)
+08:29:06.587870 [debug]: create_debug_span(...).entered() took 43.8µs
+08:29:06.619875 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 131.9333ms
+08:29:06.619925 [debug]: reader.schema() took 1µs
+08:29:06.621018 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 108.5905ms
+08:29:06.621070 [debug]: reader.schema() took 1.1µs
+08:29:06.621932 [debug]: batch-consume loop (for res in reader) took 1.9848ms
+08:29:06.624592 [debug]: batch-consume loop (for res in reader) took 3.4779ms
+08:29:06.627293 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 132.629ms
+08:29:06.627434 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 147.6229ms
+08:29:06.627453 [debug]: reader.schema() took 1.4µs
+08:29:06.627574 [debug]: concat_batches + normalize_result_column_names took 114.7µs
+08:29:06.627633 [debug]: record_current_span_status_from_attrs took 35µs
+08:29:06.627664 [debug]: Query executed on node model.UPI_Fraud_Monitoring.v_password_change:
+describe table "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."V_RAW_PASSWORD_CHANGE"
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev"} */
+08:29:06.627695 [debug]: drop(query_span_guard) (span exit/export) took 42.7µs
+08:29:06.630024 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 118.282ms
+08:29:06.630265 [debug]: concat_batches + normalize_result_column_names took 171.8µs
+08:29:06.630291 [debug]: record_current_span_status_from_attrs took 11µs
+08:29:06.630314 [debug]: Query executed on node model.UPI_Fraud_Monitoring.v_collect_request:
+describe table "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."V_RAW_COLLECT_REQUEST"
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev"} */
+08:29:06.630342 [debug]: drop(query_span_guard) (span exit/export) took 42µs
+08:29:06.631701 [debug]: batch-consume loop (for res in reader) took 4.2133ms
+08:29:06.633807 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 139.3673ms
+08:29:06.633984 [debug]: concat_batches + normalize_result_column_names took 118.1µs
+08:29:06.634004 [debug]: record_current_span_status_from_attrs took 8.5µs
+08:29:06.634027 [debug]: Query executed on node model.UPI_Fraud_Monitoring.v_login_activity:
+describe table "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."V_RAW_LOGIN_ACTIVITY"
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev"} */
+08:29:06.634057 [debug]: drop(query_span_guard) (span exit/export) took 41.3µs
+08:29:06.635343 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_password_change at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\views\v_password_change.sql
+08:29:06.635938 [debug]: Finished connection limit wait [  0.30s]
+08:29:06.635979 [debug]: Finished rendering [  0.18s] model TRANSFORM.v_password_change [success]
+08:29:06.636061 [debug]: Started analyzing model TRANSFORM.v_password_change
+08:29:06.636286 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_collect_request at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\views\v_collect_request.sql
+08:29:06.636797 [debug]: Finished rendering [  0.14s] model TRANSFORM.v_collect_request [success]
+08:29:06.636914 [debug]: Started analyzing model TRANSFORM.v_collect_request
+08:29:06.636990 [debug]: Finished connection limit wait [  0.30s]
+08:29:06.643240 [debug]: Finished analyzing [  0.01s] model TRANSFORM.v_collect_request [success]
+08:29:06.643335 [info ]:  Succeeded [  0.15s] model TRANSFORM.v_collect_request (view)
+08:29:06.644431 [debug]: Finished analyzing [  0.01s] model TRANSFORM.v_password_change [success]
+08:29:06.644495 [info ]:  Succeeded [  0.18s] model TRANSFORM.v_password_change (view)
+08:29:06.649463 [debug]: create_debug_span(...).entered() took 49µs
+08:29:06.648197 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_login_activity at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\views\v_login_activity.sql
+08:29:06.650509 [debug]: Finished rendering [  0.17s] model TRANSFORM.v_login_activity [success]
+08:29:06.650663 [debug]: Started analyzing model TRANSFORM.v_login_activity
+08:29:06.650723 [debug]: Finished connection limit wait [  0.32s]
+08:29:06.653049 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.sl_device_registry at target\.lsp\compiled\UPI_Fraud_Monitoring\models\silver\sl_device_registry.sql
+08:29:06.654536 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 110.6504ms
+08:29:06.654586 [debug]: reader.schema() took 700ns
+08:29:06.655196 [debug]: Finished connection limit wait [  0.32s]
+08:29:06.655005 [debug]: Finished rendering [  0.02s] model TRANSFORM.sl_device_registry [success]
+08:29:06.655419 [debug]: Started analyzing model TRANSFORM.sl_device_registry
+08:29:06.658540 [debug]: Finished analyzing [  0.00s] model TRANSFORM.sl_device_registry [success]
+08:29:06.658625 [info ]:  Succeeded [  0.03s] model TRANSFORM.sl_device_registry (incremental)
+08:29:06.665185 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.sl_customer at target\.lsp\compiled\UPI_Fraud_Monitoring\models\silver\sl_customer.sql
+08:29:06.665819 [debug]: Finished rendering [  0.02s] model TRANSFORM.sl_customer [success]
+08:29:06.665959 [debug]: Started analyzing model TRANSFORM.sl_customer
+08:29:06.668558 [debug]: Finished analyzing [  0.00s] model TRANSFORM.sl_customer [success]
+08:29:06.668636 [info ]:  Succeeded [  0.02s] model TRANSFORM.sl_customer (incremental)
+08:29:06.671714 [debug]: create_debug_span(...).entered() took 469.6µs
+08:29:06.672409 [debug]: Finished analyzing [  0.02s] model TRANSFORM.v_login_activity [success]
+08:29:06.672500 [info ]:  Succeeded [  0.19s] model TRANSFORM.v_login_activity (view)
+08:29:06.675929 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 114.2852ms
+08:29:06.675994 [debug]: reader.schema() took 1.3µs
+08:29:06.676981 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 107.6266ms
+08:29:06.677031 [debug]: reader.schema() took 1.2µs
+08:29:06.678441 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 130.8242ms
+08:29:06.678496 [debug]: reader.schema() took 1.5µs
+08:29:06.681489 [debug]: batch-consume loop (for res in reader) took 26.8457ms
+08:29:06.683669 [debug]: batch-consume loop (for res in reader) took 7.621ms
+08:29:06.683669 [debug]: batch-consume loop (for res in reader) took 6.5855ms
+08:29:06.684284 [debug]: batch-consume loop (for res in reader) took 5.7444ms
+08:29:06.685820 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 142.18ms
+08:29:06.686057 [debug]: concat_batches + normalize_result_column_names took 161µs
+08:29:06.686075 [debug]: record_current_span_status_from_attrs took 8.4µs
+08:29:06.686094 [debug]: Query executed on node model.UPI_Fraud_Monitoring.v_account:
+describe table "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."V_RAW_ACCOUNT"
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev"} */
+08:29:06.686117 [debug]: drop(query_span_guard) (span exit/export) took 31.6µs
+08:29:06.688513 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 119.4326ms
+08:29:06.688513 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 134.3445ms
+08:29:06.688511 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 141.9268ms
+08:29:06.688712 [debug]: concat_batches + normalize_result_column_names took 101.5µs
+08:29:06.688711 [debug]: concat_batches + normalize_result_column_names took 133.5µs
+08:29:06.688712 [debug]: concat_batches + normalize_result_column_names took 111.4µs
+08:29:06.688730 [debug]: record_current_span_status_from_attrs took 7.8µs
+08:29:06.688729 [debug]: record_current_span_status_from_attrs took 6.7µs
+08:29:06.688730 [debug]: record_current_span_status_from_attrs took 7µs
+08:29:06.688748 [debug]: Query executed on node model.UPI_Fraud_Monitoring.v_watchlist:
+describe table "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."V_RAW_WATCHLIST"
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev"} */
+08:29:06.688748 [debug]: Query executed on node model.UPI_Fraud_Monitoring.v_transaction:
+describe table "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."V_RAW_TRANSACTION"
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev"} */
+08:29:06.688748 [debug]: Query executed on node model.UPI_Fraud_Monitoring.v_beneficiary:
+describe table "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."V_RAW_BENEFICIARY"
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev"} */
+08:29:06.688766 [debug]: drop(query_span_guard) (span exit/export) took 28.8µs
+08:29:06.688769 [debug]: drop(query_span_guard) (span exit/export) took 28µs
+08:29:06.688770 [debug]: drop(query_span_guard) (span exit/export) took 28.4µs
+08:29:06.691706 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_account at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\views\v_account.sql
+08:29:06.692440 [debug]: Finished rendering [  0.16s] model TRANSFORM.v_account [success]
+08:29:06.692586 [debug]: Started analyzing model TRANSFORM.v_account
+08:29:06.699684 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_beneficiary at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\views\v_beneficiary.sql
+08:29:06.701056 [debug]: Finished rendering [  0.17s] model TRANSFORM.v_beneficiary [success]
+08:29:06.701177 [debug]: Started analyzing model TRANSFORM.v_beneficiary
+08:29:06.707331 [debug]: Finished analyzing [  0.01s] model TRANSFORM.v_account [success]
+08:29:06.707405 [info ]:  Succeeded [  0.17s] model TRANSFORM.v_account (view)
+08:29:06.711682 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_transaction at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\views\v_transaction.sql
+08:29:06.712258 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_watchlist at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\views\v_watchlist.sql
+08:29:06.713275 [debug]: Finished rendering [  0.16s] model TRANSFORM.v_transaction [success]
+08:29:06.713382 [debug]: Started analyzing model TRANSFORM.v_transaction
+08:29:06.715551 [debug]: Finished rendering [  0.18s] model TRANSFORM.v_watchlist [success]
+08:29:06.715687 [debug]: Started analyzing model TRANSFORM.v_watchlist
+08:29:06.715758 [debug]: Finished analyzing [  0.01s] model TRANSFORM.v_beneficiary [success]
+08:29:06.715791 [info ]:  Succeeded [  0.18s] model TRANSFORM.v_beneficiary (view)
+08:29:06.722983 [debug]: Finished analyzing [  0.01s] model TRANSFORM.v_watchlist [success]
+08:29:06.723068 [info ]:  Succeeded [  0.19s] model TRANSFORM.v_watchlist (view)
+08:29:06.727949 [debug]: Finished analyzing [  0.01s] model TRANSFORM.v_transaction [success]
+08:29:06.728031 [info ]:  Succeeded [  0.17s] model TRANSFORM.v_transaction (view)
+08:29:06.784729 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 130.3968ms
+08:29:06.784797 [debug]: reader.schema() took 1.1µs
+08:29:06.786477 [debug]: batch-consume loop (for res in reader) took 1.6353ms
+08:29:06.788232 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 138.6899ms
+08:29:06.788429 [debug]: concat_batches + normalize_result_column_names took 134.7µs
+08:29:06.788448 [debug]: record_current_span_status_from_attrs took 6.9µs
+08:29:06.788462 [debug]: Query executed on node model.UPI_Fraud_Monitoring.v_device_registry:
+describe table "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."V_RAW_DEVICE_REGISTRY"
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev"} */
+08:29:06.788481 [debug]: drop(query_span_guard) (span exit/export) took 26.7µs
+08:29:06.794363 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_device_registry at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\views\v_device_registry.sql
+08:29:06.799653 [debug]: Finished rendering [  0.17s] model TRANSFORM.v_device_registry [success]
+08:29:06.799803 [debug]: Started analyzing model TRANSFORM.v_device_registry
+08:29:06.813510 [debug]: Finished analyzing [  0.01s] model TRANSFORM.v_device_registry [success]
+08:29:06.813888 [info ]:  Succeeded [  0.18s] model TRANSFORM.v_device_registry (view)
+08:29:06.934224 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 346.0331ms
+08:29:06.934283 [debug]: reader.schema() took 1.4µs
+08:29:06.936992 [debug]: batch-consume loop (for res in reader) took 2.6594ms
+08:29:06.939801 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 351.8315ms
+08:29:06.940002 [debug]: concat_batches + normalize_result_column_names took 124.9µs
+08:29:06.940028 [debug]: record_current_span_status_from_attrs took 9.2µs
+08:29:06.940048 [debug]: Query executed on node model.UPI_Fraud_Monitoring.v_merchant:
+describe table "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."V_RAW_MERCHANT"
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev"} */
+08:29:06.940083 [debug]: drop(query_span_guard) (span exit/export) took 42.5µs
+08:29:06.946725 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_merchant at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\views\v_merchant.sql
+08:29:06.947179 [debug]: Finished rendering [  0.37s] model TRANSFORM.v_merchant [success]
+08:29:06.947285 [debug]: Started analyzing model TRANSFORM.v_merchant
+08:29:06.954317 [debug]: Finished analyzing [  0.01s] model TRANSFORM.v_merchant [success]
+08:29:06.954427 [info ]:  Succeeded [  0.38s] model TRANSFORM.v_merchant (view)
+08:29:06.960503 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 283.7524ms
+08:29:06.960562 [debug]: reader.schema() took 1.3µs
+08:29:06.962161 [debug]: batch-consume loop (for res in reader) took 1.5596ms
+08:29:06.963394 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 291.6047ms
+08:29:06.963534 [debug]: concat_batches + normalize_result_column_names took 93µs
+08:29:06.963550 [debug]: record_current_span_status_from_attrs took 7.6µs
+08:29:06.963567 [debug]: Query executed on node model.UPI_Fraud_Monitoring.v_customer:
+describe table "UPI_FRAUD_MONITORING_DB"."TRANSFORM"."V_RAW_CUSTOMER"
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "UPI_Fraud_Monitoring", "target_name": "dev"} */
+08:29:06.963588 [debug]: drop(query_span_guard) (span exit/export) took 28.4µs
+08:29:06.968723 [debug]: Compiled SQL for node model.UPI_Fraud_Monitoring.v_customer at target\.lsp\compiled\UPI_Fraud_Monitoring\models\bronze\views\v_customer.sql
+08:29:06.969250 [debug]: Finished rendering [  0.32s] model TRANSFORM.v_customer [success]
+08:29:06.969343 [info ]: Finished rendering [  0.64s] (37 nodes, 0 skipped, 0 errors)
+08:29:06.969415 [debug]: Started analyzing model TRANSFORM.v_customer
+08:29:06.979593 [debug]: Finished analyzing [  0.01s] model TRANSFORM.v_customer [success]
+08:29:06.979676 [info ]: Finished analyzing [  0.62s] (36 nodes, 0 skipped, 0 errors)
+08:29:06.979703 [info ]:  Succeeded [  0.33s] model TRANSFORM.v_customer (view)
+08:29:07.009261 [info ]: Started scheduling
+08:29:07.009508 [info ]: Finished scheduling [  0.00s]
+08:29:07.009799 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 4 warnings for target 'dev' [3.4s]
+Processed: 36 models | 1 seed
+Summary: 37 total | 37 success
+08:29:07.010866 [info ]: Cached model count updated: 36 models (accurate)
