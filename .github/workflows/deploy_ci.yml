@@ -52,20 +52,20 @@ jobs:
         run: |
             mkdir -p ~/.dbt
             cat > ~/.dbt/profiles.yml <<EOF
-        UPI_Fraud_Monitoring:
-           target: dev
-           outputs:
-               dev:
-                   type: snowflake
-                   account: ${{ secrets.SNOWFLAKE_ACCOUNT_DEV }}
-                   user: ${{ secrets.SNOWFLAKE_USER }}
-                   password: ${{ secrets.SNOWFLAKE_PASSWORD }}
-                   role: ${{ secrets.SNOWFLAKE_ROLE }}
-                   database: ${{ secrets.SNOWFLAKE_DATABASE }}
-                   warehouse: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
-                   schema: ${{ secrets.SNOWFLAKE_SCHEMA }}
-                   threads: 4
-                   client_session_keep_alive: False
+            UPI_Fraud_Monitoring:
+                 target: dev
+                 outputs:
+                     dev:
+                          type: snowflake
+                          account: ${{ secrets.SNOWFLAKE_ACCOUNT_DEV }}
+                          user: ${{ secrets.SNOWFLAKE_USER }}
+                          password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                          role: ${{ secrets.SNOWFLAKE_ROLE }}
+                          database: ${{ secrets.SNOWFLAKE_DATABASE }}
+                          warehouse: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
+                          schema: ${{ secrets.SNOWFLAKE_SCHEMA }}
+                          threads: 4
+                          client_session_keep_alive: False
     
       - name: Run dbt models (Dev)
         env:
