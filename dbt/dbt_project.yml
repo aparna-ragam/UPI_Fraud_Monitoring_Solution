@@ -23,7 +23,8 @@ models:
       +materialized: table
     gold:
       +materialized: incremental
-      +schema: analytics      
+      +schema: analytics
+       
 seeds:
   UPI_Fraud_Monitoring:   
     dim_fraud_rule:
