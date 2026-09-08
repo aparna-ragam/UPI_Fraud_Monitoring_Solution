@@ -38,7 +38,7 @@ rs as (SELECT UUID_STRING() AS ALERT_ID,
        r.risk_score,
        r.alert_type,
        current_timestamp() as detected_ts,
-       r.load_dts as load_ts,
+       current_timestamp() as load_ts,
        md5(
            coalesce(UUID_STRING(),'^') || '|' ||
            coalesce(r.fraud_code,'^') || '|' ||
@@ -47,7 +47,6 @@ rs as (SELECT UUID_STRING() AS ALERT_ID,
            coalesce(r.customer_id,'^') || '|' ||
            coalesce(r.account_id,'^') || '|' ||
            coalesce(r.risk_score::text,'^') || '|' ||
-           coalesce(r.load_dts::text,'^') || '|' ||
            coalesce(r.alert_type,'^')
        ) as hash_diff
 from result_set r
@@ -64,10 +63,4 @@ select alert_id,
        detected_ts,
        load_ts,
        hash_diff
-from rs 
-
-
-    
-    where load_ts > (select coalesce(max(load_ts), '1900-01-01'::timestamp)
-    from UPI_FRAUD_MONITORING_DB.analytics.gld_rule_results
-    )
+from rs

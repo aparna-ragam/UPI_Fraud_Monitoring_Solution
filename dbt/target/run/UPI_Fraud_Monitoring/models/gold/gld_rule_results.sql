@@ -14,7 +14,7 @@
 
     merge into UPI_FRAUD_MONITORING_DB.analytics.gld_rule_results as DBT_INTERNAL_DEST
         using UPI_FRAUD_MONITORING_DB.analytics.gld_rule_results__dbt_tmp as DBT_INTERNAL_SOURCE
-        on ((DBT_INTERNAL_SOURCE.hash_diff = DBT_INTERNAL_DEST.hash_diff))
+        on ((DBT_INTERNAL_SOURCE.transaction_id = DBT_INTERNAL_DEST.transaction_id))
 
     
     when matched then update set

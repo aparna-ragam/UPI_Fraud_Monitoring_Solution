@@ -28,7 +28,7 @@ with result_set as (SELECT
         coalesce('OPEN','^')
     ) as hash_diff,
     load_ts
-FROM UPI_FRAUD_MONITORING_DB.TRANSFORM_analytics.gld_rule_results)
+FROM UPI_FRAUD_MONITORING_DB.analytics.gld_rule_results)
 select alert_id,
        fraud_code,
        customer_id,
@@ -40,5 +40,3 @@ select alert_id,
        load_ts
 from result_set
 
-
- 

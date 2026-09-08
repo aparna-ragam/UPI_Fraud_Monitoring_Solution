@@ -1,6 +1,6 @@
 {{ config(
     materialized='incremental',
-    unique_key='hash_diff',
+    unique_key='alert_id',
     incremental_strategy='merge',
     on_schema_change='append_new_columns'
 ) }}
@@ -46,9 +46,3 @@ select alert_id,
 from result_set
 
 
-{% if is_incremental() %}
-    
-    where load_ts > (select coalesce(max(load_ts), '1900-01-01'::timestamp)
-    from {{ this }})
-    
-{% endif %} 

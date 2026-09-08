@@ -1,6 +1,6 @@
 {{ config(
     materialized='incremental',
-    unique_key='hash_diff',
+    unique_key='transaction_id',
     incremental_strategy='merge',
     on_schema_change='append_new_columns'
 ) }}
@@ -43,7 +43,7 @@ rs as (SELECT UUID_STRING() AS ALERT_ID,
        r.risk_score,
        r.alert_type,
        current_timestamp() as detected_ts,
-       r.load_dts as load_ts,
+       current_timestamp() as load_ts,
        md5(
            coalesce(UUID_STRING(),'^') || '|' ||
            coalesce(r.fraud_code,'^') || '|' ||
@@ -52,7 +52,6 @@ rs as (SELECT UUID_STRING() AS ALERT_ID,
            coalesce(r.customer_id,'^') || '|' ||
            coalesce(r.account_id,'^') || '|' ||
            coalesce(r.risk_score::text,'^') || '|' ||
-           coalesce(r.load_dts::text,'^') || '|' ||
            coalesce(r.alert_type,'^')
        ) as hash_diff
 from result_set r
@@ -70,10 +69,3 @@ select alert_id,
        load_ts,
        hash_diff
 from rs 
-
-{% if is_incremental() %}
-    
-    where load_ts > (select coalesce(max(load_ts), '1900-01-01'::timestamp)
-    from {{ this }}
-    )
-{% endif %}  

@@ -39,10 +39,3 @@ select alert_id,
        hash_diff,
        load_ts
 from result_set
-
-
-
-    
-    where load_ts > (select coalesce(max(load_ts), '1900-01-01'::timestamp)
-    from UPI_FRAUD_MONITORING_DB.analytics.gld_fraud_alert)
-    
