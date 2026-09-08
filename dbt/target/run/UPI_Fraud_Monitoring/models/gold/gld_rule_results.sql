@@ -1,0 +1,30 @@
+-- back compat for old kwarg name
+  
+  begin;
+    
+        
+            
+            
+            
+            
+        
+    
+
+    
+
+    merge into UPI_FRAUD_MONITORING_DB.analytics.gld_rule_results as DBT_INTERNAL_DEST
+        using UPI_FRAUD_MONITORING_DB.analytics.gld_rule_results__dbt_tmp as DBT_INTERNAL_SOURCE
+        on ((DBT_INTERNAL_SOURCE.transaction_id = DBT_INTERNAL_DEST.transaction_id))
+
+    
+    when matched then update set
+        "ALERT_ID" = DBT_INTERNAL_SOURCE."ALERT_ID","FRAUD_CODE" = DBT_INTERNAL_SOURCE."FRAUD_CODE","FRAUD_NAME" = DBT_INTERNAL_SOURCE."FRAUD_NAME","TRANSACTION_ID" = DBT_INTERNAL_SOURCE."TRANSACTION_ID","CUSTOMER_ID" = DBT_INTERNAL_SOURCE."CUSTOMER_ID","ACCOUNT_ID" = DBT_INTERNAL_SOURCE."ACCOUNT_ID","RISK_SCORE" = DBT_INTERNAL_SOURCE."RISK_SCORE","ALERT_TYPE" = DBT_INTERNAL_SOURCE."ALERT_TYPE","DETECTED_TS" = DBT_INTERNAL_SOURCE."DETECTED_TS","LOAD_TS" = DBT_INTERNAL_SOURCE."LOAD_TS","HASH_DIFF" = DBT_INTERNAL_SOURCE."HASH_DIFF"
+    
+
+    when not matched then insert
+        ("ALERT_ID", "FRAUD_CODE", "FRAUD_NAME", "TRANSACTION_ID", "CUSTOMER_ID", "ACCOUNT_ID", "RISK_SCORE", "ALERT_TYPE", "DETECTED_TS", "LOAD_TS", "HASH_DIFF")
+    values
+        ("ALERT_ID", "FRAUD_CODE", "FRAUD_NAME", "TRANSACTION_ID", "CUSTOMER_ID", "ACCOUNT_ID", "RISK_SCORE", "ALERT_TYPE", "DETECTED_TS", "LOAD_TS", "HASH_DIFF")
+
+;
+    commit;

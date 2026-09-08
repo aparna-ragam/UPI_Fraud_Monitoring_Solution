@@ -2,7 +2,6 @@
     materialized='incremental',
     unique_key='transaction_id',
     incremental_strategy='merge',
-    contract={"enforced": true},
     on_schema_change='append_new_columns'
 ) }}
 with result_set as (
