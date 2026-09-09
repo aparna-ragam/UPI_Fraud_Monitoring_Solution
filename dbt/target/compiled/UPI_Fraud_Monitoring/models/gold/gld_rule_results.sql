@@ -63,4 +63,4 @@ select alert_id,
        detected_ts,
        load_ts,
        hash_diff
-from rs 
+from rs

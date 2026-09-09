@@ -39,4 +39,3 @@ select alert_id,
        hash_diff,
        load_ts
 from result_set
-

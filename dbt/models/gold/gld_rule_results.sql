@@ -1,122 +1,71 @@
-GLD_RULE_RESULTS is loaded before GLD_FRAUD_ALERT.
+{{ config(
+    materialized='incremental',
+    unique_key='transaction_id',
+    incremental_strategy='merge',
+    on_schema_change='append_new_columns'
+) }}
+with result_set as (
+    select transaction_id, customer_id, account_id, 'FR001' as fraud_code, 90 as risk_score, 'HIGH_VALUE_UPI' as alert_type,created_date_time as load_dts
+    from {{ ref('sl_transaction') }}
+    where is_current='TRUE' and txn_amount > 100000
 
-Step 1: Execute Fraud Rules
------------------------------------
-FR001 High Value UPI
------------------------------
-SELECT
-TRANSACTION_ID,
-CUSTOMER_ID,
-'FR001' AS RULE_ID,
-90 AS RISK_SCORE,
-'HIGH_VALUE_UPI' AS ALERT_TYPE
-FROM SL_TRANSACTION
-WHERE TXN_AMOUNT > 100000;
+    union all
 
-FR002 Velocity Rule
---------------------------------
-SELECT
-TRANSACTION_ID,
-CUSTOMER_ID,
-'FR002' AS RULE_ID,
-95 AS RISK_SCORE,
-'VELOCITY' AS ALERT_TYPE
-FROM
-(
-SELECT
-TRANSACTION_ID,
-CUSTOMER_ID,
-COUNT(*) OVER
-(
-PARTITION BY CUSTOMER_ID
-ORDER BY TXN_DATETIME
-RANGE BETWEEN INTERVAL '5 MINUTE' PRECEDING
-AND CURRENT ROW
-) AS CNT
-FROM SL_TRANSACTION
-)
-WHERE CNT > 10;
+    select transaction_id, customer_id, account_id, 'FR002' as fraud_code, 95 as risk_score, 'VELOCITY' as alert_type,created_date_time as load_dts
+    from (
+        SELECT transaction_id, customer_id, account_id,created_date_time,
+               count(*) OVER (PARTITION BY CUSTOMER_ID ORDER BY TXN_DATETIME RANGE BETWEEN INTERVAL '5 MINUTE' PRECEDING AND CURRENT ROW) AS CNT
+        FROM {{ ref('sl_transaction') }} WHERE IS_CURRENT='TRUE'
+    )
+    WHERE CNT > 10
 
-FR005: New Device
--------------------------
-SELECT
-    T.TRANSACTION_ID,
-    T.CUSTOMER_ID,
-    T.ACCOUNT_ID,
-    'FR005' AS RULE_ID,
-    'NEW_DEVICE' AS RULE_NAME,
-    80 AS RISK_SCORE
-FROM SL_TRANSACTION T
-JOIN SL_DEVICE D
-    ON T.DEVICE_ID=D.DEVICE_ID
-WHERE D.TRUSTED_FLAG='N';
+    UNION ALL
 
-FR007 Blacklisted Beneficiary
----------------------------------------
-SELECT
-T.TRANSACTION_ID,
-T.CUSTOMER_ID,
-'FR007' AS RULE_ID,
-100 AS RISK_SCORE,
-'BLACKLISTED_BENEFICIARY' AS ALERT_TYPE
-FROM SL_TRANSACTION T
-JOIN SL_BENEFICIARY B
-ON T.BENEFICIARY_ID = B.BENEFICIARY_ID
-JOIN SL_WATCHLIST W
-ON B.BENEFICIARY_NAME = W.ENTITY_NAME;
+    SELECT T.TRANSACTION_ID, T.CUSTOMER_ID, T.ACCOUNT_ID, 'FR005' as fraud_code, 80 as risk_score, 'NEW_DEVICE' as alert_type,T.created_date_time as load_dts
+    FROM {{ ref('sl_transaction') }} T
+    JOIN {{ ref('sl_device_registry') }} D ON T.DEVICE_ID = D.DEVICE_ID
+    WHERE T.IS_CURRENT='TRUE' AND D.IS_CURRENT='TRUE' AND D.TRUSTED_FLAG = 'N'
 
+    UNION ALL
 
-Step 2: Consolidate Rule Outputs
-----------------------------------
-CREATE OR REPLACE TEMP TABLE RULE_RESULTS AS
-SELECT * FROM FR001_RESULT
-UNION ALL
-SELECT * FROM FR002_RESULT
-UNION ALL
-SELECT * FROM FR003_RESULT
-UNION ALL
-SELECT * FROM FR004_RESULT;
-
-
-Step 3: Determine Severity
------------------------------------
-CASE
-    WHEN RISK_SCORE >= 95 THEN 'CRITICAL'
-    WHEN RISK_SCORE >= 85 THEN 'HIGH'
-    WHEN RISK_SCORE >= 70 THEN 'MEDIUM'
-    ELSE 'LOW'
-END AS SEVERITY
-
-INSERT INTO GLD_RULE_RESULTS
-(
-    RULE_RESULT_ID,
-    RULE_ID,
-    RULE_NAME,
-    TRANSACTION_ID,
-    CUSTOMER_ID,
-    ACCOUNT_ID,
-    RISK_SCORE,
-    SEVERITY,
-    RULE_STATUS,
-    DETECTED_TS,
-    LOAD_TS
-)
-
-SELECT
-    UUID_STRING(),
-    RULE_ID,
-    RULE_NAME,
-    TRANSACTION_ID,
-    CUSTOMER_ID,
-    ACCOUNT_ID,
-    RISK_SCORE,
-    CASE
-        WHEN RISK_SCORE >= 95 THEN 'CRITICAL'
-        WHEN RISK_SCORE >= 85 THEN 'HIGH'
-        WHEN RISK_SCORE >= 70 THEN 'MEDIUM'
-        ELSE 'LOW'
-    END,
-    'TRIGGERED',
-    CURRENT_TIMESTAMP(),
-    CURRENT_TIMESTAMP()
-FROM TMP_RULE_RESULTS;
+    SELECT T.TRANSACTION_ID, T.CUSTOMER_ID, T.ACCOUNT_ID, 'FR007' as fraud_code, 100 as risk_score, 'BLACKLISTED_BENEFICIARY' as alert_type,T.created_date_time as load_dts
+    FROM {{ ref('sl_transaction') }} T
+    JOIN {{ ref('sl_beneficiary') }} B ON T.BENEFICIARY_ID = B.BENEFICIARY_ID
+    JOIN {{ ref('sl_watchlist') }} W ON B.BENEFICIARY_NAME = W.ENTITY_NAME
+    WHERE T.IS_CURRENT='TRUE' AND B.IS_CURRENT='TRUE' AND W.IS_CURRENT='TRUE'
+),
+rs as (SELECT UUID_STRING() AS ALERT_ID,
+       r.fraud_code,
+       f.fraud_name,
+       r.transaction_id,
+       r.customer_id,
+       r.account_id,
+       r.risk_score,
+       r.alert_type,
+       current_timestamp() as detected_ts,
+       current_timestamp() as load_ts,
+       md5(
+           coalesce(UUID_STRING(),'^') || '|' ||
+           coalesce(r.fraud_code,'^') || '|' ||
+           coalesce(f.fraud_name,'^') || '|' ||
+           coalesce(r.transaction_id,'^') || '|' ||
+           coalesce(r.customer_id,'^') || '|' ||
+           coalesce(r.account_id,'^') || '|' ||
+           coalesce(r.risk_score::text,'^') || '|' ||
+           coalesce(r.alert_type,'^')
+       ) as hash_diff
+from result_set r
+left join {{ref('dim_fraud_rule')}} f
+  ON r.fraud_code = f.fraud_code)
+select alert_id,
+       fraud_code,
+       fraud_name,
+       transaction_id,
+       customer_id,
+       account_id,
+       risk_score,
+       alert_type,
+       detected_ts,
+       load_ts,
+       hash_diff
+from rs 

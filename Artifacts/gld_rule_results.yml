@@ -1,0 +1,40 @@
+models:
+  - name: gld_rule_results
+    description: "Fraud detection rule results"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: alert_id
+        data_type: string
+        description: "Unique identifier for the alert"
+      - name: fraud_code
+        data_type: string
+        description: "Fraud rule code"
+      - name: fraud_name
+        data_type: string
+        description: "Fraud rule name"
+      - name: transaction_id
+        data_type: string
+        description: "Transaction identifier"
+      - name: customer_id
+        data_type: string
+        description: "Customer identifier"
+      - name: account_id
+        data_type: string
+        description: "Account identifier"
+      - name: risk_score
+        data_type: number
+        description: "Calculated risk score"
+      - name: alert_type
+        data_type: string
+        description: "Type of alert"
+      - name: detected_ts
+        data_type: timestamp
+        description: "Detection timestamp"
+      - name: load_ts
+        data_type: timestamp
+        description: "Load timestamp"
+      - name: hash_diff
+        data_type: string
+        description: "Hash diff for change detection"
