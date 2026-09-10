@@ -1,0 +1,121 @@
+-- =============================================================================
+-- Environment Setup 
+-- =============================================================================
+
+USE ROLE ACCOUNTADMIN;
+
+-- =============================================================================
+-- STEP 1: Create a warehouse 
+-- =============================================================================
+
+CREATE WAREHOUSE UPI_FRAUD_MONITORING_WH WAREHOUSE_SIZE = XSMALL;
+
+-- =============================================================================
+-- STEP 2: Create a database and schemas.
+-- =============================================================================
+
+CREATE DATABASE IF NOT EXISTS UPI_FRAUD_MONITORING_DB;
+CREATE SCHEMA IF NOT EXISTS UPI_FRAUD_MONITORING_DB.STAGING;
+CREATE SCHEMA IF NOT EXISTS UPI_FRAUD_MONITORING_DB.TRANSFORM;
+CREATE SCHEMA IF NOT EXISTS UPI_FRAUD_MONITORING_DB.ANALYTICS;
+
+-- Used for storing objects Snowflake needs for GitHub integration (secrets, etc.)
+CREATE SCHEMA IF NOT EXISTS UPI_FRAUD_MONITORING_DB.INTEGRATIONS;
+
+--API integration is used to connect Snowflake to GitHub repository
+CREATE OR REPLACE API INTEGRATION upi_dbt_git_api_integration
+  API_PROVIDER = git_https_api
+  API_ALLOWED_PREFIXES = ('https://github.com')
+  -- Comment out the following line if your forked repository is public
+  --ALLOWED_AUTHENTICATION_SECRETS = ()
+  ENABLED = TRUE;
+
+  USE ROLE accountadmin;
+
+  --CREATE STAGE 
+  CREATE STAGE STAGING.UPI_FRAUD_MONITORING_STG;
+
+  --CREATE FILE FORMAT
+  CREATE OR REPLACE FILE FORMAT UPI_FRD_MONITORING_CSV_FORMAT
+  TYPE = 'CSV'
+  FIELD_DELIMITER = ','
+  PARSE_HEADER=TRUE,
+  SKIP_HEADER = 0
+  ERROR_ON_COLUMN_COUNT_MISMATCH = FALSE
+  NULL_IF = ('NULL', 'null');
+
+--Create load_id sequence
+CREATE OR REPLACE SEQUENCE UPI_FRAUD_MONITORING_DB.STAGING.LOAD_ID_SEQ
+START = 1
+INCREMENT = 1;
+
+--storage integration
+CREATE OR REPLACE STORAGE INTEGRATION S3_INT
+TYPE = EXTERNAL_STAGE
+STORAGE_PROVIDER = S3
+ENABLED = TRUE
+STORAGE_AWS_ROLE_ARN = 'arn:aws:iam::796378119782:role/snowflake_s3_role'
+STORAGE_ALLOWED_LOCATIONS = ('s3://upi-fraud-monitoring/');
+
+--S3 Stage
+CREATE OR REPLACE STAGE STAGING.S3_UPI_FRAUD_MONITORING_STAGE
+URL='s3://upi-fraud-monitoring/Inbound/'
+STORAGE_INTEGRATION=S3_INT;
+
+--Metadata table
+CREATE OR REPLACE TABLE STAGING.STAGE_FILE_METADATA
+(
+FILE_PATH STRING,
+FILE_NAME STRING,
+LOAD_TIME TIMESTAMP_NTZ
+);
+
+--Create Snowpipe
+CREATE OR REPLACE PIPE STAGING.UPI_FILE_PIPE
+AUTO_INGEST = TRUE
+AS
+COPY INTO STAGE_FILE_METADATA
+FROM
+(
+    SELECT
+        METADATA$FILENAME AS FILE_PATH,
+        SPLIT_PART(METADATA$FILENAME,'/',-1) AS FILE_NAME,
+        METADATA$START_SCAN_TIME AS LOAD_TIME
+    FROM @S3_UPI_FRAUD_MONITORING_STAGE
+);
+
+--Create Stream
+CREATE OR REPLACE STREAM STAGING.UPI_FILE_METADATA_STREAM
+ON TABLE STAGE_FILE_METADATA;
+
+---Task  when stream has new records
+CREATE OR REPLACE TASK UPI_TASK_DYNAMIC_INGEST
+WAREHOUSE = UPI_FRAUD_MONITORING_WH
+WHEN SYSTEM$STREAM_HAS_DATA('UPI_FRAUD_MONITORING_DB.STAGING.UPI_FILE_METADATA_STREAM')
+AS
+CALL upi_data_ingest_sp(
+ '@S3_UPI_FRAUD_MONITORING_STAGE',
+ 'UPI_FRD_MONITORING_CSV_FORMAT',
+'TAB_TEST'
+);
+
+GRANT USAGE ON SCHEMA TAB_TEST TO ROLE ACCOUNTADMIN;
+GRANT CREATE TABLE ON SCHEMA TAB_TEST TO ROLE ACCOUNTADMIN;
+
+CREATE TABLE IF NOT EXISTS STAGING.LOAD_BATCH
+    (
+        LOAD_ID NUMBER,
+        LOAD_START_TIME TIMESTAMP_NTZ,
+        LOAD_END_TIME TIMESTAMP_NTZ,
+        STATUS STRING,
+        DBT_TRIGGERED STRING DEFAULT 'N',
+        DBT_TRIGGER_TIME TIMESTAMP_NTZ,
+        DBT_STATUS STRING
+    );
+
+--resume
+ALTER TASK UPI_TASK_DYNAMIC_INGEST RESUME;
+
+
+--suspend
+ALTER TASK UPI_TASK_DYNAMIC_INGEST suspend;

@@ -1,0 +1,31 @@
+name: UPI_Fraud_Monitoring
+version: 1.0.0
+config-version: 2
+profile: UPI_Fraud_Monitoring
+model-paths:
+  - models
+analysis-paths:
+  - analyses
+test-paths:
+  - tests
+seed-paths:
+  - seeds
+macro-paths:
+  - macros
+snapshot-paths:
+  - snapshots
+models:
+  UPI_Fraud_Monitoring:
+    bronze:
+      raw_views:
+        +materialized: view
+    silver:
+      +materialized: table
+    gold:
+      +materialized: incremental
+      +schema: analytics
+       
+seeds:
+  UPI_Fraud_Monitoring:   
+    dim_fraud_rule:
+      +quote_columns: true

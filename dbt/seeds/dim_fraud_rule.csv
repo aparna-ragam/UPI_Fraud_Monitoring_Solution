@@ -1,0 +1,16 @@
+FRAUD_CODE,FRAUD_NAME,RISK_LEVEL,RULE_CATEGORY,RULE_DESCRIPTION
+FR001,HIGH_VALUE_TXN,MEDIUM,TRANSACTION,Transaction amount exceeds configured threshold
+FR002,UNTRUSTED_DEVICE,HIGH,DEVICE,Transaction initiated from an untrusted device
+FR003,HIGH_RISK_BENEFICIARY,HIGH,BENEFICIARY,Beneficiary is classified as high risk
+FR004,HIGH_RISK_MERCHANT,HIGH,MERCHANT,Merchant is classified as high risk
+FR005,HIGH_RISK_CUSTOMER,HIGH,CUSTOMER,Customer is classified as high risk
+FR006,FAILED_TRANSACTION,LOW,TRANSACTION,Transaction failed due to system or validation checks
+FR007,RAPID_SUCCESSIVE_TXNS,MEDIUM,VELOCITY,Multiple transactions executed within a short time window
+FR008,NEW_BENEFICIARY_PAYMENT,LOW,BENEFICIARY,Transaction made to a recently added beneficiary
+FR009,GEO_LOCATION_MISMATCH,HIGH,LOCATION,Transaction location differs from recent login location
+FR010,MULTIPLE_DEVICE_USAGE,HIGH,DEVICE,Customer used multiple devices within a short timeframe
+FR011,WATCHLIST_MATCH,CRITICAL,COMPLIANCE,Customer or Beneficiary or Merchant found in watchlist
+FR012,HIGH_RISK_DEVICE,HIGH,DEVICE,Device risk score exceeds configured threshold
+FR013,DORMANT_ACCOUNT_ACTIVITY,MEDIUM,ACCOUNT,Transaction observed on a dormant account
+FR014,VELOCITY_BREACH,MEDIUM,VELOCITY,Daily transaction count exceeds threshold
+FR015,AMOUNT_SPIKE,MEDIUM,BEHAVIORAL,Transaction amount significantly exceeds customer average

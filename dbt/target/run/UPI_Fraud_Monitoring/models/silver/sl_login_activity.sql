@@ -1,0 +1,37 @@
+-- back compat for old kwarg name
+  
+  begin;
+    
+        
+            
+                
+                
+            
+                
+                
+            
+        
+    
+
+    
+
+    merge into UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_login_activity as DBT_INTERNAL_DEST
+        using UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_login_activity__dbt_tmp as DBT_INTERNAL_SOURCE
+        on (
+                    DBT_INTERNAL_SOURCE.login_id = DBT_INTERNAL_DEST.login_id
+                ) and (
+                    DBT_INTERNAL_SOURCE.hash_diff = DBT_INTERNAL_DEST.hash_diff
+                )
+
+    
+    when matched then update set
+        "LOGIN_ID" = DBT_INTERNAL_SOURCE."LOGIN_ID","CUSTOMER_ID" = DBT_INTERNAL_SOURCE."CUSTOMER_ID","DEVICE_ID" = DBT_INTERNAL_SOURCE."DEVICE_ID","LOGIN_TIME" = DBT_INTERNAL_SOURCE."LOGIN_TIME","LOGIN_STATUS" = DBT_INTERNAL_SOURCE."LOGIN_STATUS","COUNTRY" = DBT_INTERNAL_SOURCE."COUNTRY","STATE" = DBT_INTERNAL_SOURCE."STATE","CITY" = DBT_INTERNAL_SOURCE."CITY","IP_ADDRESS" = DBT_INTERNAL_SOURCE."IP_ADDRESS","HASH_DIFF" = DBT_INTERNAL_SOURCE."HASH_DIFF","CREATED_LOAD_ID" = DBT_INTERNAL_SOURCE."CREATED_LOAD_ID","CREATED_DATE_TIME" = DBT_INTERNAL_SOURCE."CREATED_DATE_TIME","UPDATED_DATE_TIME" = DBT_INTERNAL_SOURCE."UPDATED_DATE_TIME","IS_CURRENT" = DBT_INTERNAL_SOURCE."IS_CURRENT"
+    
+
+    when not matched then insert
+        ("LOGIN_ID", "CUSTOMER_ID", "DEVICE_ID", "LOGIN_TIME", "LOGIN_STATUS", "COUNTRY", "STATE", "CITY", "IP_ADDRESS", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+    values
+        ("LOGIN_ID", "CUSTOMER_ID", "DEVICE_ID", "LOGIN_TIME", "LOGIN_STATUS", "COUNTRY", "STATE", "CITY", "IP_ADDRESS", "HASH_DIFF", "CREATED_LOAD_ID", "CREATED_DATE_TIME", "UPDATED_DATE_TIME", "IS_CURRENT")
+
+;
+    commit;

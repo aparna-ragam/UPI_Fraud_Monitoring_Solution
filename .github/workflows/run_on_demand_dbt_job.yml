@@ -1,0 +1,42 @@
+name: Run dbt models on demand
+
+on:
+  workflow_dispatch:   # 👈 allows manual trigger from GitHub UI
+    inputs:
+      target_env:
+        description: 'dbt target environment (dev/sit/uat/prod)'
+        required: true
+        default: 'dev'
+      dbt_command:
+        description: 'dbt command to run (run/build/test)'
+        required: true
+        default: 'build'
+
+jobs:
+  run-dbt:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dbt Snowflake adapter
+        run: pip install dbt-snowflake
+
+      - name: Run dbt command
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT_DEV }}
+          SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+          SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
+          SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
+          SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
+          SNOWFLAKE_SCHEMA: ${{ secrets.SNOWFLAKE_SCHEMA }}
+        run: |
+          echo "Running dbt ${{ github.event.inputs.dbt_command }} on ${{ github.event.inputs.target_env }}"
+          dbt ${{ github.event.inputs.dbt_command }} --target ${{ github.event.inputs.target_env }} --profiles-dir ./profiles
