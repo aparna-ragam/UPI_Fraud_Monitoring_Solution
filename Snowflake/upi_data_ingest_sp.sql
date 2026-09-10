@@ -43,7 +43,10 @@ BEGIN
     (
         LOAD_ID NUMBER,
         LOAD_START_TIME TIMESTAMP_NTZ,
-        LOAD_END_TIME TIMESTAMP_NTZ
+        LOAD_END_TIME TIMESTAMP_NTZ,
+        STATUS STRING,
+        DBT_TRIGGERED STRING ,
+        DBT_TRIGGER_TIME TIMESTAMP_NTZ
     )';
 
     EXECUTE IMMEDIATE
@@ -207,10 +210,11 @@ BEGIN
     ------------------------------------------------------------
     -- Batch End
     ------------------------------------------------------------
+    
     EXECUTE IMMEDIATE
-    '
-    UPDATE "' || P_TARGET_SCHEMA || '".LOAD_BATCH
-    SET LOAD_END_TIME = CURRENT_TIMESTAMP()
+    'UPDATE "' || P_TARGET_SCHEMA || '".LOAD_BATCH
+     SET LOAD_END_TIME = CURRENT_TIMESTAMP(),
+     STATUS = ''COMPLETED''
     WHERE LOAD_ID = ' || LOAD_ID;
 
     RETURN
