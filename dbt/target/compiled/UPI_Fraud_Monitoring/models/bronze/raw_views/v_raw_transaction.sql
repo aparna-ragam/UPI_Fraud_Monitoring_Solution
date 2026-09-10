@@ -42,8 +42,6 @@
     
         
     
-        
-    
 
     select
         TRANSACTION_ID,
@@ -63,7 +61,6 @@
     IP_ADDRESS,
     LATITUDE,
     LONGITUDE,
-    SOURCE_FILE_NAME,
     CREATED_LOAD_ID,
     CREATED_DATE_TIME
-    from UPI_FRAUD_MONITORING_DB.STAGING.UPI_TRANSACTION_FACT
+    from UPI_FRAUD_MONITORING_DB.STAGING.upi_transaction

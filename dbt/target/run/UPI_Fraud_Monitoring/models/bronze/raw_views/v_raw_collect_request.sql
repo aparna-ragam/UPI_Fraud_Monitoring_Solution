@@ -25,8 +25,6 @@
     
         
     
-        
-    
 
     select
         COLLECT_REQUEST_ID,
@@ -34,7 +32,6 @@
     REQUEST_AMOUNT,
     REQUEST_TIME,
     REQUEST_STATUS,
-    SOURCE_FILE_NAME,
     CREATED_LOAD_ID,
     CREATED_DATE_TIME
     from UPI_FRAUD_MONITORING_DB.STAGING.collect_request
