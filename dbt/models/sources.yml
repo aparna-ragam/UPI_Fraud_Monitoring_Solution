@@ -4,14 +4,14 @@ sources:
   - name: staging
     schema: STAGING   # <-- replace with the actual schema in Snowflake
     tables:
-      - name: account_master
-      - name: beneficiary_master
+      - name: account
+      - name: beneficiary
       - name: collect_request
-      - name: customer_master
+      - name: customer
       - name: device_registry
       - name: login_activity
-      - name: merchant_master
+      - name: merchant
       - name: password_change
-      - name: transaction
+      - name: upi_transaction
       - name: watchlist
       - name: UPI_TRANSACTION_FACT

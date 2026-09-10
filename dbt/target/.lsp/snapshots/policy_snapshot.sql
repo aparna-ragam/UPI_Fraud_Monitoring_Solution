@@ -1,0 +1,1 @@
+{{ snapshot_policy_snapshot() }}

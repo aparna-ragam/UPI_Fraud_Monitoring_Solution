@@ -34,8 +34,6 @@
     
         
     
-        
-    
 
     select
         DEVICE_ID,
@@ -51,7 +49,6 @@
     APP_VERSION,
     DEVICE_FINGERPRINT,
     TRUSTED_FLAG,
-    SOURCE_FILE_NAME,
     CREATED_LOAD_ID,
     CREATED_DATE_TIME
     from UPI_FRAUD_MONITORING_DB.STAGING.device_registry
