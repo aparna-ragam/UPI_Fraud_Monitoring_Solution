@@ -34,7 +34,7 @@
             select distinct
                 {{ cleansed_columns | join(',\n    ') }},
                 md5({{ concat_expr | join(" || '|' || ") }}) as hash_diff
-            from {{ source_schema }}.{{ source_table }}
+            from {{ ref(source_table) }}
             where {{ delta_column }} is not null
         )
         select *
