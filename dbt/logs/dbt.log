@@ -57124,3 +57124,14 @@ from result_set
 [0m12:47:46.435940 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015A3A5668D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015A3B9D0940>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015A3BA48C00>]}
 [0m12:47:46.436471 [debug] [MainThread]: Flushing usage events
 [0m12:47:48.122750 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:48:06.258114 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029F5A371E80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029F57C6CB90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029F5CCAF890>]}
+
+
+============================== 12:48:06.263652 | f2ae8e05-2273-4b4a-90eb-3a3ea3273944 ==============================
+[0m12:48:06.263652 [info ] [MainThread]: Running with dbt=1.12.3
+[0m12:48:06.264637 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\aparn\\UPI_Fraud_Monitoring_Solution\\UPI_Fraud_Monitoring_Solution\\dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt docs serve', 'hints_enabled': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_path': 'C:\\Users\\aparn\\UPI_Fraud_Monitoring_Solution\\UPI_Fraud_Monitoring_Solution\\dbt\\logs'}
+[0m12:48:06.828238 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m12:48:06.828766 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m12:48:06.829395 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m12:48:07.094686 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'f2ae8e05-2273-4b4a-90eb-3a3ea3273944', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029F5E61FE10>]}
+[0m12:48:07.169513 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'f2ae8e05-2273-4b4a-90eb-3a3ea3273944', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029F5E8EF680>]}
