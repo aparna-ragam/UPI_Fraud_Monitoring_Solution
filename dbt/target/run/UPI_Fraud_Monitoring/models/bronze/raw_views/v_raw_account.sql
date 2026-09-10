@@ -35,8 +35,6 @@
     
         
     
-        
-    
 
     select
         ACCOUNT_ID,
@@ -49,10 +47,9 @@
     ACCOUNT_STATUS,
     CURRENT_BALANCE,
     AVAILABLE_BALANCE,
-    SOURCE_FILE_NAME,
     CREATED_LOAD_ID,
     CREATED_DATE_TIME
-    from UPI_FRAUD_MONITORING_DB.STAGING.account_master
+    from UPI_FRAUD_MONITORING_DB.STAGING.account
 
   );
 
