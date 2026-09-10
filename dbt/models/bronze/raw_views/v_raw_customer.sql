@@ -1,2 +1,2 @@
 
-{{ create_raw_view_with_columns('staging','customer_master') }}
+{{ create_raw_view_with_columns('staging','customer') }}

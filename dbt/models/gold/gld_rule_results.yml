@@ -1,0 +1,40 @@
+models:
+  - name: fraud_alerts   # <-- match your model filename
+    description: "Fraud alerts generated from transaction, device, and beneficiary rules"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: alert_id
+        data_type: string
+        description: "Unique identifier for each alert (UUID)"
+      - name: fraud_code
+        data_type: string
+        description: "Fraud rule code applied to the transaction"
+      - name: fraud_name
+        data_type: string
+        description: "Human-readable fraud rule name from dim_fraud_rule"
+      - name: transaction_id
+        data_type: string
+        description: "Unique identifier of the transaction"
+      - name: customer_id
+        data_type: string
+        description: "Unique identifier of the customer"
+      - name: account_id
+        data_type: string
+        description: "Account associated with the transaction"
+      - name: risk_score
+        data_type: number
+        description: "Risk score assigned by the fraud rule"
+      - name: alert_type
+        data_type: string
+        description: "Type of alert triggered (e.g., HIGH_VALUE_UPI, VELOCITY)"
+      - name: detected_ts
+        data_type: timestamp
+        description: "Timestamp when the alert was detected"
+      - name: load_ts
+        data_type: timestamp
+        description: "Timestamp when the alert was loaded into the table"
+      - name: hash_diff
+        data_type: string
+        description: "Row-level hash for change detection across key attributes"

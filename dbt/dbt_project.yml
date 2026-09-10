@@ -19,8 +19,6 @@ models:
     bronze:
       raw_views:
         +materialized: view
-    silver:
-      +materialized: table
     gold:
       +materialized: incremental
       +schema: analytics

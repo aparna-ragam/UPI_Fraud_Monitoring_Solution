@@ -39,8 +39,6 @@
     
         
     
-        
-    
 
     select
         CUSTOMER_ID,
@@ -55,10 +53,9 @@
     RISK_RATING,
     CUSTOMER_SINCE,
     CUSTOMER_STATUS,
-    SOURCE_FILE_NAME,
     CREATED_LOAD_ID,
     CREATED_DATE_TIME
-    from UPI_FRAUD_MONITORING_DB.STAGING.customer_master
+    from UPI_FRAUD_MONITORING_DB.STAGING.customer
 
   );
 

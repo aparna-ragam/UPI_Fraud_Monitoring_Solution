@@ -26,8 +26,6 @@
     
         
     
-        
-    
 
     select
         LOGIN_ID,
@@ -39,7 +37,6 @@
     COUNTRY,
     STATE,
     CITY,
-    SOURCE_FILE_NAME,
     CREATED_LOAD_ID,
     CREATED_DATE_TIME
     from UPI_FRAUD_MONITORING_DB.STAGING.login_activity

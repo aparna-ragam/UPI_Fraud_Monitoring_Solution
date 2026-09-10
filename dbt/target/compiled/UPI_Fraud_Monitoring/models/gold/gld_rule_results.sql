@@ -1,8 +1,8 @@
 
 with result_set as (
     select transaction_id, customer_id, account_id, 'FR001' as fraud_code, 90 as risk_score, 'HIGH_VALUE_UPI' as alert_type,created_date_time as load_dts
-    from UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_transaction
-    where is_current='TRUE' and txn_amount > 100000
+    from UPI_FRAUD_MONITORING_DB.transform.sl_transaction
+    where updated_date_time is null and txn_amount > 100000
 
     union all
 
@@ -10,24 +10,24 @@ with result_set as (
     from (
         SELECT transaction_id, customer_id, account_id,created_date_time,
                count(*) OVER (PARTITION BY CUSTOMER_ID ORDER BY TXN_DATETIME RANGE BETWEEN INTERVAL '5 MINUTE' PRECEDING AND CURRENT ROW) AS CNT
-        FROM UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_transaction WHERE IS_CURRENT='TRUE'
+        FROM UPI_FRAUD_MONITORING_DB.transform.sl_transaction WHERE updated_date_time is null
     )
     WHERE CNT > 10
 
     UNION ALL
 
     SELECT T.TRANSACTION_ID, T.CUSTOMER_ID, T.ACCOUNT_ID, 'FR005' as fraud_code, 80 as risk_score, 'NEW_DEVICE' as alert_type,T.created_date_time as load_dts
-    FROM UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_transaction T
-    JOIN UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_device_registry D ON T.DEVICE_ID = D.DEVICE_ID
-    WHERE T.IS_CURRENT='TRUE' AND D.IS_CURRENT='TRUE' AND D.TRUSTED_FLAG = 'N'
+    FROM UPI_FRAUD_MONITORING_DB.transform.sl_transaction T
+    JOIN UPI_FRAUD_MONITORING_DB.transform.sl_device_registry D ON T.DEVICE_ID = D.DEVICE_ID
+    WHERE T.updated_date_time is null AND D.updated_date_time is null AND D.TRUSTED_FLAG = 'N'
 
     UNION ALL
 
     SELECT T.TRANSACTION_ID, T.CUSTOMER_ID, T.ACCOUNT_ID, 'FR007' as fraud_code, 100 as risk_score, 'BLACKLISTED_BENEFICIARY' as alert_type,T.created_date_time as load_dts
-    FROM UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_transaction T
-    JOIN UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_beneficiary B ON T.BENEFICIARY_ID = B.BENEFICIARY_ID
-    JOIN UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_watchlist W ON B.BENEFICIARY_NAME = W.ENTITY_NAME
-    WHERE T.IS_CURRENT='TRUE' AND B.IS_CURRENT='TRUE' AND W.IS_CURRENT='TRUE'
+    FROM UPI_FRAUD_MONITORING_DB.transform.sl_transaction T
+    JOIN UPI_FRAUD_MONITORING_DB.transform.sl_beneficiary B ON T.BENEFICIARY_ID = B.BENEFICIARY_ID
+    JOIN UPI_FRAUD_MONITORING_DB.transform.sl_watchlist W ON B.BENEFICIARY_NAME = W.ENTITY_NAME
+    WHERE T.updated_date_time is null AND B.updated_date_time is null AND W.updated_date_time is null
 ),
 rs as (SELECT UUID_STRING() AS ALERT_ID,
        r.fraud_code,

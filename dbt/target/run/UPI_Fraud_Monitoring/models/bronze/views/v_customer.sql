@@ -21,10 +21,9 @@
     trim(RISK_RATING) as RISK_RATING,
     CUSTOMER_SINCE,
     trim(CUSTOMER_STATUS) as CUSTOMER_STATUS,
-    trim(SOURCE_FILE_NAME) as SOURCE_FILE_NAME,
     cast(CREATED_LOAD_ID as number(38,0)) as CREATED_LOAD_ID,
     CREATED_DATE_TIME,
-                md5(coalesce(trim(CUSTOMER_ID), '^') || '|' || coalesce(trim(CUSTOMER_NAME), '^') || '|' || coalesce(DOB::string, '^') || '|' || coalesce(trim(GENDER), '^') || '|' || coalesce(cast(MOBILE_NUMBER as string), '^') || '|' || coalesce(trim(EMAIL_ID), '^') || '|' || coalesce(trim(CUSTOMER_SEGMENT), '^') || '|' || coalesce(trim(CUSTOMER_TYPE), '^') || '|' || coalesce(trim(KYC_STATUS), '^') || '|' || coalesce(trim(RISK_RATING), '^') || '|' || coalesce(CUSTOMER_SINCE::string, '^') || '|' || coalesce(trim(CUSTOMER_STATUS), '^') || '|' || coalesce(trim(SOURCE_FILE_NAME), '^') || '|' || coalesce(cast(CREATED_LOAD_ID as string), '^') || '|' || coalesce(CREATED_DATE_TIME::string, '^')) as hash_diff
+                md5(coalesce(trim(CUSTOMER_ID), '^') || '|' || coalesce(trim(CUSTOMER_NAME), '^') || '|' || coalesce(DOB::string, '^') || '|' || coalesce(trim(GENDER), '^') || '|' || coalesce(cast(MOBILE_NUMBER as string), '^') || '|' || coalesce(trim(EMAIL_ID), '^') || '|' || coalesce(trim(CUSTOMER_SEGMENT), '^') || '|' || coalesce(trim(CUSTOMER_TYPE), '^') || '|' || coalesce(trim(KYC_STATUS), '^') || '|' || coalesce(trim(RISK_RATING), '^') || '|' || coalesce(CUSTOMER_SINCE::string, '^') || '|' || coalesce(trim(CUSTOMER_STATUS), '^') || '|' || coalesce(cast(CREATED_LOAD_ID as string), '^') || '|' || coalesce(CREATED_DATE_TIME::string, '^')) as hash_diff
             from transform.v_raw_customer
             where created_load_id is not null
         )

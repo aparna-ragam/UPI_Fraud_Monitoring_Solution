@@ -7,9 +7,6 @@
                 
                 
             
-                
-                
-            
         
     
 
@@ -19,8 +16,6 @@
         using UPI_FRAUD_MONITORING_DB.TRANSFORM.sl_account__dbt_tmp as DBT_INTERNAL_SOURCE
         on (
                     DBT_INTERNAL_SOURCE.account_id = DBT_INTERNAL_DEST.account_id
-                ) and (
-                    DBT_INTERNAL_SOURCE.hash_diff = DBT_INTERNAL_DEST.hash_diff
                 )
 
     
