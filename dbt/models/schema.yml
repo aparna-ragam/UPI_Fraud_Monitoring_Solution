@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: sl_customer
+    description: "Customer table"
+    columns:
+      - name: customer_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+
+  - name: sl_account
+    description: "Account table"
+    columns:
+      - name: account_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
