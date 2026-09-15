@@ -287,6 +287,19 @@ $$
   if (errors.length > 0) {
     result += ' | Errors: ' + errors.join('; ');
   }
+
+  // Trigger GitHub Actions dbt build if any files were processed
+  if (folders_processed > 0) {
+    try {
+      snowflake.execute({sqlText:
+        "CALL UPI_FRAUD_MONITORING.STAGING.TRIGGER_DBT_BUILD_SP('" + batch_load_id + "', '" + folders_processed + "')"
+      });
+      result += ' | dbt build triggered';
+    } catch(e) {
+      result += ' | dbt trigger failed: ' + e.message;
+    }
+  }
+
   return result;
 $$;
 
