@@ -10,7 +10,7 @@
     cast(CREATED_LOAD_ID as number(38,0)) as CREATED_LOAD_ID,
     CREATED_DATE_TIME,
                 md5(coalesce(trim(PASSWORD_CHANGE_ID), '^') || '|' || coalesce(trim(CUSTOMER_ID), '^') || '|' || coalesce(CHANGE_TIME::string, '^') || '|' || coalesce(trim(CHANGE_CHANNEL), '^') || '|' || coalesce(trim(DEVICE_ID), '^') || '|' || coalesce(cast(CREATED_LOAD_ID as string), '^') || '|' || coalesce(CREATED_DATE_TIME::string, '^')) as hash_diff
-            from transform.v_raw_password_change
+            from UPI_FRAUD_MONITORING_DB.TRANSFORM.v_raw_password_change
             where created_load_id is not null
         )
         select *

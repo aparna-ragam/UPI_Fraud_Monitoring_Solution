@@ -5,8 +5,6 @@
         
             
             
-            
-            
         
     
 
@@ -14,7 +12,9 @@
 
     merge into UPI_FRAUD_MONITORING_DB.analytics.gld_fraud_alert as DBT_INTERNAL_DEST
         using UPI_FRAUD_MONITORING_DB.analytics.gld_fraud_alert__dbt_tmp as DBT_INTERNAL_SOURCE
-        on ((DBT_INTERNAL_SOURCE.alert_id = DBT_INTERNAL_DEST.alert_id))
+        on (
+                DBT_INTERNAL_SOURCE.alert_id = DBT_INTERNAL_DEST.alert_id
+            )
 
     
     when matched then update set

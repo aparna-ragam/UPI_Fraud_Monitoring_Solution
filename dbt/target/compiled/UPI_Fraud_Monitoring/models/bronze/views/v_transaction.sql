@@ -22,7 +22,7 @@
     cast(CREATED_LOAD_ID as number(38,0)) as CREATED_LOAD_ID,
     CREATED_DATE_TIME,
                 md5(coalesce(trim(TRANSACTION_ID), '^') || '|' || coalesce(trim(UPI_REF_NO), '^') || '|' || coalesce(trim(CUSTOMER_ID), '^') || '|' || coalesce(trim(ACCOUNT_ID), '^') || '|' || coalesce(trim(PAYER_VPA), '^') || '|' || coalesce(trim(PAYEE_VPA), '^') || '|' || coalesce(trim(BENEFICIARY_ID), '^') || '|' || coalesce(trim(MERCHANT_ID), '^') || '|' || coalesce(TXN_DATETIME::string, '^') || '|' || coalesce(cast(TXN_AMOUNT as string), '^') || '|' || coalesce(trim(TXN_TYPE), '^') || '|' || coalesce(trim(TXN_STATUS), '^') || '|' || coalesce(trim(CHANNEL), '^') || '|' || coalesce(trim(DEVICE_ID), '^') || '|' || coalesce(trim(IP_ADDRESS), '^') || '|' || coalesce(cast(LATITUDE as string), '^') || '|' || coalesce(cast(LONGITUDE as string), '^') || '|' || coalesce(cast(CREATED_LOAD_ID as string), '^') || '|' || coalesce(CREATED_DATE_TIME::string, '^')) as hash_diff
-            from transform.v_raw_transaction
+            from UPI_FRAUD_MONITORING_DB.TRANSFORM.v_raw_transaction
             where created_load_id is not null
         )
         select *

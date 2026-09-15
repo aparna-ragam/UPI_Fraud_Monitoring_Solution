@@ -1,10 +1,7 @@
 
   create or replace   view UPI_FRAUD_MONITORING_DB.TRANSFORM.v_login_activity
   
-  
-  
-  
-  as (
+   as (
     
         
         with cleansed as (
@@ -21,7 +18,7 @@
     cast(CREATED_LOAD_ID as number(38,0)) as CREATED_LOAD_ID,
     CREATED_DATE_TIME,
                 md5(coalesce(trim(LOGIN_ID), '^') || '|' || coalesce(trim(CUSTOMER_ID), '^') || '|' || coalesce(trim(DEVICE_ID), '^') || '|' || coalesce(LOGIN_TIME::string, '^') || '|' || coalesce(trim(LOGIN_STATUS), '^') || '|' || coalesce(trim(IP_ADDRESS), '^') || '|' || coalesce(trim(COUNTRY), '^') || '|' || coalesce(trim(STATE), '^') || '|' || coalesce(trim(CITY), '^') || '|' || coalesce(cast(CREATED_LOAD_ID as string), '^') || '|' || coalesce(CREATED_DATE_TIME::string, '^')) as hash_diff
-            from transform.v_raw_login_activity
+            from UPI_FRAUD_MONITORING_DB.TRANSFORM.v_raw_login_activity
             where created_load_id is not null
         )
         select *

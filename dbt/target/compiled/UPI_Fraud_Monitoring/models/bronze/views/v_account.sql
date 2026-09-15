@@ -15,7 +15,7 @@
     cast(CREATED_LOAD_ID as number(38,0)) as CREATED_LOAD_ID,
     CREATED_DATE_TIME,
                 md5(coalesce(trim(ACCOUNT_ID), '^') || '|' || coalesce(trim(CUSTOMER_ID), '^') || '|' || coalesce(cast(ACCOUNT_NUMBER as string), '^') || '|' || coalesce(trim(ACCOUNT_TYPE), '^') || '|' || coalesce(trim(BRANCH_CODE), '^') || '|' || coalesce(trim(IFSC_CODE), '^') || '|' || coalesce(OPEN_DATE::string, '^') || '|' || coalesce(trim(ACCOUNT_STATUS), '^') || '|' || coalesce(cast(CURRENT_BALANCE as string), '^') || '|' || coalesce(cast(AVAILABLE_BALANCE as string), '^') || '|' || coalesce(cast(CREATED_LOAD_ID as string), '^') || '|' || coalesce(CREATED_DATE_TIME::string, '^')) as hash_diff
-            from transform.v_raw_account
+            from UPI_FRAUD_MONITORING_DB.TRANSFORM.v_raw_account
             where created_load_id is not null
         )
         select *

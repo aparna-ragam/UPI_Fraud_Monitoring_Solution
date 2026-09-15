@@ -1,10 +1,7 @@
 
   create or replace   view UPI_FRAUD_MONITORING_DB.TRANSFORM.v_watchlist
   
-  
-  
-  
-  as (
+   as (
     
         
         with cleansed as (
@@ -17,7 +14,7 @@
     cast(CREATED_LOAD_ID as number(38,0)) as CREATED_LOAD_ID,
     CREATED_DATE_TIME,
                 md5(coalesce(trim(WATCHLIST_ID), '^') || '|' || coalesce(trim(ENTITY_TYPE), '^') || '|' || coalesce(trim(ENTITY_ID), '^') || '|' || coalesce(trim(ENTITY_NAME), '^') || '|' || coalesce(trim(RISK_LEVEL), '^') || '|' || coalesce(cast(CREATED_LOAD_ID as string), '^') || '|' || coalesce(CREATED_DATE_TIME::string, '^')) as hash_diff
-            from transform.v_raw_watchlist
+            from UPI_FRAUD_MONITORING_DB.TRANSFORM.v_raw_watchlist
             where created_load_id is not null
         )
         select *

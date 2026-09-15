@@ -1,10 +1,7 @@
 
   create or replace   view UPI_FRAUD_MONITORING_DB.TRANSFORM.v_raw_device_registry
   
-  
-  
-  
-  as (
+   as (
     
     
     
