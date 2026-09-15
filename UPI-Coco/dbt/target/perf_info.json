@@ -1,0 +1,51 @@
+{
+    "path_count": 180,
+    "parsed_path_count": 180,
+    "static_analysis_path_count": 30,
+    "static_analysis_parsed_path_count": 0,
+    "is_partial_parse_enabled": true,
+    "is_static_analysis_enabled": true,
+    "read_files_elapsed": 0.07849317003274336,
+    "load_macros_elapsed": 0.597938050981611,
+    "parse_project_elapsed": 1.1059988889610395,
+    "patch_sources_elapsed": 0.008956792007666081,
+    "process_manifest_elapsed": 0.03196578600909561,
+    "load_all_elapsed": 2.1661337679834105,
+    "projects": [
+        {
+            "project_name": "UPI_Fraud_Monitoring",
+            "elapsed": 1.088234489026945,
+            "parsers": [
+                {
+                    "parser": "model",
+                    "elapsed": 0.5206688669859432,
+                    "parsed_path_count": 30
+                },
+                {
+                    "parser": "test",
+                    "elapsed": 0.5576389990164898,
+                    "parsed_path_count": 2
+                }
+            ],
+            "parsed_path_count": 32
+        },
+        {
+            "project_name": "dbt_snowflake",
+            "elapsed": 0.007755809987429529,
+            "parsers": [],
+            "parsed_path_count": 0
+        },
+        {
+            "project_name": "dbt",
+            "elapsed": 0.00972228602040559,
+            "parsers": [
+                {
+                    "parser": "doc",
+                    "elapsed": 0.0002475940273143351,
+                    "parsed_path_count": 1
+                }
+            ],
+            "parsed_path_count": 1
+        }
+    ]
+}

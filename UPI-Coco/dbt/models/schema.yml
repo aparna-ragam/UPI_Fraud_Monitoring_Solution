@@ -1,0 +1,551 @@
+version: 2
+
+models:
+  - name: v_raw_account
+    description: "Raw view on STAGING.ACCOUNT - as-is structure"
+  - name: v_raw_beneficiary
+    description: "Raw view on STAGING.BENEFICIARY - as-is structure"
+  - name: v_raw_collect_request
+    description: "Raw view on STAGING.COLLECT_REQUEST - as-is structure"
+  - name: v_raw_customer
+    description: "Raw view on STAGING.CUSTOMER - as-is structure"
+  - name: v_raw_device_registry
+    description: "Raw view on STAGING.DEVICE_REGISTRY - as-is structure"
+  - name: v_raw_login_activity
+    description: "Raw view on STAGING.LOGIN_ACTIVITY - as-is structure"
+  - name: v_raw_merchant
+    description: "Raw view on STAGING.MERCHANT - as-is structure"
+  - name: v_raw_password_change
+    description: "Raw view on STAGING.PASSWORD_CHANGE - as-is structure"
+  - name: v_raw_transaction
+    description: "Raw view on STAGING.TRANSACTION - as-is structure"
+  - name: v_raw_watchlist
+    description: "Raw view on STAGING.WATCHLIST - as-is structure"
+
+  - name: v_account
+    description: "Latest records from v_raw_account - deduplicated, trimmed, with hash_diff"
+    columns:
+      - name: ACCOUNT_ID
+        tests:
+          - not_null
+
+  - name: v_beneficiary
+    description: "Latest records from v_raw_beneficiary - deduplicated, trimmed, with hash_diff"
+    columns:
+      - name: BENEFICIARY_ID
+        tests:
+          - not_null
+
+  - name: v_collect_request
+    description: "Latest records from v_raw_collect_request - deduplicated, trimmed, with hash_diff"
+    columns:
+      - name: COLLECT_REQUEST_ID
+        tests:
+          - not_null
+
+  - name: v_customer
+    description: "Latest records from v_raw_customer - deduplicated, trimmed, with hash_diff"
+    columns:
+      - name: CUSTOMER_ID
+        tests:
+          - not_null
+
+  - name: v_device_registry
+    description: "Latest records from v_raw_device_registry - deduplicated, trimmed, with hash_diff"
+    columns:
+      - name: DEVICE_ID
+        tests:
+          - not_null
+
+  - name: v_login_activity
+    description: "Latest records from v_raw_login_activity - deduplicated, trimmed, with hash_diff"
+    columns:
+      - name: LOGIN_ID
+        tests:
+          - not_null
+
+  - name: v_merchant
+    description: "Latest records from v_raw_merchant - deduplicated, trimmed, with hash_diff"
+    columns:
+      - name: MERCHANT_ID
+        tests:
+          - not_null
+
+  - name: v_password_change
+    description: "Latest records from v_raw_password_change - deduplicated, trimmed, with hash_diff"
+    columns:
+      - name: PASSWORD_CHANGE_ID
+        tests:
+          - not_null
+
+  - name: v_transaction
+    description: "Latest records from v_raw_transaction - deduplicated, trimmed, with hash_diff"
+    columns:
+      - name: TRANSACTION_ID
+        tests:
+          - not_null
+
+  - name: v_watchlist
+    description: "Latest records from v_raw_watchlist - deduplicated, trimmed, with hash_diff"
+    columns:
+      - name: WATCHLIST_ID
+        tests:
+          - not_null
+
+  - name: sl_transaction
+    description: "Silver layer - SCD Type 2 transaction fact with risk classification"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: TRANSACTION_ID
+        data_type: VARCHAR(100)
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+      - name: CUSTOMER_ID
+        data_type: VARCHAR(50)
+      - name: ACCOUNT_ID
+        data_type: VARCHAR(50)
+      - name: BENEFICIARY_ID
+        data_type: VARCHAR(100)
+      - name: MERCHANT_ID
+        data_type: VARCHAR(100)
+      - name: DEVICE_ID
+        data_type: VARCHAR(100)
+      - name: TXN_DATETIME
+        data_type: TIMESTAMP_NTZ
+      - name: TXN_AMOUNT
+        data_type: NUMBER(18,2)
+      - name: TXN_TYPE
+        data_type: VARCHAR(50)
+      - name: TXN_STATUS
+        data_type: VARCHAR(30)
+      - name: CHANNEL
+        data_type: VARCHAR(50)
+      - name: COUNTRY
+        data_type: VARCHAR(100)
+      - name: STATE
+        data_type: VARCHAR(100)
+      - name: TXN_RISK_REASON
+        data_type: VARCHAR(50)
+      - name: TXN_FRAUD_ID
+        data_type: VARCHAR(50)
+      - name: CREATED_LOAD_ID
+        data_type: NUMBER(38,0)
+      - name: CREATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: HASH_DIFF
+        data_type: VARCHAR(2000)
+      - name: IS_CURRENT
+        data_type: VARCHAR(10)
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
+
+  - name: sl_customer
+    description: "Silver layer - SCD Type 2 customer dimension"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: CUSTOMER_ID
+        data_type: VARCHAR(50)
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+      - name: CUSTOMER_NAME
+        data_type: VARCHAR(255)
+      - name: CUSTOMER_SEGMENT
+        data_type: VARCHAR(50)
+      - name: KYC_STATUS
+        data_type: VARCHAR(30)
+      - name: RISK_RATING
+        data_type: VARCHAR(20)
+      - name: CUSTOMER_STATUS
+        data_type: VARCHAR(30)
+      - name: CUSTOMER_SINCE
+        data_type: DATE
+      - name: CUSTOMER_TYPE
+        data_type: VARCHAR(50)
+      - name: CREATED_LOAD_ID
+        data_type: NUMBER(38,0)
+      - name: CREATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: HASH_DIFF
+        data_type: VARCHAR(2000)
+      - name: IS_CURRENT
+        data_type: VARCHAR(10)
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
+
+  - name: sl_account
+    description: "Silver layer - SCD Type 2 account dimension with age and risk rating"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: ACCOUNT_ID
+        data_type: VARCHAR(50)
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+      - name: CUSTOMER_ID
+        data_type: VARCHAR(50)
+      - name: ACCOUNT_TYPE
+        data_type: VARCHAR(30)
+      - name: ACCOUNT_STATUS
+        data_type: VARCHAR(30)
+      - name: CURRENT_BALANCE
+        data_type: NUMBER(18,2)
+      - name: AVAILABLE_BALANCE
+        data_type: NUMBER(18,2)
+      - name: OPEN_DATE
+        data_type: DATE
+      - name: ACCOUNT_AGE_DAYS
+        data_type: NUMBER(38,0)
+      - name: ACCOUNT_RISK_RATING
+        data_type: VARCHAR(20)
+      - name: CREATED_LOAD_ID
+        data_type: NUMBER(38,0)
+      - name: CREATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: HASH_DIFF
+        data_type: VARCHAR(2000)
+      - name: IS_CURRENT
+        data_type: VARCHAR(10)
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
+
+  - name: sl_device
+    description: "Silver layer - SCD Type 2 device dimension with risk score"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: DEVICE_ID
+        data_type: VARCHAR(100)
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+      - name: CUSTOMER_ID
+        data_type: VARCHAR(50)
+      - name: DEVICE_FINGERPRINT
+        data_type: VARCHAR(500)
+      - name: DEVICE_OS
+        data_type: VARCHAR(50)
+      - name: TRUSTED_FLAG
+        data_type: VARCHAR(1)
+      - name: DEVICE_AGE_DAYS
+        data_type: NUMBER(38,0)
+      - name: DEVICE_RISK_SCORE
+        data_type: NUMBER(38,0)
+      - name: HASH_DIFF
+        data_type: VARCHAR(2000)
+      - name: IS_CURRENT
+        data_type: VARCHAR(10)
+      - name: CREATED_LOAD_ID
+        data_type: NUMBER(38,0)
+      - name: CREATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
+
+  - name: sl_merchant
+    description: "Silver layer - SCD Type 2 merchant dimension with MCC code and risk rating"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: MERCHANT_ID
+        data_type: VARCHAR(100)
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+      - name: MERCHANT_NAME
+        data_type: VARCHAR(255)
+      - name: MERCHANT_CATEGORY
+        data_type: VARCHAR(100)
+      - name: MCC_CODE
+        data_type: VARCHAR(20)
+      - name: MERCHANT_STATUS
+        data_type: VARCHAR(50)
+      - name: RISK_RATING
+        data_type: VARCHAR(20)
+      - name: CREATED_LOAD_ID
+        data_type: NUMBER(38,0)
+      - name: CREATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: HASH_DIFF
+        data_type: VARCHAR(2000)
+      - name: IS_CURRENT
+        data_type: VARCHAR(10)
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
+
+  - name: sl_beneficiary
+    description: "Silver layer - SCD Type 2 beneficiary dimension with derived risk rating"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: BENEFICIARY_ID
+        data_type: VARCHAR(100)
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+      - name: CUSTOMER_ID
+        data_type: VARCHAR(50)
+      - name: BENEFICIARY_NAME
+        data_type: VARCHAR(255)
+      - name: BENEFICIARY_VPA
+        data_type: VARCHAR(255)
+      - name: BANK_NAME
+        data_type: VARCHAR(255)
+      - name: RISK_RATING
+        data_type: VARCHAR(20)
+      - name: HASH_DIFF
+        data_type: VARCHAR(2000)
+      - name: IS_CURRENT
+        data_type: VARCHAR(10)
+      - name: CREATED_LOAD_ID
+        data_type: NUMBER(38,0)
+      - name: CREATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
+
+  - name: sl_watchlist
+    description: "Silver layer - SCD Type 2 watchlist entities"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: WATCHLIST_ID
+        data_type: VARCHAR(100)
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+      - name: ENTITY_TYPE
+        data_type: VARCHAR(50)
+      - name: ENTITY_ID
+        data_type: VARCHAR(100)
+      - name: ENTITY_NAME
+        data_type: VARCHAR(255)
+      - name: RISK_LEVEL
+        data_type: VARCHAR(20)
+      - name: CREATED_LOAD_ID
+        data_type: NUMBER(38,0)
+      - name: CREATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: HASH_DIFF
+        data_type: VARCHAR(2000)
+      - name: IS_CURRENT
+        data_type: VARCHAR(10)
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
+
+  - name: sl_password_change
+    description: "Silver layer - SCD Type 2 password change with device risk"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: PASSWORD_CHANGE_ID
+        data_type: VARCHAR(100)
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+      - name: CUSTOMER_ID
+        data_type: VARCHAR(50)
+      - name: CHANGE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: CHANGE_CHANNEL
+        data_type: VARCHAR(50)
+      - name: DEVICE_ID
+        data_type: VARCHAR(100)
+      - name: CHANGE_HOUR
+        data_type: NUMBER(38,0)
+      - name: CHANGE_DAY_OF_WEEK
+        data_type: VARCHAR(20)
+      - name: DEVICE_RISK_SCORE
+        data_type: NUMBER(38,0)
+      - name: PASSWORD_CHANGE_RISK
+        data_type: VARCHAR(20)
+      - name: CREATED_LOAD_ID
+        data_type: NUMBER(38,0)
+      - name: CREATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: HASH_DIFF
+        data_type: VARCHAR(2000)
+      - name: IS_CURRENT
+        data_type: VARCHAR(10)
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
+
+  - name: sl_collect_request
+    description: "Silver layer - SCD Type 2 collect request with risk rating"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: COLLECT_REQUEST_ID
+        data_type: VARCHAR(100)
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+      - name: CUSTOMER_ID
+        data_type: VARCHAR(50)
+      - name: REQUEST_AMOUNT
+        data_type: NUMBER(18,2)
+      - name: REQUEST_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: REQUEST_STATUS
+        data_type: VARCHAR(30)
+      - name: REQUEST_HOUR
+        data_type: NUMBER(38,0)
+      - name: REQUEST_DAY_OF_WEEK
+        data_type: VARCHAR(20)
+      - name: REQUEST_RISK_RATING
+        data_type: VARCHAR(20)
+      - name: CREATED_LOAD_ID
+        data_type: NUMBER(38,0)
+      - name: CREATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: HASH_DIFF
+        data_type: VARCHAR(2000)
+      - name: IS_CURRENT
+        data_type: VARCHAR(10)
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
+
+  - name: sl_login_activity
+    description: "Silver layer - SCD Type 2 login activity"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: LOGIN_ID
+        data_type: VARCHAR(100)
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+      - name: CUSTOMER_ID
+        data_type: VARCHAR(50)
+      - name: DEVICE_ID
+        data_type: VARCHAR(100)
+      - name: LOGIN_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: LOGIN_STATUS
+        data_type: VARCHAR(30)
+      - name: COUNTRY
+        data_type: VARCHAR(100)
+      - name: STATE
+        data_type: VARCHAR(100)
+      - name: CITY
+        data_type: VARCHAR(100)
+      - name: IP_ADDRESS
+        data_type: VARCHAR(100)
+      - name: CREATED_LOAD_ID
+        data_type: NUMBER(38,0)
+      - name: CREATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: HASH_DIFF
+        data_type: VARCHAR(2000)
+      - name: IS_CURRENT
+        data_type: VARCHAR(10)
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
+
+  - name: gld_rule_result
+    description: "Gold layer - Fraud rule evaluation results per transaction"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: RULE_RESULT_ID
+        data_type: VARCHAR(100)
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+      - name: RULE_ID
+        data_type: VARCHAR(20)
+      - name: RULE_NAME
+        data_type: VARCHAR(200)
+      - name: TRANSACTION_ID
+        data_type: VARCHAR(100)
+      - name: CUSTOMER_ID
+        data_type: VARCHAR(50)
+      - name: ACCOUNT_ID
+        data_type: VARCHAR(50)
+      - name: RISK_SCORE
+        data_type: NUMBER(38,0)
+      - name: SEVERITY
+        data_type: VARCHAR(20)
+      - name: RULE_STATUS
+        data_type: VARCHAR(20)
+      - name: DETECTED_TS
+        data_type: TIMESTAMP_NTZ
+      - name: CREATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: CREATED_LOAD_ID
+        data_type: NUMBER(38,0)
+
+  - name: gld_fraud_alert
+    description: "Gold layer - Aggregated fraud alerts with severity classification"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: ALERT_ID
+        data_type: VARCHAR(100)
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+      - name: RULE_ID
+        data_type: VARCHAR(20)
+      - name: CUSTOMER_ID
+        data_type: VARCHAR(50)
+      - name: TRANSACTION_ID
+        data_type: VARCHAR(100)
+      - name: RISK_SCORE
+        data_type: NUMBER(38,0)
+      - name: SEVERITY
+        data_type: VARCHAR(20)
+      - name: ALERT_STATUS
+        data_type: VARCHAR(30)
+      - name: CREATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: CREATED_LOAD_ID
+        data_type: NUMBER(38,0)

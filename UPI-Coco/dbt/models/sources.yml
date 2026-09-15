@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: staging
+    database: UPI_FRAUD_MONITORING
+    schema: STAGING
+    tables:
+      - name: account
+      - name: beneficiary
+      - name: collect_request
+      - name: customer
+      - name: device_registry
+      - name: login_activity
+      - name: merchant
+      - name: password_change
+      - name: transaction
+      - name: watchlist
