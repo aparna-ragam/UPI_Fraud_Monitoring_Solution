@@ -1,21 +1,23 @@
 {{
     config(
         materialized='incremental',
-        unique_key='BENEFICIARY_ID',
-        incremental_strategy='merge',
+        incremental_strategy='append',
+        on_schema_change='append_new_columns',
         post_hook=[
             "UPDATE {{ this }} t
-             SET t.IS_CURRENT = 'N'
-             WHERE t.IS_CURRENT = 'Y'
-               AND t.BENEFICIARY_ID IN (
-                   SELECT s.BENEFICIARY_ID FROM {{ this }} s
-                   WHERE s.IS_CURRENT = 'Y'
-                   GROUP BY s.BENEFICIARY_ID HAVING COUNT(*) > 1
-               )
-               AND t.CREATED_DATE_TIME < (
-                   SELECT MAX(s2.CREATED_DATE_TIME) FROM {{ this }} s2
-                   WHERE s2.BENEFICIARY_ID = t.BENEFICIARY_ID AND s2.IS_CURRENT = 'Y'
-               )"
+             SET t.IS_CURRENT = 'N',
+                 t.UPDATED_DATE_TIME = CURRENT_TIMESTAMP(),
+                 t.UPDATED_LOAD_ID = dup.LATEST_LOAD_ID
+             FROM (
+                 SELECT BENEFICIARY_ID, MAX(CREATED_LOAD_ID) as LATEST_LOAD_ID
+                 FROM {{ this }}
+                 WHERE IS_CURRENT = 'Y'
+                 GROUP BY BENEFICIARY_ID
+                 HAVING COUNT(*) > 1
+             ) dup
+             WHERE t.BENEFICIARY_ID = dup.BENEFICIARY_ID
+               AND t.IS_CURRENT = 'Y'
+               AND t.CREATED_LOAD_ID < dup.LATEST_LOAD_ID"
         ]
     )
 }}
@@ -52,7 +54,7 @@ source as (
             WHEN DATEDIFF(DAY, cast(b.BENEFICIARY_CREATED_DATE as DATE), CURRENT_DATE) < 30 THEN 'MEDIUM'
             ELSE 'LOW'
         END as RISK_RATING,
-        b.CREATED_LOAD_ID,
+        cast(b.CREATED_LOAD_ID as NUMBER) as CREATED_LOAD_ID,
         b.CREATED_DATE_TIME
     from {{ ref('v_beneficiary') }} b
     left join txn_agg t on b.BENEFICIARY_ID = t.BENEFICIARY_ID
@@ -60,12 +62,8 @@ source as (
 
 hashed as (
     select
-        BENEFICIARY_ID,
-        CUSTOMER_ID,
-        BENEFICIARY_NAME,
-        BENEFICIARY_VPA,
-        BANK_NAME,
-        RISK_RATING,
+        BENEFICIARY_ID, CUSTOMER_ID, BENEFICIARY_NAME, BENEFICIARY_VPA,
+        BANK_NAME, RISK_RATING,
         md5(
             coalesce(BENEFICIARY_ID, '^') || '|' ||
             coalesce(CUSTOMER_ID, '^') || '|' ||
@@ -75,8 +73,9 @@ hashed as (
             coalesce(RISK_RATING, '^')
         ) as HASH_DIFF,
         'Y' as IS_CURRENT,
-        CREATED_LOAD_ID,
-        CREATED_DATE_TIME
+        CREATED_LOAD_ID, CREATED_DATE_TIME,
+        NULL::TIMESTAMP_NTZ as UPDATED_DATE_TIME,
+        NULL::NUMBER as UPDATED_LOAD_ID
     from source
 )
 

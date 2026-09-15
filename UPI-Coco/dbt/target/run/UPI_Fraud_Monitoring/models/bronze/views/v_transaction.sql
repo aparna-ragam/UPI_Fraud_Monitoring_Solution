@@ -164,9 +164,9 @@
             trim(IP_ADDRESS) as IP_ADDRESS,
             trim(LATITUDE) as LATITUDE,
             trim(LONGITUDE) as LONGITUDE,
-            trim(CREATED_LOAD_ID) as CREATED_LOAD_ID,
             CREATED_DATE_TIME,
-            md5(coalesce(trim(TRANSACTION_ID), '^') || '|' || coalesce(trim(UPI_REF_NO), '^') || '|' || coalesce(trim(CUSTOMER_ID), '^') || '|' || coalesce(trim(ACCOUNT_ID), '^') || '|' || coalesce(trim(PAYER_VPA), '^') || '|' || coalesce(trim(PAYEE_VPA), '^') || '|' || coalesce(trim(BENEFICIARY_ID), '^') || '|' || coalesce(trim(MERCHANT_ID), '^') || '|' || coalesce(trim(TXN_DATETIME), '^') || '|' || coalesce(trim(TXN_AMOUNT), '^') || '|' || coalesce(trim(TXN_TYPE), '^') || '|' || coalesce(trim(TXN_STATUS), '^') || '|' || coalesce(trim(CHANNEL), '^') || '|' || coalesce(trim(DEVICE_ID), '^') || '|' || coalesce(trim(IP_ADDRESS), '^') || '|' || coalesce(trim(LATITUDE), '^') || '|' || coalesce(trim(LONGITUDE), '^') || '|' || coalesce(trim(CREATED_LOAD_ID), '^') || '|' || coalesce(CREATED_DATE_TIME::string, '^')) as hash_diff
+            cast(CREATED_LOAD_ID as number(38,0)) as CREATED_LOAD_ID,
+            md5(coalesce(trim(TRANSACTION_ID), '^') || '|' || coalesce(trim(UPI_REF_NO), '^') || '|' || coalesce(trim(CUSTOMER_ID), '^') || '|' || coalesce(trim(ACCOUNT_ID), '^') || '|' || coalesce(trim(PAYER_VPA), '^') || '|' || coalesce(trim(PAYEE_VPA), '^') || '|' || coalesce(trim(BENEFICIARY_ID), '^') || '|' || coalesce(trim(MERCHANT_ID), '^') || '|' || coalesce(trim(TXN_DATETIME), '^') || '|' || coalesce(trim(TXN_AMOUNT), '^') || '|' || coalesce(trim(TXN_TYPE), '^') || '|' || coalesce(trim(TXN_STATUS), '^') || '|' || coalesce(trim(CHANNEL), '^') || '|' || coalesce(trim(DEVICE_ID), '^') || '|' || coalesce(trim(IP_ADDRESS), '^') || '|' || coalesce(trim(LATITUDE), '^') || '|' || coalesce(trim(LONGITUDE), '^') || '|' || coalesce(CREATED_DATE_TIME::string, '^') || '|' || coalesce(cast(CREATED_LOAD_ID as string), '^')) as hash_diff
         from UPI_FRAUD_MONITORING.TRANSFORM.v_raw_transaction
         where CREATED_LOAD_ID is not null
     )

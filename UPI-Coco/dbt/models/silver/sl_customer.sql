@@ -1,21 +1,23 @@
 {{
     config(
         materialized='incremental',
-        unique_key='CUSTOMER_ID',
-        incremental_strategy='merge',
+        incremental_strategy='append',
+        on_schema_change='append_new_columns',
         post_hook=[
             "UPDATE {{ this }} t
-             SET t.IS_CURRENT = 'N'
-             WHERE t.IS_CURRENT = 'Y'
-               AND t.CUSTOMER_ID IN (
-                   SELECT s.CUSTOMER_ID FROM {{ this }} s
-                   WHERE s.IS_CURRENT = 'Y'
-                   GROUP BY s.CUSTOMER_ID HAVING COUNT(*) > 1
-               )
-               AND t.CREATED_DATE_TIME < (
-                   SELECT MAX(s2.CREATED_DATE_TIME) FROM {{ this }} s2
-                   WHERE s2.CUSTOMER_ID = t.CUSTOMER_ID AND s2.IS_CURRENT = 'Y'
-               )"
+             SET t.IS_CURRENT = 'N',
+                 t.UPDATED_DATE_TIME = CURRENT_TIMESTAMP(),
+                 t.UPDATED_LOAD_ID = dup.LATEST_LOAD_ID
+             FROM (
+                 SELECT CUSTOMER_ID, MAX(CREATED_LOAD_ID) as LATEST_LOAD_ID
+                 FROM {{ this }}
+                 WHERE IS_CURRENT = 'Y'
+                 GROUP BY CUSTOMER_ID
+                 HAVING COUNT(*) > 1
+             ) dup
+             WHERE t.CUSTOMER_ID = dup.CUSTOMER_ID
+               AND t.IS_CURRENT = 'Y'
+               AND t.CREATED_LOAD_ID < dup.LATEST_LOAD_ID"
         ]
     )
 }}
@@ -30,7 +32,7 @@ with source as (
         cast(CUSTOMER_STATUS as VARCHAR(30)) as CUSTOMER_STATUS,
         cast(CUSTOMER_SINCE as DATE) as CUSTOMER_SINCE,
         cast(CUSTOMER_TYPE as VARCHAR(50)) as CUSTOMER_TYPE,
-        CREATED_LOAD_ID,
+        cast(CREATED_LOAD_ID as NUMBER) as CREATED_LOAD_ID,
         CREATED_DATE_TIME
     from {{ ref('v_raw_customer') }}
 ),
@@ -48,7 +50,9 @@ hashed as (
             coalesce(cast(CUSTOMER_SINCE as VARCHAR), '^') || '|' ||
             coalesce(CUSTOMER_TYPE, '^')
         ) as HASH_DIFF,
-        'Y' as IS_CURRENT
+        'Y' as IS_CURRENT,
+        NULL::TIMESTAMP_NTZ as UPDATED_DATE_TIME,
+        NULL::NUMBER as UPDATED_LOAD_ID
     from source
 )
 

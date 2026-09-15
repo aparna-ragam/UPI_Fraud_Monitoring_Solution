@@ -133,13 +133,17 @@ models:
       - name: TXN_FRAUD_ID
         data_type: VARCHAR(50)
       - name: CREATED_LOAD_ID
-        data_type: VARCHAR(16777216)
+        data_type: NUMBER(38,0)
       - name: CREATED_DATE_TIME
         data_type: TIMESTAMP_NTZ
       - name: HASH_DIFF
         data_type: VARCHAR(2000)
       - name: IS_CURRENT
         data_type: VARCHAR(10)
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
 
   - name: sl_customer
     description: "Silver layer - SCD Type 2 customer dimension"
@@ -168,13 +172,17 @@ models:
       - name: CUSTOMER_TYPE
         data_type: VARCHAR(50)
       - name: CREATED_LOAD_ID
-        data_type: VARCHAR(16777216)
+        data_type: NUMBER(38,0)
       - name: CREATED_DATE_TIME
         data_type: TIMESTAMP_NTZ
       - name: HASH_DIFF
         data_type: VARCHAR(2000)
       - name: IS_CURRENT
         data_type: VARCHAR(10)
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
 
   - name: sl_account
     description: "Silver layer - SCD Type 2 account dimension with age and risk rating"
@@ -205,13 +213,17 @@ models:
       - name: ACCOUNT_RISK_RATING
         data_type: VARCHAR(20)
       - name: CREATED_LOAD_ID
-        data_type: VARCHAR(16777216)
+        data_type: NUMBER(38,0)
       - name: CREATED_DATE_TIME
         data_type: TIMESTAMP_NTZ
       - name: HASH_DIFF
         data_type: VARCHAR(2000)
       - name: IS_CURRENT
         data_type: VARCHAR(10)
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
 
   - name: sl_device
     description: "Silver layer - SCD Type 2 device dimension with risk score"
@@ -242,9 +254,13 @@ models:
       - name: IS_CURRENT
         data_type: VARCHAR(10)
       - name: CREATED_LOAD_ID
-        data_type: VARCHAR(16777216)
+        data_type: NUMBER(38,0)
       - name: CREATED_DATE_TIME
         data_type: TIMESTAMP_NTZ
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
 
   - name: sl_merchant
     description: "Silver layer - SCD Type 2 merchant dimension with MCC code and risk rating"
@@ -269,13 +285,17 @@ models:
       - name: RISK_RATING
         data_type: VARCHAR(20)
       - name: CREATED_LOAD_ID
-        data_type: VARCHAR(16777216)
+        data_type: NUMBER(38,0)
       - name: CREATED_DATE_TIME
         data_type: TIMESTAMP_NTZ
       - name: HASH_DIFF
         data_type: VARCHAR(2000)
       - name: IS_CURRENT
         data_type: VARCHAR(10)
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
 
   - name: sl_beneficiary
     description: "Silver layer - SCD Type 2 beneficiary dimension with derived risk rating"
@@ -304,9 +324,13 @@ models:
       - name: IS_CURRENT
         data_type: VARCHAR(10)
       - name: CREATED_LOAD_ID
-        data_type: VARCHAR(16777216)
+        data_type: NUMBER(38,0)
       - name: CREATED_DATE_TIME
         data_type: TIMESTAMP_NTZ
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
 
   - name: sl_watchlist
     description: "Silver layer - SCD Type 2 watchlist entities"
@@ -329,13 +353,17 @@ models:
       - name: RISK_LEVEL
         data_type: VARCHAR(20)
       - name: CREATED_LOAD_ID
-        data_type: VARCHAR(16777216)
+        data_type: NUMBER(38,0)
       - name: CREATED_DATE_TIME
         data_type: TIMESTAMP_NTZ
       - name: HASH_DIFF
         data_type: VARCHAR(2000)
       - name: IS_CURRENT
         data_type: VARCHAR(10)
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
 
   - name: sl_password_change
     description: "Silver layer - SCD Type 2 password change with device risk"
@@ -366,13 +394,17 @@ models:
       - name: PASSWORD_CHANGE_RISK
         data_type: VARCHAR(20)
       - name: CREATED_LOAD_ID
-        data_type: VARCHAR(16777216)
+        data_type: NUMBER(38,0)
       - name: CREATED_DATE_TIME
         data_type: TIMESTAMP_NTZ
       - name: HASH_DIFF
         data_type: VARCHAR(2000)
       - name: IS_CURRENT
         data_type: VARCHAR(10)
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
 
   - name: sl_collect_request
     description: "Silver layer - SCD Type 2 collect request with risk rating"
@@ -401,13 +433,17 @@ models:
       - name: REQUEST_RISK_RATING
         data_type: VARCHAR(20)
       - name: CREATED_LOAD_ID
-        data_type: VARCHAR(16777216)
+        data_type: NUMBER(38,0)
       - name: CREATED_DATE_TIME
         data_type: TIMESTAMP_NTZ
       - name: HASH_DIFF
         data_type: VARCHAR(2000)
       - name: IS_CURRENT
         data_type: VARCHAR(10)
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
 
   - name: sl_login_activity
     description: "Silver layer - SCD Type 2 login activity"
@@ -438,10 +474,78 @@ models:
       - name: IP_ADDRESS
         data_type: VARCHAR(100)
       - name: CREATED_LOAD_ID
-        data_type: VARCHAR(16777216)
+        data_type: NUMBER(38,0)
       - name: CREATED_DATE_TIME
         data_type: TIMESTAMP_NTZ
       - name: HASH_DIFF
         data_type: VARCHAR(2000)
       - name: IS_CURRENT
         data_type: VARCHAR(10)
+      - name: UPDATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: UPDATED_LOAD_ID
+        data_type: NUMBER(38,0)
+
+  - name: gld_rule_result
+    description: "Gold layer - Fraud rule evaluation results per transaction"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: RULE_RESULT_ID
+        data_type: VARCHAR(100)
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+      - name: RULE_ID
+        data_type: VARCHAR(20)
+      - name: RULE_NAME
+        data_type: VARCHAR(200)
+      - name: TRANSACTION_ID
+        data_type: VARCHAR(100)
+      - name: CUSTOMER_ID
+        data_type: VARCHAR(50)
+      - name: ACCOUNT_ID
+        data_type: VARCHAR(50)
+      - name: RISK_SCORE
+        data_type: NUMBER(38,0)
+      - name: SEVERITY
+        data_type: VARCHAR(20)
+      - name: RULE_STATUS
+        data_type: VARCHAR(20)
+      - name: DETECTED_TS
+        data_type: TIMESTAMP_NTZ
+      - name: CREATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: CREATED_LOAD_ID
+        data_type: NUMBER(38,0)
+
+  - name: gld_fraud_alert
+    description: "Gold layer - Aggregated fraud alerts with severity classification"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: ALERT_ID
+        data_type: VARCHAR(100)
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+      - name: RULE_ID
+        data_type: VARCHAR(20)
+      - name: CUSTOMER_ID
+        data_type: VARCHAR(50)
+      - name: TRANSACTION_ID
+        data_type: VARCHAR(100)
+      - name: RISK_SCORE
+        data_type: NUMBER(38,0)
+      - name: SEVERITY
+        data_type: VARCHAR(20)
+      - name: ALERT_STATUS
+        data_type: VARCHAR(30)
+      - name: CREATED_DATE_TIME
+        data_type: TIMESTAMP_NTZ
+      - name: CREATED_LOAD_ID
+        data_type: NUMBER(38,0)

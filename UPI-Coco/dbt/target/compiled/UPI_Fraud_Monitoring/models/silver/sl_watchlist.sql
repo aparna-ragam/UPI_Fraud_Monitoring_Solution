@@ -7,7 +7,7 @@ with source as (
         cast(ENTITY_ID as VARCHAR(100)) as ENTITY_ID,
         cast(ENTITY_NAME as VARCHAR(255)) as ENTITY_NAME,
         cast(RISK_LEVEL as VARCHAR(20)) as RISK_LEVEL,
-        CREATED_LOAD_ID,
+        cast(CREATED_LOAD_ID as NUMBER) as CREATED_LOAD_ID,
         CREATED_DATE_TIME
     from UPI_FRAUD_MONITORING.TRANSFORM.v_watchlist
 ),
@@ -22,7 +22,9 @@ hashed as (
             coalesce(ENTITY_NAME, '^') || '|' ||
             coalesce(RISK_LEVEL, '^')
         ) as HASH_DIFF,
-        'Y' as IS_CURRENT
+        'Y' as IS_CURRENT,
+        NULL::TIMESTAMP_NTZ as UPDATED_DATE_TIME,
+        NULL::NUMBER as UPDATED_LOAD_ID
     from source
 )
 

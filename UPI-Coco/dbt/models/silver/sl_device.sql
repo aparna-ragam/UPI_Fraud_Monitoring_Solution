@@ -1,21 +1,23 @@
 {{
     config(
         materialized='incremental',
-        unique_key='DEVICE_ID',
-        incremental_strategy='merge',
+        incremental_strategy='append',
+        on_schema_change='append_new_columns',
         post_hook=[
             "UPDATE {{ this }} t
-             SET t.IS_CURRENT = 'N'
-             WHERE t.IS_CURRENT = 'Y'
-               AND t.DEVICE_ID IN (
-                   SELECT s.DEVICE_ID FROM {{ this }} s
-                   WHERE s.IS_CURRENT = 'Y'
-                   GROUP BY s.DEVICE_ID HAVING COUNT(*) > 1
-               )
-               AND t.CREATED_DATE_TIME < (
-                   SELECT MAX(s2.CREATED_DATE_TIME) FROM {{ this }} s2
-                   WHERE s2.DEVICE_ID = t.DEVICE_ID AND s2.IS_CURRENT = 'Y'
-               )"
+             SET t.IS_CURRENT = 'N',
+                 t.UPDATED_DATE_TIME = CURRENT_TIMESTAMP(),
+                 t.UPDATED_LOAD_ID = dup.LATEST_LOAD_ID
+             FROM (
+                 SELECT DEVICE_ID, MAX(CREATED_LOAD_ID) as LATEST_LOAD_ID
+                 FROM {{ this }}
+                 WHERE IS_CURRENT = 'Y'
+                 GROUP BY DEVICE_ID
+                 HAVING COUNT(*) > 1
+             ) dup
+             WHERE t.DEVICE_ID = dup.DEVICE_ID
+               AND t.IS_CURRENT = 'Y'
+               AND t.CREATED_LOAD_ID < dup.LATEST_LOAD_ID"
         ]
     )
 }}
@@ -29,7 +31,7 @@ with source as (
         cast(TRUSTED_FLAG as VARCHAR(1)) as TRUSTED_FLAG,
         DATEDIFF(DAY, cast(DEVICE_REGISTRATION_DATE as DATE), CURRENT_DATE) as DEVICE_AGE_DAYS,
         OS_VERSION,
-        CREATED_LOAD_ID,
+        cast(CREATED_LOAD_ID as NUMBER) as CREATED_LOAD_ID,
         CREATED_DATE_TIME
     from {{ ref('v_device_registry') }}
 ),
@@ -52,13 +54,8 @@ enriched as (
 
 hashed as (
     select
-        DEVICE_ID,
-        CUSTOMER_ID,
-        DEVICE_FINGERPRINT,
-        DEVICE_OS,
-        TRUSTED_FLAG,
-        DEVICE_AGE_DAYS,
-        DEVICE_RISK_SCORE,
+        DEVICE_ID, CUSTOMER_ID, DEVICE_FINGERPRINT, DEVICE_OS, TRUSTED_FLAG,
+        DEVICE_AGE_DAYS, DEVICE_RISK_SCORE,
         md5(
             coalesce(DEVICE_ID, '^') || '|' ||
             coalesce(CUSTOMER_ID, '^') || '|' ||
@@ -69,7 +66,9 @@ hashed as (
         ) as HASH_DIFF,
         'Y' as IS_CURRENT,
         CREATED_LOAD_ID,
-        CREATED_DATE_TIME
+        CREATED_DATE_TIME,
+        NULL::TIMESTAMP_NTZ as UPDATED_DATE_TIME,
+        NULL::NUMBER as UPDATED_LOAD_ID
     from enriched
 )
 

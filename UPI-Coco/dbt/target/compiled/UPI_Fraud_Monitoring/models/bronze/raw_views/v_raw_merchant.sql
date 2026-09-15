@@ -15,11 +15,11 @@
         
         RISK_RATING,
         
-        CREATED_LOAD_ID,
-        
         CREATED_DATE_TIME,
         
-        TESTING
+        TESTING,
+        
+        CREATED_LOAD_ID
         
     from UPI_FRAUD_MONITORING.STAGING.merchant
 

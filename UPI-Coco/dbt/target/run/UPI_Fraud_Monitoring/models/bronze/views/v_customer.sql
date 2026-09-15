@@ -124,9 +124,9 @@
             trim(RISK_RATING) as RISK_RATING,
             trim(CUSTOMER_SINCE) as CUSTOMER_SINCE,
             trim(CUSTOMER_STATUS) as CUSTOMER_STATUS,
-            trim(CREATED_LOAD_ID) as CREATED_LOAD_ID,
             CREATED_DATE_TIME,
-            md5(coalesce(trim(CUSTOMER_ID), '^') || '|' || coalesce(trim(CUSTOMER_NAME), '^') || '|' || coalesce(trim(DOB), '^') || '|' || coalesce(trim(GENDER), '^') || '|' || coalesce(trim(MOBILE_NUMBER), '^') || '|' || coalesce(trim(EMAIL_ID), '^') || '|' || coalesce(trim(CUSTOMER_SEGMENT), '^') || '|' || coalesce(trim(CUSTOMER_TYPE), '^') || '|' || coalesce(trim(KYC_STATUS), '^') || '|' || coalesce(trim(RISK_RATING), '^') || '|' || coalesce(trim(CUSTOMER_SINCE), '^') || '|' || coalesce(trim(CUSTOMER_STATUS), '^') || '|' || coalesce(trim(CREATED_LOAD_ID), '^') || '|' || coalesce(CREATED_DATE_TIME::string, '^')) as hash_diff
+            cast(CREATED_LOAD_ID as number(38,0)) as CREATED_LOAD_ID,
+            md5(coalesce(trim(CUSTOMER_ID), '^') || '|' || coalesce(trim(CUSTOMER_NAME), '^') || '|' || coalesce(trim(DOB), '^') || '|' || coalesce(trim(GENDER), '^') || '|' || coalesce(trim(MOBILE_NUMBER), '^') || '|' || coalesce(trim(EMAIL_ID), '^') || '|' || coalesce(trim(CUSTOMER_SEGMENT), '^') || '|' || coalesce(trim(CUSTOMER_TYPE), '^') || '|' || coalesce(trim(KYC_STATUS), '^') || '|' || coalesce(trim(RISK_RATING), '^') || '|' || coalesce(trim(CUSTOMER_SINCE), '^') || '|' || coalesce(trim(CUSTOMER_STATUS), '^') || '|' || coalesce(CREATED_DATE_TIME::string, '^') || '|' || coalesce(cast(CREATED_LOAD_ID as string), '^')) as hash_diff
         from UPI_FRAUD_MONITORING.TRANSFORM.v_raw_customer
         where CREATED_LOAD_ID is not null
     )

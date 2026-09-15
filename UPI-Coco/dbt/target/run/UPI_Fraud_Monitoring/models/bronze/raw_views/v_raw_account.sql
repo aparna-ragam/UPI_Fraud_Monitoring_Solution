@@ -29,9 +29,9 @@
         
         AVAILABLE_BALANCE,
         
-        CREATED_LOAD_ID,
+        CREATED_DATE_TIME,
         
-        CREATED_DATE_TIME
+        CREATED_LOAD_ID
         
     from UPI_FRAUD_MONITORING.STAGING.account
 

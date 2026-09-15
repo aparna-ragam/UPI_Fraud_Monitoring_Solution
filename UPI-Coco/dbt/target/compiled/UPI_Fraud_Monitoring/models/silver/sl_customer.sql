@@ -10,7 +10,7 @@ with source as (
         cast(CUSTOMER_STATUS as VARCHAR(30)) as CUSTOMER_STATUS,
         cast(CUSTOMER_SINCE as DATE) as CUSTOMER_SINCE,
         cast(CUSTOMER_TYPE as VARCHAR(50)) as CUSTOMER_TYPE,
-        CREATED_LOAD_ID,
+        cast(CREATED_LOAD_ID as NUMBER) as CREATED_LOAD_ID,
         CREATED_DATE_TIME
     from UPI_FRAUD_MONITORING.TRANSFORM.v_raw_customer
 ),
@@ -28,7 +28,9 @@ hashed as (
             coalesce(cast(CUSTOMER_SINCE as VARCHAR), '^') || '|' ||
             coalesce(CUSTOMER_TYPE, '^')
         ) as HASH_DIFF,
-        'Y' as IS_CURRENT
+        'Y' as IS_CURRENT,
+        NULL::TIMESTAMP_NTZ as UPDATED_DATE_TIME,
+        NULL::NUMBER as UPDATED_LOAD_ID
     from source
 )
 

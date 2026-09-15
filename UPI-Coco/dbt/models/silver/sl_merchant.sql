@@ -1,21 +1,23 @@
 {{
     config(
         materialized='incremental',
-        unique_key='MERCHANT_ID',
-        incremental_strategy='merge',
+        incremental_strategy='append',
+        on_schema_change='append_new_columns',
         post_hook=[
             "UPDATE {{ this }} t
-             SET t.IS_CURRENT = 'N'
-             WHERE t.IS_CURRENT = 'Y'
-               AND t.MERCHANT_ID IN (
-                   SELECT s.MERCHANT_ID FROM {{ this }} s
-                   WHERE s.IS_CURRENT = 'Y'
-                   GROUP BY s.MERCHANT_ID HAVING COUNT(*) > 1
-               )
-               AND t.CREATED_DATE_TIME < (
-                   SELECT MAX(s2.CREATED_DATE_TIME) FROM {{ this }} s2
-                   WHERE s2.MERCHANT_ID = t.MERCHANT_ID AND s2.IS_CURRENT = 'Y'
-               )"
+             SET t.IS_CURRENT = 'N',
+                 t.UPDATED_DATE_TIME = CURRENT_TIMESTAMP(),
+                 t.UPDATED_LOAD_ID = dup.LATEST_LOAD_ID
+             FROM (
+                 SELECT MERCHANT_ID, MAX(CREATED_LOAD_ID) as LATEST_LOAD_ID
+                 FROM {{ this }}
+                 WHERE IS_CURRENT = 'Y'
+                 GROUP BY MERCHANT_ID
+                 HAVING COUNT(*) > 1
+             ) dup
+             WHERE t.MERCHANT_ID = dup.MERCHANT_ID
+               AND t.IS_CURRENT = 'Y'
+               AND t.CREATED_LOAD_ID < dup.LATEST_LOAD_ID"
         ]
     )
 }}
@@ -32,16 +34,14 @@ with source as (
             WHEN MERCHANT_CATEGORY = 'Retail' THEN '6000'
             ELSE '9999'
         END as MCC_CODE,
-        CREATED_LOAD_ID,
+        cast(CREATED_LOAD_ID as NUMBER) as CREATED_LOAD_ID,
         CREATED_DATE_TIME
     from {{ ref('v_merchant') }}
 ),
 
 enriched as (
     select
-        MERCHANT_ID,
-        MERCHANT_NAME,
-        MERCHANT_CATEGORY,
+        MERCHANT_ID, MERCHANT_NAME, MERCHANT_CATEGORY,
         cast(MCC_CODE as VARCHAR(20)) as MCC_CODE,
         MERCHANT_STATUS,
         CASE
@@ -49,8 +49,7 @@ enriched as (
             WHEN MCC_CODE IN ('6000') THEN 'MEDIUM'
             ELSE 'HIGH_RISK'
         END as RISK_RATING,
-        CREATED_LOAD_ID,
-        CREATED_DATE_TIME
+        CREATED_LOAD_ID, CREATED_DATE_TIME
     from source
 ),
 
@@ -65,7 +64,9 @@ hashed as (
             coalesce(MERCHANT_STATUS, '^') || '|' ||
             coalesce(RISK_RATING, '^')
         ) as HASH_DIFF,
-        'Y' as IS_CURRENT
+        'Y' as IS_CURRENT,
+        NULL::TIMESTAMP_NTZ as UPDATED_DATE_TIME,
+        NULL::NUMBER as UPDATED_LOAD_ID
     from enriched
 )
 

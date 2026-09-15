@@ -14,7 +14,7 @@ with source as (
             WHEN REQUEST_STATUS = 'FAILED' THEN 'MEDIUM'
             ELSE 'LOW'
         END as REQUEST_RISK_RATING,
-        CREATED_LOAD_ID,
+        cast(CREATED_LOAD_ID as NUMBER) as CREATED_LOAD_ID,
         CREATED_DATE_TIME
     from UPI_FRAUD_MONITORING.TRANSFORM.v_collect_request
 ),
@@ -30,7 +30,9 @@ hashed as (
             coalesce(REQUEST_STATUS, '^') || '|' ||
             coalesce(REQUEST_RISK_RATING, '^')
         ) as HASH_DIFF,
-        'Y' as IS_CURRENT
+        'Y' as IS_CURRENT,
+        NULL::TIMESTAMP_NTZ as UPDATED_DATE_TIME,
+        NULL::NUMBER as UPDATED_LOAD_ID
     from source
 )
 

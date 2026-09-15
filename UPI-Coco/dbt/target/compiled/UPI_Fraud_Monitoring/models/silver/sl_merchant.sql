@@ -12,16 +12,14 @@ with source as (
             WHEN MERCHANT_CATEGORY = 'Retail' THEN '6000'
             ELSE '9999'
         END as MCC_CODE,
-        CREATED_LOAD_ID,
+        cast(CREATED_LOAD_ID as NUMBER) as CREATED_LOAD_ID,
         CREATED_DATE_TIME
     from UPI_FRAUD_MONITORING.TRANSFORM.v_merchant
 ),
 
 enriched as (
     select
-        MERCHANT_ID,
-        MERCHANT_NAME,
-        MERCHANT_CATEGORY,
+        MERCHANT_ID, MERCHANT_NAME, MERCHANT_CATEGORY,
         cast(MCC_CODE as VARCHAR(20)) as MCC_CODE,
         MERCHANT_STATUS,
         CASE
@@ -29,8 +27,7 @@ enriched as (
             WHEN MCC_CODE IN ('6000') THEN 'MEDIUM'
             ELSE 'HIGH_RISK'
         END as RISK_RATING,
-        CREATED_LOAD_ID,
-        CREATED_DATE_TIME
+        CREATED_LOAD_ID, CREATED_DATE_TIME
     from source
 ),
 
@@ -45,7 +42,9 @@ hashed as (
             coalesce(MERCHANT_STATUS, '^') || '|' ||
             coalesce(RISK_RATING, '^')
         ) as HASH_DIFF,
-        'Y' as IS_CURRENT
+        'Y' as IS_CURRENT,
+        NULL::TIMESTAMP_NTZ as UPDATED_DATE_TIME,
+        NULL::NUMBER as UPDATED_LOAD_ID
     from enriched
 )
 

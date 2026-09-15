@@ -10,7 +10,7 @@ with source as (
         cast(AVAILABLE_BALANCE as NUMBER(18,2)) as AVAILABLE_BALANCE,
         cast(OPEN_DATE as DATE) as OPEN_DATE,
         DATEDIFF(DAY, cast(OPEN_DATE as DATE), CURRENT_DATE) as ACCOUNT_AGE_DAYS,
-        CREATED_LOAD_ID,
+        cast(CREATED_LOAD_ID as NUMBER) as CREATED_LOAD_ID,
         CREATED_DATE_TIME
     from UPI_FRAUD_MONITORING.TRANSFORM.v_account
 ),
@@ -48,7 +48,9 @@ hashed as (
             coalesce(cast(OPEN_DATE as VARCHAR), '^') || '|' ||
             coalesce(ACCOUNT_RISK_RATING, '^')
         ) as HASH_DIFF,
-        'Y' as IS_CURRENT
+        'Y' as IS_CURRENT,
+        NULL::TIMESTAMP_NTZ as UPDATED_DATE_TIME,
+        NULL::NUMBER as UPDATED_LOAD_ID
     from enriched
 )
 

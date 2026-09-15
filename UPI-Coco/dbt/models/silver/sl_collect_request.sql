@@ -1,21 +1,23 @@
 {{
     config(
         materialized='incremental',
-        unique_key='COLLECT_REQUEST_ID',
-        incremental_strategy='merge',
+        incremental_strategy='append',
+        on_schema_change='append_new_columns',
         post_hook=[
             "UPDATE {{ this }} t
-             SET t.IS_CURRENT = 'N'
-             WHERE t.IS_CURRENT = 'Y'
-               AND t.COLLECT_REQUEST_ID IN (
-                   SELECT s.COLLECT_REQUEST_ID FROM {{ this }} s
-                   WHERE s.IS_CURRENT = 'Y'
-                   GROUP BY s.COLLECT_REQUEST_ID HAVING COUNT(*) > 1
-               )
-               AND t.CREATED_DATE_TIME < (
-                   SELECT MAX(s2.CREATED_DATE_TIME) FROM {{ this }} s2
-                   WHERE s2.COLLECT_REQUEST_ID = t.COLLECT_REQUEST_ID AND s2.IS_CURRENT = 'Y'
-               )"
+             SET t.IS_CURRENT = 'N',
+                 t.UPDATED_DATE_TIME = CURRENT_TIMESTAMP(),
+                 t.UPDATED_LOAD_ID = dup.LATEST_LOAD_ID
+             FROM (
+                 SELECT COLLECT_REQUEST_ID, MAX(CREATED_LOAD_ID) as LATEST_LOAD_ID
+                 FROM {{ this }}
+                 WHERE IS_CURRENT = 'Y'
+                 GROUP BY COLLECT_REQUEST_ID
+                 HAVING COUNT(*) > 1
+             ) dup
+             WHERE t.COLLECT_REQUEST_ID = dup.COLLECT_REQUEST_ID
+               AND t.IS_CURRENT = 'Y'
+               AND t.CREATED_LOAD_ID < dup.LATEST_LOAD_ID"
         ]
     )
 }}
@@ -34,7 +36,7 @@ with source as (
             WHEN REQUEST_STATUS = 'FAILED' THEN 'MEDIUM'
             ELSE 'LOW'
         END as REQUEST_RISK_RATING,
-        CREATED_LOAD_ID,
+        cast(CREATED_LOAD_ID as NUMBER) as CREATED_LOAD_ID,
         CREATED_DATE_TIME
     from {{ ref('v_collect_request') }}
 ),
@@ -50,7 +52,9 @@ hashed as (
             coalesce(REQUEST_STATUS, '^') || '|' ||
             coalesce(REQUEST_RISK_RATING, '^')
         ) as HASH_DIFF,
-        'Y' as IS_CURRENT
+        'Y' as IS_CURRENT,
+        NULL::TIMESTAMP_NTZ as UPDATED_DATE_TIME,
+        NULL::NUMBER as UPDATED_LOAD_ID
     from source
 )
 

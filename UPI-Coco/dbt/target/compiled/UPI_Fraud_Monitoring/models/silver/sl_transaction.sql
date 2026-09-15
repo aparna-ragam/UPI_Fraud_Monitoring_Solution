@@ -25,7 +25,7 @@ with source as (
             ELSE 'NORMAL'
         END as TXN_RISK_REASON,
         cast(NULL as VARCHAR(50)) as TXN_FRAUD_ID,
-        CREATED_LOAD_ID,
+        cast(CREATED_LOAD_ID as NUMBER) as CREATED_LOAD_ID,
         CREATED_DATE_TIME
     from UPI_FRAUD_MONITORING.TRANSFORM.v_transaction
 ),
@@ -47,7 +47,9 @@ hashed as (
             coalesce(CHANNEL, '^') || '|' ||
             coalesce(TXN_RISK_REASON, '^')
         ) as HASH_DIFF,
-        'Y' as IS_CURRENT
+        'Y' as IS_CURRENT,
+        NULL::TIMESTAMP_NTZ as UPDATED_DATE_TIME,
+        NULL::NUMBER as UPDATED_LOAD_ID
     from source
 )
 

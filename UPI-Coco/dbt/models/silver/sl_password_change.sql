@@ -1,21 +1,23 @@
 {{
     config(
         materialized='incremental',
-        unique_key='PASSWORD_CHANGE_ID',
-        incremental_strategy='merge',
+        incremental_strategy='append',
+        on_schema_change='append_new_columns',
         post_hook=[
             "UPDATE {{ this }} t
-             SET t.IS_CURRENT = 'N'
-             WHERE t.IS_CURRENT = 'Y'
-               AND t.PASSWORD_CHANGE_ID IN (
-                   SELECT s.PASSWORD_CHANGE_ID FROM {{ this }} s
-                   WHERE s.IS_CURRENT = 'Y'
-                   GROUP BY s.PASSWORD_CHANGE_ID HAVING COUNT(*) > 1
-               )
-               AND t.CREATED_DATE_TIME < (
-                   SELECT MAX(s2.CREATED_DATE_TIME) FROM {{ this }} s2
-                   WHERE s2.PASSWORD_CHANGE_ID = t.PASSWORD_CHANGE_ID AND s2.IS_CURRENT = 'Y'
-               )"
+             SET t.IS_CURRENT = 'N',
+                 t.UPDATED_DATE_TIME = CURRENT_TIMESTAMP(),
+                 t.UPDATED_LOAD_ID = dup.LATEST_LOAD_ID
+             FROM (
+                 SELECT PASSWORD_CHANGE_ID, MAX(CREATED_LOAD_ID) as LATEST_LOAD_ID
+                 FROM {{ this }}
+                 WHERE IS_CURRENT = 'Y'
+                 GROUP BY PASSWORD_CHANGE_ID
+                 HAVING COUNT(*) > 1
+             ) dup
+             WHERE t.PASSWORD_CHANGE_ID = dup.PASSWORD_CHANGE_ID
+               AND t.IS_CURRENT = 'Y'
+               AND t.CREATED_LOAD_ID < dup.LATEST_LOAD_ID"
         ]
     )
 }}
@@ -35,7 +37,7 @@ with source as (
             WHEN extract(hour from cast(v.CHANGE_TIME as TIMESTAMP)) between 0 and 4 THEN 'MEDIUM'
             ELSE 'LOW'
         END as PASSWORD_CHANGE_RISK,
-        v.CREATED_LOAD_ID,
+        cast(v.CREATED_LOAD_ID as NUMBER) as CREATED_LOAD_ID,
         v.CREATED_DATE_TIME
     from {{ ref('v_password_change') }} v
     left join {{ ref('sl_device') }} d
@@ -54,7 +56,9 @@ hashed as (
             coalesce(cast(DEVICE_RISK_SCORE as VARCHAR), '^') || '|' ||
             coalesce(PASSWORD_CHANGE_RISK, '^')
         ) as HASH_DIFF,
-        'Y' as IS_CURRENT
+        'Y' as IS_CURRENT,
+        NULL::TIMESTAMP_NTZ as UPDATED_DATE_TIME,
+        NULL::NUMBER as UPDATED_LOAD_ID
     from source
 )
 

@@ -128,9 +128,9 @@
             trim(APP_VERSION) as APP_VERSION,
             trim(DEVICE_FINGERPRINT) as DEVICE_FINGERPRINT,
             trim(TRUSTED_FLAG) as TRUSTED_FLAG,
-            trim(CREATED_LOAD_ID) as CREATED_LOAD_ID,
             CREATED_DATE_TIME,
-            md5(coalesce(trim(DEVICE_ID), '^') || '|' || coalesce(trim(CUSTOMER_ID), '^') || '|' || coalesce(trim(IMEI_NUMBER), '^') || '|' || coalesce(trim(IMSI_NUMBER), '^') || '|' || coalesce(trim(SIM_NUMBER), '^') || '|' || coalesce(trim(DEVICE_MAKE), '^') || '|' || coalesce(trim(DEVICE_MODEL), '^') || '|' || coalesce(trim(DEVICE_OS), '^') || '|' || coalesce(trim(DEVICE_REGISTRATION_DATE), '^') || '|' || coalesce(trim(OS_VERSION), '^') || '|' || coalesce(trim(APP_VERSION), '^') || '|' || coalesce(trim(DEVICE_FINGERPRINT), '^') || '|' || coalesce(trim(TRUSTED_FLAG), '^') || '|' || coalesce(trim(CREATED_LOAD_ID), '^') || '|' || coalesce(CREATED_DATE_TIME::string, '^')) as hash_diff
+            cast(CREATED_LOAD_ID as number(38,0)) as CREATED_LOAD_ID,
+            md5(coalesce(trim(DEVICE_ID), '^') || '|' || coalesce(trim(CUSTOMER_ID), '^') || '|' || coalesce(trim(IMEI_NUMBER), '^') || '|' || coalesce(trim(IMSI_NUMBER), '^') || '|' || coalesce(trim(SIM_NUMBER), '^') || '|' || coalesce(trim(DEVICE_MAKE), '^') || '|' || coalesce(trim(DEVICE_MODEL), '^') || '|' || coalesce(trim(DEVICE_OS), '^') || '|' || coalesce(trim(DEVICE_REGISTRATION_DATE), '^') || '|' || coalesce(trim(OS_VERSION), '^') || '|' || coalesce(trim(APP_VERSION), '^') || '|' || coalesce(trim(DEVICE_FINGERPRINT), '^') || '|' || coalesce(trim(TRUSTED_FLAG), '^') || '|' || coalesce(CREATED_DATE_TIME::string, '^') || '|' || coalesce(cast(CREATED_LOAD_ID as string), '^')) as hash_diff
         from UPI_FRAUD_MONITORING.TRANSFORM.v_raw_device_registry
         where CREATED_LOAD_ID is not null
     )

@@ -15,7 +15,7 @@ with source as (
             WHEN extract(hour from cast(v.CHANGE_TIME as TIMESTAMP)) between 0 and 4 THEN 'MEDIUM'
             ELSE 'LOW'
         END as PASSWORD_CHANGE_RISK,
-        v.CREATED_LOAD_ID,
+        cast(v.CREATED_LOAD_ID as NUMBER) as CREATED_LOAD_ID,
         v.CREATED_DATE_TIME
     from UPI_FRAUD_MONITORING.TRANSFORM.v_password_change v
     left join UPI_FRAUD_MONITORING.TRANSFORM.sl_device d
@@ -34,7 +34,9 @@ hashed as (
             coalesce(cast(DEVICE_RISK_SCORE as VARCHAR), '^') || '|' ||
             coalesce(PASSWORD_CHANGE_RISK, '^')
         ) as HASH_DIFF,
-        'Y' as IS_CURRENT
+        'Y' as IS_CURRENT,
+        NULL::TIMESTAMP_NTZ as UPDATED_DATE_TIME,
+        NULL::NUMBER as UPDATED_LOAD_ID
     from source
 )
 

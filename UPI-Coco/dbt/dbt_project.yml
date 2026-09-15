@@ -7,6 +7,8 @@ model-paths:
   - models
 macro-paths:
   - macros
+seed-paths:
+  - seeds
 
 models:
   UPI_Fraud_Monitoring:
@@ -21,3 +23,13 @@ models:
       +materialized: incremental
       +schema: TRANSFORM
       +on_schema_change: append_new_columns
+    gold:
+      +materialized: incremental
+      +schema: ANALYTICS
+      +on_schema_change: append_new_columns
+
+seeds:
+  UPI_Fraud_Monitoring:
+    dim_fraud_rule:
+      +schema: TRANSFORM
+      +quote_columns: true

@@ -32,7 +32,7 @@ source as (
             WHEN DATEDIFF(DAY, cast(b.BENEFICIARY_CREATED_DATE as DATE), CURRENT_DATE) < 30 THEN 'MEDIUM'
             ELSE 'LOW'
         END as RISK_RATING,
-        b.CREATED_LOAD_ID,
+        cast(b.CREATED_LOAD_ID as NUMBER) as CREATED_LOAD_ID,
         b.CREATED_DATE_TIME
     from UPI_FRAUD_MONITORING.TRANSFORM.v_beneficiary b
     left join txn_agg t on b.BENEFICIARY_ID = t.BENEFICIARY_ID
@@ -40,12 +40,8 @@ source as (
 
 hashed as (
     select
-        BENEFICIARY_ID,
-        CUSTOMER_ID,
-        BENEFICIARY_NAME,
-        BENEFICIARY_VPA,
-        BANK_NAME,
-        RISK_RATING,
+        BENEFICIARY_ID, CUSTOMER_ID, BENEFICIARY_NAME, BENEFICIARY_VPA,
+        BANK_NAME, RISK_RATING,
         md5(
             coalesce(BENEFICIARY_ID, '^') || '|' ||
             coalesce(CUSTOMER_ID, '^') || '|' ||
@@ -55,8 +51,9 @@ hashed as (
             coalesce(RISK_RATING, '^')
         ) as HASH_DIFF,
         'Y' as IS_CURRENT,
-        CREATED_LOAD_ID,
-        CREATED_DATE_TIME
+        CREATED_LOAD_ID, CREATED_DATE_TIME,
+        NULL::TIMESTAMP_NTZ as UPDATED_DATE_TIME,
+        NULL::NUMBER as UPDATED_LOAD_ID
     from source
 )
 

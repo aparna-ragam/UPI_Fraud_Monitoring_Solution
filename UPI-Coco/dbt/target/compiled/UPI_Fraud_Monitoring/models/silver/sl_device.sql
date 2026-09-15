@@ -9,7 +9,7 @@ with source as (
         cast(TRUSTED_FLAG as VARCHAR(1)) as TRUSTED_FLAG,
         DATEDIFF(DAY, cast(DEVICE_REGISTRATION_DATE as DATE), CURRENT_DATE) as DEVICE_AGE_DAYS,
         OS_VERSION,
-        CREATED_LOAD_ID,
+        cast(CREATED_LOAD_ID as NUMBER) as CREATED_LOAD_ID,
         CREATED_DATE_TIME
     from UPI_FRAUD_MONITORING.TRANSFORM.v_device_registry
 ),
@@ -32,13 +32,8 @@ enriched as (
 
 hashed as (
     select
-        DEVICE_ID,
-        CUSTOMER_ID,
-        DEVICE_FINGERPRINT,
-        DEVICE_OS,
-        TRUSTED_FLAG,
-        DEVICE_AGE_DAYS,
-        DEVICE_RISK_SCORE,
+        DEVICE_ID, CUSTOMER_ID, DEVICE_FINGERPRINT, DEVICE_OS, TRUSTED_FLAG,
+        DEVICE_AGE_DAYS, DEVICE_RISK_SCORE,
         md5(
             coalesce(DEVICE_ID, '^') || '|' ||
             coalesce(CUSTOMER_ID, '^') || '|' ||
@@ -49,7 +44,9 @@ hashed as (
         ) as HASH_DIFF,
         'Y' as IS_CURRENT,
         CREATED_LOAD_ID,
-        CREATED_DATE_TIME
+        CREATED_DATE_TIME,
+        NULL::TIMESTAMP_NTZ as UPDATED_DATE_TIME,
+        NULL::NUMBER as UPDATED_LOAD_ID
     from enriched
 )
 

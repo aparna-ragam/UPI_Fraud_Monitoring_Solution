@@ -11,7 +11,7 @@ with source as (
         cast(STATE as VARCHAR(100)) as STATE,
         cast(CITY as VARCHAR(100)) as CITY,
         cast(IP_ADDRESS as VARCHAR(100)) as IP_ADDRESS,
-        CREATED_LOAD_ID,
+        cast(CREATED_LOAD_ID as NUMBER) as CREATED_LOAD_ID,
         CREATED_DATE_TIME
     from UPI_FRAUD_MONITORING.TRANSFORM.v_login_activity
 ),
@@ -30,7 +30,9 @@ hashed as (
             coalesce(CITY, '^') || '|' ||
             coalesce(IP_ADDRESS, '^')
         ) as HASH_DIFF,
-        'Y' as IS_CURRENT
+        'Y' as IS_CURRENT,
+        NULL::TIMESTAMP_NTZ as UPDATED_DATE_TIME,
+        NULL::NUMBER as UPDATED_LOAD_ID
     from source
 )
 
