@@ -1,0 +1,146 @@
+name: dbt Build - UPI Fraud Monitoring
+
+on:
+  repository_dispatch:
+    types: [dbt-build]
+
+  workflow_dispatch:
+    inputs:
+      full_refresh:
+        description: 'Run with --full-refresh'
+        required: false
+        default: 'false'
+        type: boolean
+
+env:
+  DBT_PROJECT_DIR: UPI-Coco/dbt
+  SNOWFLAKE_ACCOUNT: ${{ secrets.snowflake_account_Dev }}
+  SNOWFLAKE_USER: ${{ secrets.snowflake_user }}
+  SNOWFLAKE_PASSWORD: ${{ secrets.snowflake_password }}
+  SNOWFLAKE_ROLE: ACCOUNTADMIN
+  SNOWFLAKE_WAREHOUSE: COMPUTE_WH
+  SNOWFLAKE_DATABASE: UPI_FRAUD_MONITORING
+  SNOWFLAKE_SCHEMA: STAGING
+
+jobs:
+  dbt-build:
+    name: dbt Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install dbt-snowflake==1.9.* snowflake-connector-python
+
+      - name: Create profiles.yml
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml << 'EOF'
+          default:
+            target: prod
+            outputs:
+              prod:
+                type: snowflake
+                account: ${{ env.SNOWFLAKE_ACCOUNT }}
+                user: ${{ env.SNOWFLAKE_USER }}
+                password: ${{ env.SNOWFLAKE_PASSWORD }}
+                role: ${{ env.SNOWFLAKE_ROLE }}
+                database: ${{ env.SNOWFLAKE_DATABASE }}
+                warehouse: ${{ env.SNOWFLAKE_WAREHOUSE }}
+                schema: ${{ env.SNOWFLAKE_SCHEMA }}
+                threads: 4
+          EOF
+
+      - name: Set LOAD_ID
+        run: |
+          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            echo "LOAD_ID=${{ github.event.client_payload.load_id }}" >> $GITHUB_ENV
+          else
+            echo "LOAD_ID=MANUAL_${{ github.run_id }}" >> $GITHUB_ENV
+          fi
+
+      - name: Update LOAD_AUDIT - dbt STARTED
+        run: |
+          python3 << 'PYEOF'
+          import snowflake.connector, os
+          conn = snowflake.connector.connect(
+              account=os.environ["SNOWFLAKE_ACCOUNT"],
+              user=os.environ["SNOWFLAKE_USER"],
+              password=os.environ["SNOWFLAKE_PASSWORD"],
+              role=os.environ["SNOWFLAKE_ROLE"],
+              warehouse=os.environ["SNOWFLAKE_WAREHOUSE"],
+              database=os.environ["SNOWFLAKE_DATABASE"],
+              schema="STAGING"
+          )
+          load_id = os.environ["LOAD_ID"]
+          cur = conn.cursor()
+          cur.execute(f"""
+              UPDATE LOAD_AUDIT
+              SET DBT_STATUS = 'STARTED', DBT_LOAD_START_TIME = CURRENT_TIMESTAMP()
+              WHERE LOAD_ID = '{load_id}'
+          """)
+          if cur.rowcount == 0:
+              cur.execute(f"""
+                  INSERT INTO LOAD_AUDIT (LOAD_ID, FOLDER_NAME, SOURCE_FILE, LOAD_START_TIME, STATUS, DBT_STATUS, DBT_LOAD_START_TIME)
+                  VALUES ('{load_id}', 'dbt_build', 'github_actions', CURRENT_TIMESTAMP(), 'SUCCESS', 'STARTED', CURRENT_TIMESTAMP())
+              """)
+          conn.close()
+          PYEOF
+
+      - name: dbt deps
+        run: dbt deps --project-dir ${{ env.DBT_PROJECT_DIR }}
+
+      - name: dbt seed
+        run: dbt seed --project-dir ${{ env.DBT_PROJECT_DIR }}
+
+      - name: dbt build
+        id: dbt_build
+        run: |
+          if [ "${{ github.event.inputs.full_refresh }}" = "true" ]; then
+            dbt build --project-dir ${{ env.DBT_PROJECT_DIR }} --full-refresh
+          else
+            dbt build --project-dir ${{ env.DBT_PROJECT_DIR }}
+          fi
+
+      - name: dbt build summary
+        if: always()
+        run: |
+          echo "## dbt Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Load ID:** ${{ env.LOAD_ID }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status:** ${{ steps.dbt_build.outcome }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Timestamp:** $(date -u)" >> $GITHUB_STEP_SUMMARY
+
+      - name: Update LOAD_AUDIT - dbt SUCCESS/FAILED
+        if: always()
+        run: |
+          python3 << 'PYEOF'
+          import snowflake.connector, os
+          conn = snowflake.connector.connect(
+              account=os.environ["SNOWFLAKE_ACCOUNT"],
+              user=os.environ["SNOWFLAKE_USER"],
+              password=os.environ["SNOWFLAKE_PASSWORD"],
+              role=os.environ["SNOWFLAKE_ROLE"],
+              warehouse=os.environ["SNOWFLAKE_WAREHOUSE"],
+              database=os.environ["SNOWFLAKE_DATABASE"],
+              schema="STAGING"
+          )
+          load_id = os.environ["LOAD_ID"]
+          dbt_status = "SUCCESS" if "${{ steps.dbt_build.outcome }}" == "success" else "FAILED"
+          conn.cursor().execute(f"""
+              UPDATE LOAD_AUDIT
+              SET DBT_STATUS = '{dbt_status}', DBT_LOAD_END_TIME = CURRENT_TIMESTAMP()
+              WHERE LOAD_ID = '{load_id}'
+          """)
+          conn.close()
+          PYEOF
