@@ -51,7 +51,7 @@ jobs:
             outputs:
               prod:
                 type: snowflake
-                account: ${{ env.SNOWFLAKE_ACCOUNT }}
+                account: ${{ env.SNOWFLAKE_ACCOUNT_DEV }}
                 user: ${{ env.SNOWFLAKE_USER }}
                 password: ${{ env.SNOWFLAKE_PASSWORD }}
                 role: ${{ env.SNOWFLAKE_ROLE }}
