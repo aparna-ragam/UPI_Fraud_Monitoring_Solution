@@ -1,0 +1,23 @@
+name: UPI_Fraud_Monitoring
+version: 1.0.0
+config-version: 2
+profile: default
+
+model-paths:
+  - models
+macro-paths:
+  - macros
+
+models:
+  UPI_Fraud_Monitoring:
+    bronze:
+      raw_views:
+        +materialized: view
+        +schema: TRANSFORM
+      views:
+        +materialized: view
+        +schema: TRANSFORM
+    silver:
+      +materialized: incremental
+      +schema: TRANSFORM
+      +on_schema_change: append_new_columns

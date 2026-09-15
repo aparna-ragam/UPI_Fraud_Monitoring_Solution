@@ -1,0 +1,12 @@
+default:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: qy00958
+      user: ARAGAM
+      role: ACCOUNTADMIN
+      database: UPI_FRAUD_MONITORING
+      warehouse: COMPUTE_WH
+      schema: STAGING
+      threads: 4
