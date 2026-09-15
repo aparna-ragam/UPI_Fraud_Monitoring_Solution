@@ -14,7 +14,7 @@ on:
 
 env:
   DBT_PROJECT_DIR: UPI-Coco/dbt
-  SNOWFLAKE_ACCOUNT: ${{ secrets.snowflake_account_Dev }}
+  SNOWFLAKE_ACCOUNT: ${{ secrets.snowflake_account_Cortex }}
   SNOWFLAKE_USER: ${{ secrets.snowflake_user }}
   SNOWFLAKE_PASSWORD: ${{ secrets.snowflake_password }}
   SNOWFLAKE_ROLE: ACCOUNTADMIN
