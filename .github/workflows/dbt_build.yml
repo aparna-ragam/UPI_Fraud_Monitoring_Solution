@@ -18,8 +18,8 @@ env:
   SNOWFLAKE_USER: ${{ secrets.snowflake_user }}
   SNOWFLAKE_PASSWORD: ${{ secrets.snowflake_password }}
   SNOWFLAKE_ROLE: ACCOUNTADMIN
-  SNOWFLAKE_WAREHOUSE: COMPUTE_WH
-  SNOWFLAKE_DATABASE: UPI_FRAUD_MONITORING
+  SNOWFLAKE_WAREHOUSE: ${{ secrets.snowflake_warehouse }}
+  SNOWFLAKE_DATABASE: ${{ secrets.snowflake_database }}
   SNOWFLAKE_SCHEMA: STAGING
 
 jobs:
