@@ -1,1 +1,1 @@
-{{ create_latest_view('v_raw_collect_request', 'CREATED_LOAD_ID') }}
+{{ create_latest_view('v_raw_collect_request', 'CREATED_LOAD_ID', 'COLLECT_REQUEST_ID') }}
