@@ -1,1 +1,1 @@
-{{ create_latest_view('v_raw_watchlist', 'CREATED_LOAD_ID') }}
+{{ create_latest_view('v_raw_watchlist', 'CREATED_LOAD_ID', 'WATCHLIST_ID') }}
