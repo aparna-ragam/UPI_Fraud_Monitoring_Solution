@@ -16,10 +16,6 @@ USE WAREHOUSE COMPUTE_WH;
 USE DATABASE UPI_FRAUD_MONITORING;
 USE SCHEMA STAGING;
 
-CREATE WAREHOUSE UPI_FRAUD_MONITORING_WH WAREHOUSE_SIZE = XSMALL;
-
-USE WAREHOUSE UPI_FRAUD_MONITORING_WH;
-
 -- =============================================================
 -- STEP 1: STORAGE INTEGRATION
 -- =============================================================
@@ -132,9 +128,9 @@ CREATE OR REPLACE PROCEDURE PROCESS_INGESTION_SP()
   EXECUTE AS CALLER
 AS
 $$
-  // Generate a unique batch LOAD_ID
+  // Get next sequence value as the batch LOAD_ID
   var id_rs = snowflake.execute({sqlText:
-    "SELECT 'LOAD_' || TO_CHAR(CURRENT_TIMESTAMP(), 'YYYYMMDD_HH24MISS') || '_' || UUID_STRING() AS LOAD_ID"
+    "SELECT UPI_FRAUD_MONITORING.STAGING.LOAD_ID_SEQ.NEXTVAL AS LOAD_ID"
   });
   id_rs.next();
   var batch_load_id = id_rs.getColumnValue(1);
@@ -201,7 +197,7 @@ $$
 
         // Create target table with audit columns
         var col_defs = cols.map(function(c) { return '"' + c + '" VARCHAR'; }).join(', ');
-        col_defs += ', "CREATED_LOAD_ID" VARCHAR, "CREATED_DATE_TIME" TIMESTAMP_NTZ';
+        col_defs += ', "CREATED_LOAD_ID" NUMBER, "CREATED_DATE_TIME" TIMESTAMP_NTZ';
         snowflake.execute({sqlText:
           'CREATE TABLE IF NOT EXISTS UPI_FRAUD_MONITORING.STAGING."' + safe_table + '" (' + col_defs + ')'
         });
@@ -225,7 +221,7 @@ $$
         // Ensure audit columns exist
         try {
           snowflake.execute({sqlText:
-            'ALTER TABLE UPI_FRAUD_MONITORING.STAGING."' + safe_table + '" ADD COLUMN IF NOT EXISTS "CREATED_LOAD_ID" VARCHAR'
+            'ALTER TABLE UPI_FRAUD_MONITORING.STAGING."' + safe_table + '" ADD COLUMN IF NOT EXISTS "CREATED_LOAD_ID" NUMBER'
           });
           snowflake.execute({sqlText:
             'ALTER TABLE UPI_FRAUD_MONITORING.STAGING."' + safe_table + '" ADD COLUMN IF NOT EXISTS "CREATED_DATE_TIME" TIMESTAMP_NTZ'
@@ -238,7 +234,7 @@ $$
         var val_list = cols.map(function(c, idx) {
           return "REPLACE(TRIM(SPLIT_PART(RAW_LINE, ',', " + (idx + 1) + ")), '\"', '')";
         }).join(', ');
-        val_list += ", '" + batch_load_id + "', CURRENT_TIMESTAMP()";
+        val_list += ", " + batch_load_id + ", CURRENT_TIMESTAMP()";
 
         var insert_sql =
           'INSERT INTO UPI_FRAUD_MONITORING.STAGING."' + safe_table + '" (' + col_list + ') ' +
@@ -319,6 +315,8 @@ AS
 
 -- Resume the task (tasks are created in suspended state)
 ALTER TASK PROCESS_INGESTION_TASK resume;
+
+ALTER TASK PROCESS_INGESTION_TASK suspend;
 
 
 -- =============================================================
