@@ -6,12 +6,168 @@ sources:
     schema: STAGING
     tables:
       - name: account
+        columns:
+          - name: ACCOUNT_ID
+            tests:
+              - unique
+              - not_null
+          - name: CUSTOMER_ID
+            tests:
+              - not_null
+              - relationships:
+                  to: source('staging', 'customer')
+                  field: CUSTOMER_ID
+          - name: ACCOUNT_TYPE
+            tests:
+              - accepted_values:
+                  values: ['SAVINGS', 'CURRENT', 'FIXED_DEPOSIT', 'RECURRING']
+          - name: ACCOUNT_STATUS
+            tests:
+              - accepted_values:
+                  values: ['ACTIVE', 'INACTIVE', 'CLOSED', 'DORMANT', 'SUSPENDED']
+
       - name: beneficiary
+        columns:
+          - name: BENEFICIARY_ID
+            tests:
+              - unique
+              - not_null
+          - name: CUSTOMER_ID
+            tests:
+              - not_null
+          - name: RISK_RATING
+            tests:
+              - accepted_values:
+                  values: ['LOW', 'MEDIUM', 'HIGH']
+
       - name: collect_request
+        columns:
+          - name: COLLECT_REQUEST_ID
+            tests:
+              - unique
+              - not_null
+          - name: CUSTOMER_ID
+            tests:
+              - not_null
+          - name: REQUEST_STATUS
+            tests:
+              - accepted_values:
+                  values: ['PENDING', 'APPROVED', 'REJECTED', 'EXPIRED', 'FAILED', 'SUCCESS']
+
       - name: customer
+        columns:
+          - name: CUSTOMER_ID
+            tests:
+              - unique
+              - not_null
+          - name: KYC_STATUS
+            tests:
+              - accepted_values:
+                  values: ['VERIFIED', 'PENDING', 'REJECTED', 'EXPIRED', 'COMPLETED']
+          - name: RISK_RATING
+            tests:
+              - accepted_values:
+                  values: ['LOW', 'MEDIUM', 'HIGH']
+          - name: CUSTOMER_STATUS
+            tests:
+              - accepted_values:
+                  values: ['ACTIVE', 'INACTIVE', 'SUSPENDED', 'BLOCKED']
+
       - name: device_registry
+        columns:
+          - name: DEVICE_ID
+            tests:
+              - unique
+              - not_null
+          - name: CUSTOMER_ID
+            tests:
+              - not_null
+              - relationships:
+                  to: source('staging', 'customer')
+                  field: CUSTOMER_ID
+          - name: TRUSTED_FLAG
+            tests:
+              - accepted_values:
+                  values: ['Y', 'N']
+
       - name: login_activity
+        columns:
+          - name: LOGIN_ID
+            tests:
+              - unique
+              - not_null
+          - name: CUSTOMER_ID
+            tests:
+              - not_null
+          - name: LOGIN_STATUS
+            tests:
+              - accepted_values:
+                  values: ['SUCCESS', 'FAILED', 'LOCKED', 'TIMEOUT']
+
       - name: merchant
+        columns:
+          - name: MERCHANT_ID
+            tests:
+              - unique
+              - not_null
+          - name: MERCHANT_STATUS
+            tests:
+              - accepted_values:
+                  values: ['ACTIVE', 'INACTIVE', 'SUSPENDED', 'BLOCKED']
+          - name: RISK_RATING
+            tests:
+              - accepted_values:
+                  values: ['LOW', 'MEDIUM', 'HIGH']
+
       - name: password_change
+        columns:
+          - name: PASSWORD_CHANGE_ID
+            tests:
+              - unique
+              - not_null
+          - name: CUSTOMER_ID
+            tests:
+              - not_null
+              - relationships:
+                  to: source('staging', 'customer')
+                  field: CUSTOMER_ID
+
       - name: transaction
+        columns:
+          - name: TRANSACTION_ID
+            tests:
+              - unique
+              - not_null
+          - name: CUSTOMER_ID
+            tests:
+              - not_null
+          - name: ACCOUNT_ID
+            tests:
+              - not_null
+              - relationships:
+                  to: source('staging', 'account')
+                  field: ACCOUNT_ID
+          - name: TXN_STATUS
+            tests:
+              - accepted_values:
+                  values: ['SUCCESS', 'FAILED', 'PENDING', 'REVERSED', 'DECLINED']
+          - name: TXN_TYPE
+            tests:
+              - accepted_values:
+                  values: ['P2P', 'P2M', 'COLLECT', 'REFUND', 'REVERSAL']
+
       - name: watchlist
+        columns:
+          - name: WATCHLIST_ID
+            tests:
+              - unique
+              - not_null
+          - name: ENTITY_TYPE
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['CUSTOMER', 'BENEFICIARY', 'MERCHANT', 'ACCOUNT', 'DEVICE']
+          - name: RISK_LEVEL
+            tests:
+              - accepted_values:
+                  values: ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL']
