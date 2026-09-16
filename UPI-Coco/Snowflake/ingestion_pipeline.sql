@@ -16,6 +16,10 @@ USE WAREHOUSE COMPUTE_WH;
 USE DATABASE UPI_FRAUD_MONITORING;
 USE SCHEMA STAGING;
 
+CREATE WAREHOUSE UPI_FRAUD_MONITORING_WH WAREHOUSE_SIZE = XSMALL;
+
+USE WAREHOUSE UPI_FRAUD_MONITORING_WH;
+
 -- =============================================================
 -- STEP 1: STORAGE INTEGRATION
 -- =============================================================
