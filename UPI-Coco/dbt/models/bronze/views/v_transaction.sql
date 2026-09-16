@@ -1,1 +1,1 @@
-{{ create_latest_view('v_raw_transaction', 'CREATED_LOAD_ID') }}
+{{ create_latest_view('v_raw_transaction', 'CREATED_LOAD_ID', 'TRANSACTION_ID') }}
