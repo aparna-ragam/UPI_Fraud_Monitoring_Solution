@@ -20,13 +20,13 @@ jobs:
 
     env:
       DBT_PROJECT_DIR: UPI-Coco/dbt
-      SF_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT_CORTEX }}
-      SF_USER: ${{ secrets.SNOWFLAKE_USER }}
-      SF_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
-      SF_ROLE: ACCOUNTADMIN
-      SF_WAREHOUSE: COMPUTE_WH
-      SF_DATABASE: UPI_FRAUD_MONITORING
-      SF_SCHEMA: STAGING
+      SNOWFLAKE_ACCOUNT_CORTEX: ${{ secrets.SNOWFLAKE_ACCOUNT_CORTEX }}
+      SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+      SNOWFLAKE_PRIVATE_KEY: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+      SNOWFLAKE_ROLE: ACCOUNTADMIN
+      SNOWFLAKE_WAREHOUSE: COMPUTE_WH
+      SNOWFLAKE_DATABASE: UPI_FRAUD_MONITORING
+      SNOWFLAKE_SCHEMA: STAGING
 
     steps:
       - name: Checkout repository
@@ -40,7 +40,12 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install dbt-snowflake==1.9.* snowflake-connector-python
+          pip install dbt-snowflake==1.9.* snowflake-connector-python cryptography
+
+      - name: Write private key to file
+        run: |
+          echo "${SNOWFLAKE_PRIVATE_KEY}" > /tmp/rsa_key.p8
+          chmod 600 /tmp/rsa_key.p8
 
       - name: Create profiles.yml
         run: |
@@ -51,13 +56,13 @@ jobs:
             outputs:
               prod:
                 type: snowflake
-                account: ${SF_ACCOUNT}
-                user: ${SF_USER}
-                password: ${SF_PASSWORD}
-                role: ${SF_ROLE}
-                database: ${SF_DATABASE}
-                warehouse: ${SF_WAREHOUSE}
-                schema: ${SF_SCHEMA}
+                account: ${SNOWFLAKE_ACCOUNT_CORTEX}
+                user: ${SNOWFLAKE_USER}
+                role: ${SNOWFLAKE_ROLE}
+                database: ${SNOWFLAKE_DATABASE}
+                warehouse: ${SNOWFLAKE_WAREHOUSE}
+                schema: ${SNOWFLAKE_SCHEMA}
+                private_key_path: /tmp/rsa_key.p8
                 threads: 4
           EOF
 
@@ -73,13 +78,21 @@ jobs:
         run: |
           python3 -c "
           import snowflake.connector, os
+          from cryptography.hazmat.primitives import serialization
+          with open('/tmp/rsa_key.p8', 'rb') as f:
+              p_key = serialization.load_pem_private_key(f.read(), password=None)
+          pkb = p_key.private_bytes(
+              encoding=serialization.Encoding.DER,
+              format=serialization.PrivateFormat.PKCS8,
+              encryption_algorithm=serialization.NoEncryption()
+          )
           conn = snowflake.connector.connect(
-              account=os.environ['SF_ACCOUNT'],
-              user=os.environ['SF_USER'],
-              password=os.environ['SF_PASSWORD'],
-              role=os.environ['SF_ROLE'],
-              warehouse=os.environ['SF_WAREHOUSE'],
-              database=os.environ['SF_DATABASE'],
+              account=os.environ['SNOWFLAKE_ACCOUNT_CORTEX'],
+              user=os.environ['SNOWFLAKE_USER'],
+              private_key=pkb,
+              role=os.environ['SNOWFLAKE_ROLE'],
+              warehouse=os.environ['SNOWFLAKE_WAREHOUSE'],
+              database=os.environ['SNOWFLAKE_DATABASE'],
               schema='STAGING'
           )
           load_id = os.environ['LOAD_ID']
@@ -119,13 +132,21 @@ jobs:
         run: |
           python3 -c "
           import snowflake.connector, os
+          from cryptography.hazmat.primitives import serialization
+          with open('/tmp/rsa_key.p8', 'rb') as f:
+              p_key = serialization.load_pem_private_key(f.read(), password=None)
+          pkb = p_key.private_bytes(
+              encoding=serialization.Encoding.DER,
+              format=serialization.PrivateFormat.PKCS8,
+              encryption_algorithm=serialization.NoEncryption()
+          )
           conn = snowflake.connector.connect(
-              account=os.environ['SF_ACCOUNT'],
-              user=os.environ['SF_USER'],
-              password=os.environ['SF_PASSWORD'],
-              role=os.environ['SF_ROLE'],
-              warehouse=os.environ['SF_WAREHOUSE'],
-              database=os.environ['SF_DATABASE'],
+              account=os.environ['SNOWFLAKE_ACCOUNT_CORTEX'],
+              user=os.environ['SNOWFLAKE_USER'],
+              private_key=pkb,
+              role=os.environ['SNOWFLAKE_ROLE'],
+              warehouse=os.environ['SNOWFLAKE_WAREHOUSE'],
+              database=os.environ['SNOWFLAKE_DATABASE'],
               schema='STAGING'
           )
           load_id = os.environ['LOAD_ID']
@@ -133,3 +154,7 @@ jobs:
           conn.cursor().execute(\"UPDATE LOAD_AUDIT SET DBT_STATUS = '\" + dbt_status + \"', DBT_LOAD_END_TIME = CURRENT_TIMESTAMP() WHERE LOAD_ID = '\" + load_id + \"'\")
           conn.close()
           "
+
+      - name: Cleanup
+        if: always()
+        run: rm -f /tmp/rsa_key.p8
